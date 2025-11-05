@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SSRF[toc] 一、概念SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。 形成原因： 大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤和限制。 实例1 ctfshow web 3511234567891011&lt;?phperror_reporting(0);   &#x2F;&#x2F;这行代">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/03/11/SSRF/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="SSRF[toc] 一、概念SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。 形成原因： 大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤和限制。 实例1 ctfshow web 3511234567891011&lt;?phperror_reporting(0);   &#x2F;&#x2F;这行代">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/SSRF/d8230404519dd5808499ce96f5187566.jpg">
+<meta property="og:image" content="http://example.com/SSRF/d7b4f628f1e673495c12c977fac670dc.jpg">
+<meta property="article:published_time" content="2025-03-11T12:55:23.124Z">
+<meta property="article:modified_time" content="2025-05-22T05:13:06.819Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/SSRF/d8230404519dd5808499ce96f5187566.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-SSRF" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/03/11/SSRF/" class="article-date">
+  	<time datetime="2025-03-11T12:55:23.124Z" itemprop="datePublished">2025-03-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SSRF"><a href="#SSRF" class="headerlink" title="SSRF"></a>SSRF</h1><p>[toc]</p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p><strong>SSRF</strong>(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。</p>
+<p><strong>形成原因：</strong></p>
+<p>大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤和限制。</p>
+<h3 id="实例1-ctfshow-web-351"><a href="#实例1-ctfshow-web-351" class="headerlink" title="实例1 ctfshow web 351"></a>实例1 ctfshow web 351</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);   //这行代码关闭了php的错误报告</span><br><span class="line">highlight_file(__FILE__); //输出当前文件的源代码 并以高亮的形式显示 魔术常量</span><br><span class="line">$url=$_POST[&#x27;url&#x27;];     //从POST请求中获取名为url的参数 并赋给$url</span><br><span class="line">$ch=curl_init($url);   // 从cURL库初始化一个新的会话</span><br><span class="line">curl_setopt($ch, CURLOPT_HEADER, 0); //设置cURL选项 在结果中不包含HTTP头部信息</span><br><span class="line">curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);</span><br><span class="line">$result=curl_exec($ch); //执行cURL会话，并将结果存储再变量$result中</span><br><span class="line">curl_close($ch);  //关闭cURL会话，释放资源</span><br><span class="line">echo ($result);  //输出cURL访问的结果</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[POST]payload: url=http://127.0.0.1/flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="截断"><a href="#截断" class="headerlink" title="@截断"></a>@截断</h4><p>前面 <a href="http://jasmineaura.github.io@">http://jasmineaura.github.io@</a> 中的 jasmineaura.github.io 会被当做一个用户名信息，实际最后去访问的网站是我们服务器的ip地址，读取文件也就是我们写入的</p>
+<p><img src="/SSRF/d8230404519dd5808499ce96f5187566.jpg" alt="d8230404519dd5808499ce96f5187566"></p>
+<p>@一般是帮助系统识别身份的</p>
+<p><img src="/SSRF/d7b4f628f1e673495c12c977fac670dc.jpg" alt="d7b4f628f1e673495c12c977fac670dc"></p>
+<p>就比如这种@前面是用户名</p>
+<h3 id="实例3"><a href="#实例3" class="headerlink" title="实例3"></a>实例3</h3><p>使用正则表达式检查URL中是否包含localhost、数字1或0，或者全角句号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(!preg_match(&#x27;/localhost|127\.0\.|\。/i&#x27;, $url))//正则表达式检查</span><br></pre></td></tr></table></figure>
+
+<h4 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h4><p>sudo.cc相当于127.0.0.1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url=http://sudo.cc/flag.php</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h4><p>该本地域名的A记录到127.0.0.1上，然后访问http:&#x2F;&#x2F;域名&#x2F;flag.php即可（也可以在自己域名服务器上搭建302跳转）</p>
+<h5 id="302跳转"><a href="#302跳转" class="headerlink" title="302跳转"></a>302跳转</h5><p>HTTP 302跳转 也成为302重定向 是当用户浏览器或搜索引擎蜘蛛向网站服务器发出访问请求是 服务器返回的一种状态码 它表示所请求的资源临时地转移到新的位置。</p>
+<p><strong>应用场景</strong></p>
+<p>1.服务器页面路径的重新规划</p>
+<p>例如，当用户访问<em>taobao.com</em>时，服务器返回302状态码，并指示浏览器跳转到<em><a target="_blank" rel="noopener" href="http://www.taobao.com/">www.taobao.com</a></em><a target="_blank" rel="noopener" href="https://blog.csdn.net/liangxy2014/article/details/78964928">1</a>。</p>
+<p>2.客户端预埋的URL链接</p>
+<h2 id="二、方法"><a href="#二、方法" class="headerlink" title="二、方法"></a>二、方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><h4 id="1-会使用curl连接输入的网站并返回响应包"><a href="#1-会使用curl连接输入的网站并返回响应包" class="headerlink" title="1.会使用curl连接输入的网站并返回响应包"></a>1.会使用curl连接输入的网站并返回响应包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl http://www.baidu.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-查看本地文件"><a href="#2-查看本地文件" class="headerlink" title="2.查看本地文件"></a>2.查看本地文件</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:///etc/passwd </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/flag</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:///fl4g</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、eg"><a href="#三、eg" class="headerlink" title="三、eg"></a>三、eg</h3><h4 id="eg1："><a href="#eg1：" class="headerlink" title="eg1："></a>eg1：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">$url = $_GET[&#x27;url&#x27;];</span><br><span class="line"></span><br><span class="line">if ($url == null)</span><br><span class="line">    die(&quot;Try to add ?url=xxxx.&quot;);</span><br><span class="line"></span><br><span class="line">$x = parse_url($url);</span><br><span class="line"></span><br><span class="line">if (!$x)</span><br><span class="line">    die(&quot;(;_;)&quot;);</span><br><span class="line"></span><br><span class="line">if ($x[&#x27;host&#x27;] === null &amp;&amp; $x[&#x27;scheme&#x27;] === &#x27;http&#x27;) &#123;</span><br><span class="line">    echo (&#x27;Well, Going to &#x27; . $url);</span><br><span class="line">    $ch = curl_init($url);</span><br><span class="line">    curl_setopt($ch, CURLOPT_HEADER, 0);</span><br><span class="line">    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);</span><br><span class="line">    $result = curl_exec($ch);</span><br><span class="line">    curl_close($ch);</span><br><span class="line">    echo ($result);</span><br><span class="line">&#125; else</span><br><span class="line">    echo &quot;(^-＿-^)&quot;;</span><br><span class="line">Try to add ?url=xxxx.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>让我们传入一个url参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$x = parse_url($url);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这句使用 <code>parse_url()</code> 函数解析 <code>$url</code>，将其拆分为 scheme、host、path 等部分，结果保存在数组 <code>$x</code> 中</p>
+<p>主要关注这句</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if ($x[&#x27;host&#x27;] === null &amp;&amp; $x[&#x27;scheme&#x27;] === &#x27;http&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>判断解析后的 URL 是否满足两个条件：</p>
+<p>没有 host（即主机名或 IP 地址）</p>
+<p>协议是 http</p>
+<p>当parse_url遇到格式不完整的URL时，可能无法正确解析host字段，导致其返回null，而curl等请求工具仍能正常处理该URL。</p>
+<p>所以我们只需要构造一个特殊的url绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?url=http:/@127.0.0.1/flag.php</span><br></pre></td></tr></table></figure>
+
+<p>单斜杠或特殊符号可能导致<code>host</code>字段被忽略</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://27.25.151.26:30143/?url=http:/@127.0.0.1/FFFFF11111AAAAAggggg.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/13/SSTI/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/01/15/baobao/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">baobao</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

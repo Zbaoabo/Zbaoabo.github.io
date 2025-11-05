@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Zbaoabo</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SVN漏洞[TOC] 一、SVN概述​        SVN(全称subVersion) ，又叫版本控制软件。使用SVN可以多人协作开发：如张三、李四各自负责不同的模块；远程开发：如张三、李四在不同的城市一起负责统一项目的开发；版本回退：如项目迭代后发现还是原来的版本更欢迎，于是乎回退到原来的版本 。 ​        如果张三、李四两个人对同一个项目代码进行了改动，SVN会对两个人修改部分进行合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zbaoabo">
+<meta property="og:url" content="http://example.com/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Zbaoabo">
+<meta property="og:description" content="SVN漏洞[TOC] 一、SVN概述​        SVN(全称subVersion) ，又叫版本控制软件。使用SVN可以多人协作开发：如张三、李四各自负责不同的模块；远程开发：如张三、李四在不同的城市一起负责统一项目的开发；版本回退：如项目迭代后发现还是原来的版本更欢迎，于是乎回退到原来的版本 。 ​        如果张三、李四两个人对同一个项目代码进行了改动，SVN会对两个人修改部分进行合">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/a617af9619c5791295e4c760102093ce.png#pic_center">
+<meta property="og:image" content="http://example.com/SVN%E6%BC%8F%E6%B4%9E/image-20250510192632768.png">
+<meta property="og:image" content="http://example.com/SVN%E6%BC%8F%E6%B4%9E/image-20250510192759257.png">
+<meta property="og:image" content="http://example.com/SVN%E6%BC%8F%E6%B4%9E/image-20250510192837113.png">
+<meta property="article:published_time" content="2025-04-01T11:31:46.797Z">
+<meta property="article:modified_time" content="2025-05-10T11:29:06.607Z">
+<meta property="article:author" content="zhangsuhong">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/a617af9619c5791295e4c760102093ce.png#pic_center">
+  
+    <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">zhangsuhong</a></h1>
+		</hgroup>
+
+		
+			<p class="header-subtitle"></p>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-SVN漏洞" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/" class="article-date">
+  	<time datetime="2025-04-01T11:31:46.797Z" itemprop="datePublished">2025-04-01</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SVN漏洞"><a href="#SVN漏洞" class="headerlink" title="SVN漏洞"></a>SVN漏洞</h1><p>[TOC]</p>
+<h2 id="一、SVN概述"><a href="#一、SVN概述" class="headerlink" title="一、SVN概述"></a>一、SVN概述</h2><p>​        SVN(全称subVersion) ，又叫版本控制软件。使用SVN可以多人协作开发：如张三、李四各自负责不同的模块；远程开发：如张三、李四在不同的城市一起负责统一项目的开发；版本回退：如项目迭代后发现还是原来的版本更欢迎，于是乎回退到原来的版本 。</p>
+<p>​        如果张三、李四两个人对同一个项目代码进行了改动，SVN会对两个人修改部分进行合并，如果都是修改的同一行，SVN 会提示文件 Conflict 冲突，需要手动确认。</p>
+<p>​    SVN属于C&#x2F;S结构软件（<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AE%A2%E6%88%B7%E7%AB%AF&spm=1001.2101.3001.7020">客户端</a>&#x2F;服务端）</p>
+<p>二、漏洞简介</p>
+<p>​         SVN（subversion）是程序员常用的源代码版本管理软件。在使用 SVN 管理本地代码过程中，使用 svn checkout 功能来更新代码时，项目目录下会自动生成隐藏的.svn文件夹（Linux上用 ls 命令看不到，要用 ls -al 命令），其中包含重要的源代码信息。</p>
+<p>​        造成SVN源代码漏洞的主要原因是管理员操作不规范，一些网站管理员在发布代码时，不愿意使用“导出”功能，而是直接复制代码文件夹到WEB服务器上，这就使得.svn隐藏文件夹被暴露于外网环境，黑客对此可进一步利用：</p>
+<p>​         可以利用其中包含的用于版本信息追踪的 entries 文件（.svn&#x2F;entries 文件），获取到服务器源码、svn服务器账号密码等信息；<br>可以利用 wc.db 数据库文件（.svn&#x2F;wc.db 文件），获取到一些数据库信息；<br>​           更严重的问题在于，SVN产生的.svn目录下还包含了以.svn-base结尾的源代码文件副本（低版本SVN具体路径为text-base目录，高版本SVN为pristine目录），如果服务器没有对此类后缀做解析，则可以直接获得文件源代码。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39190897/article/details/109306693">https://blog.csdn.net/weixin_39190897/article/details/109306693</a></p>
+<p>三、漏洞检测</p>
+<p>1、最简单的检测方法是直接在网站路径后面 + <code>/.svn/entries</code>，存在漏洞会显示数字“12”</p>
+<p>2、实际工作过程中，可以使用 dirsearch 进行路径扫描：</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a617af9619c5791295e4c760102093ce.png#pic_center" alt="img"></p>
+<p>3、下载并分析 wc.db 文件：</p>
+<h4 id="eg-1"><a href="#eg-1" class="headerlink" title="eg.1"></a>eg.1</h4><p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192632768.png" alt="image-20250510192632768"></p>
+<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192759257.png" alt="image-20250510192759257"></p>
+<p>点进去57 再点就能看到flag</p>
+<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192837113.png" alt="image-20250510192837113"></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/04/09/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/03/29/Xpath%E6%B3%A8%E5%85%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 zhangsuhong
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
